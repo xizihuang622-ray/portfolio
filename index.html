@@ -7,177 +7,206 @@
 <meta name="description" content="Data Analysis Portfolio of Xizi Huang — Senior Data Analyst with 4 years of experience at Garena Free Fire (~100M DAU). Specializing in causal inference, A/B testing, and cross-functional analytics.">
 <style>
   :root {
-    --primary: #1B5E7B;
-    --secondary: #2E86AB;
-    --light: #D4ECF7;
-    --accent: #E8913A;
-    --dark: #1A1A2E;
-    --gray: #555555;
-    --gray-light: #999999;
-    --bg: #FAFCFE;
+    --primary: #2C3E50;
+    --accent: #4A6FA5;
+    --accent-light: #5B8DB8;
+    --blue-bg: #F5F8FB;
+    --border: #E8ECF0;
+    --divider: #EEF0F2;
+    --text: #4A5568;
+    --text-light: #718096;
+    --text-muted: #A0AEC0;
     --white: #FFFFFF;
+    --bg: #FAFBFC;
     --red: #C0392B;
+    --red-light: rgba(192,57,43,0.08);
+    --blue-light: rgba(74,111,165,0.08);
     --green: #4CAF50;
+    --green-light: rgba(76,175,80,0.1);
     --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
     font-family: var(--font);
-    color: var(--gray);
-    line-height: 1.7;
-    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    background: var(--white);
     font-size: 16px;
   }
 
   /* ===== NAV ===== */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #eee;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
     z-index: 1000;
-    padding: 0 2rem;
-    height: 56px;
+    padding: 0 3rem;
+    height: 52px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  nav .logo { font-weight: 700; font-size: 1.1rem; color: var(--primary); text-decoration: none; }
-  nav .nav-links { display: flex; gap: 1.5rem; }
+  nav .logo { font-weight: 700; font-size: 1rem; color: var(--primary); text-decoration: none; letter-spacing: -0.3px; }
+  nav .nav-links { display: flex; gap: 2rem; }
   nav .nav-links a {
-    text-decoration: none; color: var(--gray); font-size: 0.9rem;
+    text-decoration: none; color: var(--text-light); font-size: 0.85rem;
     font-weight: 500; transition: color 0.2s;
   }
-  nav .nav-links a:hover { color: var(--primary); }
+  nav .nav-links a:hover { color: var(--accent); }
 
   /* ===== HERO ===== */
   .hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, var(--dark) 0%, #16213E 50%, var(--primary) 100%);
-    color: var(--white); text-align: center; padding: 6rem 2rem 4rem;
+    background: var(--white);
+    color: var(--primary); text-align: center; padding: 8rem 2rem 6rem;
   }
-  .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-  .hero .subtitle { font-size: 1.2rem; color: var(--light); margin-bottom: 1.5rem; }
-  .hero .tagline { font-size: 1rem; color: #aaa; max-width: 600px; margin: 0 auto 2rem; }
-  .hero .stats { display: flex; gap: 3rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+  .hero h1 {
+    font-size: 2.8rem; font-weight: 800; color: var(--primary);
+    margin-bottom: 0.75rem; letter-spacing: -1px;
+  }
+  .hero .subtitle {
+    font-size: 1.15rem; color: var(--text-light); margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .hero .tagline {
+    font-size: 0.95rem; color: var(--text-muted); max-width: 580px;
+    margin: 0 auto 3rem; line-height: 1.7;
+  }
+  .hero .stats { display: flex; gap: 4rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
   .hero .stat-item { text-align: center; }
-  .hero .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--accent); }
-  .hero .stat-label { font-size: 0.85rem; color: #bbb; margin-top: 0.25rem; }
-  .hero .cta { margin-top: 2.5rem; }
+  .hero .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
+  .hero .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase; }
+  .hero .cta { margin-top: 3rem; }
   .hero .cta a {
-    display: inline-block; padding: 0.75rem 2rem; background: var(--accent);
-    color: var(--white); text-decoration: none; border-radius: 6px;
-    font-weight: 600; transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block; padding: 0.65rem 1.8rem;
+    background: var(--accent); color: var(--white);
+    text-decoration: none; border-radius: 4px;
+    font-weight: 600; font-size: 0.9rem;
+    transition: background 0.2s;
   }
-  .hero .cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,145,58,0.4); }
+  .hero .cta a:hover { background: #3d5f8f; }
 
   /* ===== SECTIONS ===== */
   .section {
-    max-width: 1100px; margin: 0 auto; padding: 5rem 2rem;
+    max-width: 900px; margin: 0 auto; padding: 7rem 2rem;
   }
-  .section-header {
-    margin-bottom: 3rem;
-  }
+  .section:nth-child(even) { background: var(--bg); }
+  .section-header { margin-bottom: 3.5rem; }
   .section-header .num {
-    font-size: 0.85rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;
+    font-size: 0.75rem; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 0.75rem;
   }
-  .section-header h2 { font-size: 2rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
-  .section-header p { color: var(--gray-light); max-width: 700px; }
+  .section-header h2 {
+    font-size: 1.75rem; font-weight: 800; color: var(--primary);
+    margin-bottom: 0.5rem; letter-spacing: -0.5px;
+  }
+  .section-header p { color: var(--text-muted); max-width: 600px; font-size: 0.95rem; }
 
-  /* ===== CARDS ===== */
-  .card {
-    background: var(--white); border-radius: 12px; padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 2rem;
-    border-left: 4px solid var(--primary);
+  /* ===== CONTENT BLOCKS ===== */
+  .content-block {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--divider);
   }
-  .card h3 { font-size: 1.3rem; color: var(--dark); margin-bottom: 1rem; }
-  .card p { margin-bottom: 0.75rem; }
+  .content-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .content-block h3 {
+    font-size: 1.15rem; color: var(--primary); margin-bottom: 0.75rem;
+    font-weight: 700; letter-spacing: -0.3px;
+  }
+  .content-block p { margin-bottom: 0.75rem; color: var(--text); font-size: 0.95rem; }
 
   /* ===== METRICS GRID ===== */
   .metrics-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem; margin: 1.5rem 0;
   }
   .metric {
-    background: var(--bg); border-radius: 8px; padding: 1rem 1.25rem;
-    border: 1px solid #eee;
+    background: var(--bg); border-radius: 6px; padding: 1rem 1.25rem;
+    border: 1px solid var(--divider);
   }
-  .metric .label { font-size: 0.8rem; color: var(--gray-light); margin-bottom: 0.25rem; }
-  .metric .value { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+  .metric .label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+  .metric .value { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
 
   /* ===== CHART CONTAINER ===== */
   .chart-container {
-    margin: 1.5rem 0; padding: 1rem;
-    background: var(--bg); border-radius: 8px; text-align: center;
+    margin: 2rem 0; padding: 1.5rem;
+    background: var(--bg); border-radius: 6px; text-align: center;
+    border: 1px solid var(--divider);
   }
   .chart-container svg { max-width: 100%; height: auto; }
-  .chart-caption { font-size: 0.8rem; color: var(--gray-light); margin-top: 0.5rem; }
+  .chart-caption { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem; }
 
   /* ===== BULLET LIST ===== */
   .analysis-list { list-style: none; padding: 0; }
   .analysis-list li {
-    padding: 0.5rem 0 0.5rem 1.5rem; position: relative;
-    border-bottom: 1px solid #f5f5f5;
+    padding: 0.65rem 0 0.65rem 1.25rem; position: relative;
+    color: var(--text); font-size: 0.95rem;
   }
-  .analysis-list li:last-child { border-bottom: none; }
+  .analysis-list li + li { border-top: 1px solid var(--divider); }
   .analysis-list li::before {
-    content: ''; position: absolute; left: 0; top: 0.85rem;
-    width: 8px; height: 8px; border-radius: 50%; background: var(--secondary);
+    content: ''; position: absolute; left: 0; top: 1rem;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light);
   }
 
   /* ===== METHODOLOGY HIGHLIGHT ===== */
   .methodology-box {
-    background: linear-gradient(135deg, #EDF4F8 0%, #D4ECF7 100%);
-    border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0;
-    border-left: 4px solid var(--primary);
+    background: var(--blue-bg); border-radius: 6px; padding: 1.5rem;
+    margin: 2.5rem 0 0;
+    border-left: 3px solid var(--accent);
   }
-  .methodology-box h4 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1rem; }
+  .methodology-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .methodology-box p { color: var(--text); font-size: 0.92rem; line-height: 1.7; }
 
   /* ===== SKILLS SECTION ===== */
   .skills-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
   }
-  .skill-category { background: var(--white); border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-  .skill-category h4 { color: var(--primary); font-size: 1rem; margin-bottom: 0.75rem; font-weight: 700; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-category {
+    background: var(--bg); border-radius: 6px; padding: 1.25rem;
+    border: 1px solid var(--divider);
+  }
+  .skill-category h4 { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .skill-tag {
-    background: var(--bg); color: var(--gray); padding: 0.3rem 0.75rem;
-    border-radius: 20px; font-size: 0.8rem; border: 1px solid #e0e0e0;
+    background: var(--white); color: var(--text-light); padding: 0.25rem 0.65rem;
+    border-radius: 3px; font-size: 0.8rem; border: 1px solid var(--divider);
   }
 
   /* ===== FOOTER ===== */
   footer {
-    text-align: center; padding: 3rem 2rem; color: var(--gray-light);
-    font-size: 0.85rem; border-top: 1px solid #eee; margin-top: 3rem;
+    text-align: center; padding: 3rem 2rem; color: var(--text-muted);
+    font-size: 0.82rem; border-top: 1px solid var(--divider); margin-top: 2rem;
   }
-  footer a { color: var(--primary); text-decoration: none; }
+  footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
   /* ===== DIVIDER ===== */
   .divider {
-    width: 60px; height: 3px; background: var(--accent); border-radius: 2px;
+    width: 40px; height: 2px; background: var(--accent); border-radius: 1px;
     margin: 1rem 0;
   }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .hero h1 { font-size: 2rem; }
-    .hero .stats { gap: 1.5rem; }
-    .hero .stat-num { font-size: 2rem; }
-    nav .nav-links { gap: 0.75rem; }
-    nav .nav-links a { font-size: 0.8rem; }
-    .section { padding: 3rem 1.25rem; }
-    .section-header h2 { font-size: 1.5rem; }
+    .hero .stats { gap: 2rem; }
+    .hero .stat-num { font-size: 1.8rem; }
+    nav .nav-links { gap: 1rem; }
+    nav .nav-links a { font-size: 0.78rem; }
+    nav { padding: 0 1.5rem; }
+    .section { padding: 4rem 1.5rem; }
+    .section-header h2 { font-size: 1.4rem; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* ===== FADE IN ===== */
   .fade-in {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -199,11 +228,10 @@
 <section class="hero">
   <div>
     <h1>Data Analysis Portfolio</h1>
-    <div class="subtitle">Xizi Huang &nbsp;|&nbsp; Senior Data Analyst</div>
-    <div class="divider" style="margin: 0 auto 1.5rem; background: var(--accent);"></div>
+    <div class="subtitle">Xizi Huang &nbsp;·&nbsp; Senior Data Analyst</div>
     <p class="tagline">
       4 years at Garena Free Fire (~100M DAU). Specializing in causal inference, 
-      A/B testing, and cross-functional analytics across SG, VN, IND, and LATAM markets.
+      A/B testing, and cross-functional analytics.
     </p>
     <div class="stats">
       <div class="stat-item">
@@ -215,7 +243,7 @@
         <div class="stat-label">Years of Experience</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">4</div>
+        <div class="stat-num">15</div>
         <div class="stat-label">International Markets</div>
       </div>
       <div class="stat-item">
@@ -224,7 +252,7 @@
       </div>
     </div>
     <div class="cta">
-      <a href="#project1">View Projects ↓</a>
+      <a href="#project1">View Projects</a>
     </div>
   </div>
 </section>
@@ -237,7 +265,7 @@
     <p>Voice toxicity governance & tiered penalty strategy on a global platform with ~100M DAU</p>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Background</h3>
     <p>Free Fire is a global tactical shooter with ~100M DAU. Voice toxicity was degrading new player experience. Operations advocated "blanket bans" for toxic players, but Product discovered many offenders were high-activity, high-spending users. My task: quantify the actual impact and design a governance strategy that protects the ecosystem without destroying core user LTV.</p>
 
@@ -250,74 +278,69 @@
     </ul>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Key Finding: Survivorship Bias</h3>
     <p>The most important analytical insight was recognizing that observable victim data suffers from severe survivorship bias. Players who encountered toxicity but stayed long enough to file a report are fundamentally different from those who quit immediately. This meant passive reporting alone cannot capture the full damage.</p>
   </div>
 
   <div class="chart-container fade-in">
     <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
-      <!-- Background -->
-      <rect width="800" height="350" fill="#FAFCFE" rx="8"/>
+      <rect width="800" height="350" fill="#FAFBFC" rx="6"/>
       
       <!-- Title -->
-      <text x="400" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#333">Dynamic Dual Threshold Strategy</text>
-      <text x="400" y="48" text-anchor="middle" font-size="10" fill="#999">AI Model Confidence vs Player Report Density</text>
+      <text x="400" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">Dynamic Dual Threshold Strategy</text>
+      <text x="400" y="48" text-anchor="middle" font-size="10" fill="#A0AEC0">AI Model Confidence vs Player Report Density</text>
       
       <!-- Zones -->
-      <rect x="395" y="60" width="200" height="240" fill="rgba(192,57,43,0.06)" rx="4"/>
-      <rect x="195" y="60" width="200" height="240" fill="rgba(46,134,171,0.06)" rx="4"/>
-      <rect x="0" y="60" width="195" height="240" fill="rgba(174,213,129,0.06)" rx="4"/>
+      <rect x="395" y="60" width="200" height="240" fill="rgba(192,57,43,0.04)" rx="4"/>
+      <rect x="195" y="60" width="200" height="240" fill="rgba(74,111,165,0.04)" rx="4"/>
+      <rect x="0" y="60" width="195" height="240" fill="rgba(76,175,80,0.04)" rx="4"/>
       
       <!-- Threshold lines -->
-      <line x1="595" y1="60" x2="595" y2="300" stroke="#C0392B" stroke-width="2" stroke-dasharray="6,3"/>
-      <line x1="395" y1="60" x2="395" y2="300" stroke="#2E86AB" stroke-width="2" stroke-dasharray="6,3"/>
+      <line x1="595" y1="60" x2="595" y2="300" stroke="#C0392B" stroke-width="1" stroke-dasharray="6,3" opacity="0.5"/>
+      <line x1="395" y1="60" x2="395" y2="300" stroke="#4A6FA5" stroke-width="1" stroke-dasharray="6,3" opacity="0.5"/>
       
       <!-- Zone labels -->
       <text x="495" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B">Auto-Punish</text>
-      <text x="495" y="96" text-anchor="middle" font-size="9" fill="#C0392B">Precision &gt; 99.5%</text>
-      <text x="295" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#1B5E7B">Punish + Report</text>
-      <text x="295" y="96" text-anchor="middle" font-size="9" fill="#1B5E7B">Balance Precision & Recall</text>
-      <text x="97" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#7CB342">No Action</text>
-      <text x="97" y="96" text-anchor="middle" font-size="9" fill="#7CB342">Low Confidence</text>
+      <text x="495" y="96" text-anchor="middle" font-size="9" fill="#C0392B" opacity="0.7">Precision &gt; 99.5%</text>
+      <text x="295" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#4A6FA5">Punish + Report</text>
+      <text x="295" y="96" text-anchor="middle" font-size="9" fill="#4A6FA5" opacity="0.7">Balance Precision & Recall</text>
+      <text x="97" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#4CAF50">No Action</text>
+      <text x="97" y="96" text-anchor="middle" font-size="9" fill="#4CAF50" opacity="0.7">Low Confidence</text>
       
       <!-- Scatter dots -->
-      <!-- Confirmed violations (high confidence, low report) -->
-      <circle cx="620" cy="200" r="4" fill="#C0392B" opacity="0.6"/><circle cx="650" cy="180" r="4" fill="#C0392B" opacity="0.6"/>
-      <circle cx="680" cy="220" r="4" fill="#C0392B" opacity="0.6"/><circle cx="640" cy="250" r="4" fill="#C0392B" opacity="0.6"/>
-      <circle cx="700" cy="160" r="4" fill="#C0392B" opacity="0.6"/><circle cx="670" cy="280" r="4" fill="#C0392B" opacity="0.6"/>
-      <circle cx="720" cy="200" r="4" fill="#C0392B" opacity="0.6"/><circle cx="610" cy="150" r="4" fill="#C0392B" opacity="0.6"/>
-      <circle cx="750" cy="240" r="4" fill="#C0392B" opacity="0.6"/><circle cx="690" cy="140" r="4" fill="#C0392B" opacity="0.6"/>
-      <circle cx="630" cy="170" r="4" fill="#C0392B" opacity="0.6"/><circle cx="710" cy="260" r="4" fill="#C0392B" opacity="0.6"/>
-      <!-- Suspicious (medium confidence) -->
-      <circle cx="450" cy="180" r="4" fill="#E8913A" opacity="0.5"/><circle cx="480" cy="220" r="4" fill="#E8913A" opacity="0.5"/>
-      <circle cx="420" cy="150" r="4" fill="#E8913A" opacity="0.5"/><circle cx="500" cy="260" r="4" fill="#E8913A" opacity="0.5"/>
-      <circle cx="460" cy="280" r="4" fill="#E8913A" opacity="0.5"/><circle cx="510" cy="140" r="4" fill="#E8913A" opacity="0.5"/>
-      <circle cx="440" cy="240" r="4" fill="#E8913A" opacity="0.5"/><circle cx="490" cy="170" r="4" fill="#E8913A" opacity="0.5"/>
-      <circle cx="530" cy="200" r="4" fill="#E8913A" opacity="0.5"/><circle cx="470" cy="300" r="4" fill="#E8913A" opacity="0.5"/>
-      <circle cx="520" cy="160" r="4" fill="#E8913A" opacity="0.5"/><circle cx="550" cy="250" r="4" fill="#E8913A" opacity="0.5"/>
-      <!-- False positives -->
-      <circle cx="350" cy="270" r="3.5" fill="#999" opacity="0.4"/><circle cx="300" cy="260" r="3.5" fill="#999" opacity="0.4"/>
-      <circle cx="380" cy="280" r="3.5" fill="#999" opacity="0.4"/><circle cx="320" cy="250" r="3.5" fill="#999" opacity="0.4"/>
-      <circle cx="250" cy="240" r="3.5" fill="#999" opacity="0.4"/><circle cx="340" cy="290" r="3.5" fill="#999" opacity="0.4"/>
-      <!-- Safe -->
-      <circle cx="150" cy="200" r="3" fill="#AED581" opacity="0.4"/><circle cx="100" cy="220" r="3" fill="#AED581" opacity="0.4"/>
-      <circle cx="180" cy="180" r="3" fill="#AED581" opacity="0.4"/><circle cx="120" cy="250" r="3" fill="#AED581" opacity="0.4"/>
+      <circle cx="620" cy="200" r="3.5" fill="#C0392B" opacity="0.45"/><circle cx="650" cy="180" r="3.5" fill="#C0392B" opacity="0.45"/>
+      <circle cx="680" cy="220" r="3.5" fill="#C0392B" opacity="0.45"/><circle cx="640" cy="250" r="3.5" fill="#C0392B" opacity="0.45"/>
+      <circle cx="700" cy="160" r="3.5" fill="#C0392B" opacity="0.45"/><circle cx="670" cy="280" r="3.5" fill="#C0392B" opacity="0.45"/>
+      <circle cx="720" cy="200" r="3.5" fill="#C0392B" opacity="0.45"/><circle cx="610" cy="150" r="3.5" fill="#C0392B" opacity="0.45"/>
+      <circle cx="750" cy="240" r="3.5" fill="#C0392B" opacity="0.45"/><circle cx="690" cy="140" r="3.5" fill="#C0392B" opacity="0.45"/>
+      <circle cx="630" cy="170" r="3.5" fill="#C0392B" opacity="0.45"/><circle cx="710" cy="260" r="3.5" fill="#C0392B" opacity="0.45"/>
+      <circle cx="450" cy="180" r="3.5" fill="#5B8DB8" opacity="0.4"/><circle cx="480" cy="220" r="3.5" fill="#5B8DB8" opacity="0.4"/>
+      <circle cx="420" cy="150" r="3.5" fill="#5B8DB8" opacity="0.4"/><circle cx="500" cy="260" r="3.5" fill="#5B8DB8" opacity="0.4"/>
+      <circle cx="460" cy="280" r="3.5" fill="#5B8DB8" opacity="0.4"/><circle cx="510" cy="140" r="3.5" fill="#5B8DB8" opacity="0.4"/>
+      <circle cx="440" cy="240" r="3.5" fill="#5B8DB8" opacity="0.4"/><circle cx="490" cy="170" r="3.5" fill="#5B8DB8" opacity="0.4"/>
+      <circle cx="530" cy="200" r="3.5" fill="#5B8DB8" opacity="0.4"/><circle cx="470" cy="300" r="3.5" fill="#5B8DB8" opacity="0.4"/>
+      <circle cx="520" cy="160" r="3.5" fill="#5B8DB8" opacity="0.4"/><circle cx="550" cy="250" r="3.5" fill="#5B8DB8" opacity="0.4"/>
+      <circle cx="350" cy="270" r="3" fill="#A0AEC0" opacity="0.35"/><circle cx="300" cy="260" r="3" fill="#A0AEC0" opacity="0.35"/>
+      <circle cx="380" cy="280" r="3" fill="#A0AEC0" opacity="0.35"/><circle cx="320" cy="250" r="3" fill="#A0AEC0" opacity="0.35"/>
+      <circle cx="250" cy="240" r="3" fill="#A0AEC0" opacity="0.35"/><circle cx="340" cy="290" r="3" fill="#A0AEC0" opacity="0.35"/>
+      <circle cx="150" cy="200" r="2.5" fill="#4CAF50" opacity="0.35"/><circle cx="100" cy="220" r="2.5" fill="#4CAF50" opacity="0.35"/>
+      <circle cx="180" cy="180" r="2.5" fill="#4CAF50" opacity="0.35"/><circle cx="120" cy="250" r="2.5" fill="#4CAF50" opacity="0.35"/>
       
       <!-- Axis labels -->
-      <text x="400" y="325" text-anchor="middle" font-size="11" fill="#666">AI Model Confidence →</text>
-      <text x="15" y="195" font-size="11" fill="#666" transform="rotate(-90,15,195)">Player Report Density →</text>
+      <text x="400" y="325" text-anchor="middle" font-size="10" fill="#718096">AI Model Confidence →</text>
+      <text x="15" y="195" font-size="10" fill="#718096" transform="rotate(-90,15,195)">Player Report Density →</text>
       
       <!-- Legend -->
-      <circle cx="100" cy="345" r="4" fill="#C0392B" opacity="0.7"/><text x="110" y="348" font-size="9" fill="#666">Confirmed Violations</text>
-      <circle cx="270" cy="345" r="4" fill="#E8913A" opacity="0.5"/><text x="280" y="348" font-size="9" fill="#666">Suspicious (need report)</text>
-      <circle cx="460" cy="345" r="3.5" fill="#999" opacity="0.5"/><text x="470" y="348" font-size="9" fill="#666">False Positives</text>
-      <circle cx="590" cy="345" r="3" fill="#AED581" opacity="0.5"/><text x="600" y="348" font-size="9" fill="#666">Safe</text>
+      <circle cx="120" cy="345" r="3.5" fill="#C0392B" opacity="0.5"/><text x="130" y="348" font-size="9" fill="#718096">Confirmed Violations</text>
+      <circle cx="290" cy="345" r="3.5" fill="#5B8DB8" opacity="0.5"/><text x="300" y="348" font-size="9" fill="#718096">Suspicious (need report)</text>
+      <circle cx="470" cy="345" r="3" fill="#A0AEC0" opacity="0.5"/><text x="480" y="348" font-size="9" fill="#718096">False Positives</text>
+      <circle cx="600" cy="345" r="2.5" fill="#4CAF50" opacity="0.5"/><text x="610" y="348" font-size="9" fill="#718096">Safe</text>
     </svg>
     <div class="chart-caption">Figure 1.1: Dynamic Dual Threshold — AI confidence vs player report density</div>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Results & Impact</h3>
     <div class="metrics-grid">
       <div class="metric"><div class="label">Recidivism Rate</div><div class="value">↓ 0.5pp</div></div>
@@ -334,52 +357,52 @@
 </section>
 
 <!-- ===== PROJECT 2: NETWORK OPTIMIZATION ===== -->
-<section class="section" id="project2" style="background: var(--white);">
+<section class="section" id="project2">
   <div class="section-header fade-in">
     <div class="num">Project 02</div>
     <h2>End-to-End Network Optimization</h2>
     <p>IDC routing fix & dual-channel networking A/B test</p>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Background</h3>
     <p>After server consolidation, aggregate metrics showed improved match latency (players entering matches faster), yet community complaints about lag spiked. This is a classic "macro metrics healthy, micro experience collapsed" data trap. My investigation led to two sequential findings.</p>
   </div>
 
   <div class="chart-container fade-in">
     <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
-      <rect width="800" height="300" fill="#FAFCFE" rx="8"/>
-      <text x="400" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#333">IDC Routing Distribution: Before vs After Fix</text>
+      <rect width="800" height="300" fill="#FAFBFC" rx="6"/>
+      <text x="400" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">IDC Routing Distribution: Before vs After Fix</text>
       
       <!-- Before bars -->
-      <rect x="100" y="60" width="120" height="150" fill="#C0392B" opacity="0.25" rx="4"/>
-      <text x="160" y="55" text-anchor="middle" font-size="24" font-weight="700" fill="#C0392B">80%</text>
-      <text x="160" y="225" text-anchor="middle" font-size="10" fill="#666">Remote IDC</text>
+      <rect x="100" y="60" width="120" height="150" fill="#C0392B" opacity="0.15" rx="4"/>
+      <text x="160" y="55" text-anchor="middle" font-size="22" font-weight="700" fill="#C0392B">80%</text>
+      <text x="160" y="225" text-anchor="middle" font-size="10" fill="#718096">Remote IDC</text>
       
-      <rect x="250" y="165" width="120" height="45" fill="#2E86AB" opacity="0.25" rx="4"/>
-      <text x="310" y="160" text-anchor="middle" font-size="24" font-weight="700" fill="#2E86AB">20%</text>
-      <text x="310" y="225" text-anchor="middle" font-size="10" fill="#666">Local IDC</text>
+      <rect x="250" y="165" width="120" height="45" fill="#4A6FA5" opacity="0.15" rx="4"/>
+      <text x="310" y="160" text-anchor="middle" font-size="22" font-weight="700" fill="#4A6FA5">20%</text>
+      <text x="310" y="225" text-anchor="middle" font-size="10" fill="#718096">Local IDC</text>
       
-      <text x="235" y="252" text-anchor="middle" font-size="12" font-weight="600" fill="#C0392B">Before Fix</text>
+      <text x="235" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#C0392B">Before Fix</text>
       
       <!-- Arrow -->
-      <text x="400" y="145" text-anchor="middle" font-size="24" fill="#E8913A">→</text>
+      <text x="400" y="145" text-anchor="middle" font-size="22" fill="#A0AEC0">→</text>
       
       <!-- After bars -->
-      <rect x="450" y="165" width="120" height="45" fill="#C0392B" opacity="0.25" rx="4"/>
-      <text x="510" y="160" text-anchor="middle" font-size="24" font-weight="700" fill="#C0392B">5%</text>
-      <text x="510" y="225" text-anchor="middle" font-size="10" fill="#666">Remote IDC</text>
+      <rect x="450" y="165" width="120" height="45" fill="#C0392B" opacity="0.15" rx="4"/>
+      <text x="510" y="160" text-anchor="middle" font-size="22" font-weight="700" fill="#C0392B">5%</text>
+      <text x="510" y="225" text-anchor="middle" font-size="10" fill="#718096">Remote IDC</text>
       
-      <rect x="600" y="60" width="120" height="150" fill="#2E86AB" rx="4"/>
-      <text x="660" y="55" text-anchor="middle" font-size="24" font-weight="700" fill="#fff">95%</text>
-      <text x="660" y="225" text-anchor="middle" font-size="10" fill="#666">Local IDC</text>
+      <rect x="600" y="60" width="120" height="150" fill="#4A6FA5" rx="4"/>
+      <text x="660" y="55" text-anchor="middle" font-size="22" font-weight="700" fill="#2C3E50">95%</text>
+      <text x="660" y="225" text-anchor="middle" font-size="10" fill="#718096">Local IDC</text>
       
-      <text x="585" y="252" text-anchor="middle" font-size="12" font-weight="600" fill="#2E86AB">After Fix</text>
+      <text x="585" y="252" text-anchor="middle" font-size="11" font-weight="600" fill="#4A6FA5">After Fix</text>
     </svg>
     <div class="chart-caption">Figure 2.1: IDC routing distribution (before/after) — 80% of players were incorrectly routed to remote datacenters</div>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>A/B Test Design</h3>
     <ul class="analysis-list">
       <li><strong>Hypothesis:</strong> Enabling dual-channel (WiFi + 4G) for high-ping users significantly reduces severe packet loss.</li>
@@ -393,42 +416,42 @@
 
   <div class="chart-container fade-in">
     <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
-      <rect width="800" height="280" fill="#FAFCFE" rx="8"/>
-      <text x="400" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#333">A/B Test Results</text>
+      <rect width="800" height="280" fill="#FAFBFC" rx="6"/>
+      <text x="400" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">A/B Test Results</text>
       
       <!-- Left: Packet loss -->
-      <text x="200" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="#333">Severe Packet Loss Rate</text>
-      <rect x="100" y="80" width="80" height="120" fill="#ddd" rx="4"/>
-      <text x="140" y="75" text-anchor="middle" font-size="16" font-weight="700" fill="#999">8.2%</text>
-      <rect x="220" y="120" width="80" height="80" fill="#2E86AB" rx="4"/>
-      <text x="260" y="115" text-anchor="middle" font-size="16" font-weight="700" fill="#2E86AB">5.5%</text>
-      <text x="140" y="215" text-anchor="middle" font-size="10" fill="#666">Control</text>
-      <text x="260" y="215" text-anchor="middle" font-size="10" fill="#666">Treatment</text>
-      <text x="200" y="245" text-anchor="middle" font-size="13" font-weight="700" fill="#1B5E7B">↓ 33% (p &lt; 0.001)</text>
+      <text x="200" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#2C3E50">Severe Packet Loss Rate</text>
+      <rect x="100" y="80" width="80" height="120" fill="#E8ECF0" rx="4"/>
+      <text x="140" y="75" text-anchor="middle" font-size="15" font-weight="700" fill="#A0AEC0">8.2%</text>
+      <rect x="220" y="120" width="80" height="80" fill="#4A6FA5" rx="4"/>
+      <text x="260" y="115" text-anchor="middle" font-size="15" font-weight="700" fill="#4A6FA5">5.5%</text>
+      <text x="140" y="215" text-anchor="middle" font-size="10" fill="#718096">Control</text>
+      <text x="260" y="215" text-anchor="middle" font-size="10" fill="#718096">Treatment</text>
+      <text x="200" y="245" text-anchor="middle" font-size="12" font-weight="700" fill="#4A6FA5">↓ 33% (p &lt; 0.001)</text>
       
       <!-- Right: Guardrails -->
-      <text x="600" y="55" text-anchor="middle" font-size="12" font-weight="600" fill="#333">Guardrail Metrics</text>
+      <text x="600" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#2C3E50">Guardrail Metrics</text>
       
-      <rect x="480" y="80" width="70" height="35" fill="#2E86AB" rx="4"/>
-      <text x="515" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">4.2%</text>
-      <rect x="560" y="80" width="70" height="35" fill="#C0392B" opacity="0.2" rx="4" stroke="#C0392B" stroke-width="1"/>
-      <text x="595" y="102" text-anchor="middle" font-size="12" fill="#C0392B">10%</text>
-      <text x="570" y="130" text-anchor="middle" font-size="10" fill="#666">Popup Rejection</text>
+      <rect x="480" y="80" width="70" height="35" fill="#4A6FA5" rx="4"/>
+      <text x="515" y="102" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">4.2%</text>
+      <rect x="560" y="80" width="70" height="35" fill="rgba(192,57,43,0.08)" rx="4" stroke="#C0392B" stroke-width="1" opacity="0.6"/>
+      <text x="595" y="102" text-anchor="middle" font-size="11" fill="#C0392B" opacity="0.7">10%</text>
+      <text x="570" y="130" text-anchor="middle" font-size="10" fill="#718096">Popup Rejection</text>
       
-      <rect x="480" y="155" width="70" height="18" fill="#2E86AB" rx="4"/>
-      <text x="515" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">1.8%</text>
-      <rect x="560" y="148" width="70" height="25" fill="#C0392B" opacity="0.2" rx="4" stroke="#C0392B" stroke-width="1"/>
-      <text x="595" y="168" text-anchor="middle" font-size="12" fill="#C0392B">5%</text>
-      <text x="570" y="198" text-anchor="middle" font-size="10" fill="#666">Feature Disable</text>
+      <rect x="480" y="155" width="70" height="18" fill="#4A6FA5" rx="4"/>
+      <text x="515" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1.8%</text>
+      <rect x="560" y="148" width="70" height="25" fill="rgba(192,57,43,0.08)" rx="4" stroke="#C0392B" stroke-width="1" opacity="0.6"/>
+      <text x="595" y="168" text-anchor="middle" font-size="11" fill="#C0392B" opacity="0.7">5%</text>
+      <text x="570" y="198" text-anchor="middle" font-size="10" fill="#718096">Feature Disable</text>
       
       <!-- Pass badge -->
-      <rect x="530" y="218" width="120" height="28" fill="#E8F5E9" rx="14" stroke="#4CAF50" stroke-width="1"/>
-      <text x="590" y="237" text-anchor="middle" font-size="11" font-weight="600" fill="#4CAF50">✓ All Passed</text>
+      <rect x="530" y="218" width="110" height="26" fill="rgba(76,175,80,0.08)" rx="13" stroke="#4CAF50" stroke-width="1"/>
+      <text x="585" y="236" text-anchor="middle" font-size="10" font-weight="600" fill="#4CAF50">✓ All Passed</text>
     </svg>
     <div class="chart-caption">Figure 2.2: A/B test results — 33% packet loss reduction, all guardrails passed</div>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Results & Impact</h3>
     <div class="metrics-grid">
       <div class="metric"><div class="label">Cross-Region Match</div><div class="value">90% → &lt;5%</div></div>
@@ -452,7 +475,7 @@
     <p>AUG gunplay nerf & Wukong Skill Skin commercialization — balancing fairness and revenue</p>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Case A: AUG Gun Balance</h3>
     <p>Community complained the new AUG was overpowered. Designers checked overall win rate and deemed it acceptable. I rejected win rate as a single metric (skilled players inflate the average) and introduced a same-player controlled comparison: using SCAR as a baseline anchor, isolating Heroic-tier players, and comparing each player's KD when using AUG vs. SCAR.</p>
     <p><strong>Key finding:</strong> In Heroic mode, AUG users showed a <strong>28% KD advantage</strong> over their own SCAR performance — combat outcomes were determined by gun selection, not player skill. This data directly convinced the design team to nerf.</p>
@@ -460,37 +483,37 @@
 
   <div class="chart-container fade-in">
     <svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
-      <rect width="800" height="250" fill="#FAFCFE" rx="8"/>
-      <text x="400" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#333">AUG Balance Adjustment: Before vs After Nerf (Heroic CS)</text>
+      <rect width="800" height="250" fill="#FAFBFC" rx="6"/>
+      <text x="400" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">AUG Balance Adjustment: Before vs After Nerf (Heroic CS)</text>
       
       <!-- Before -->
-      <rect x="120" y="70" width="100" height="130" fill="#2E86AB" rx="4"/>
-      <text x="170" y="65" text-anchor="middle" font-size="16" font-weight="700" fill="#2E86AB">0.49</text>
-      <rect x="240" y="100" width="100" height="100" fill="#D4ECF7" rx="4" stroke="#2E86AB" stroke-width="1"/>
-      <text x="290" y="95" text-anchor="middle" font-size="16" font-weight="700" fill="#666">0.39</text>
-      <text x="170" y="215" text-anchor="middle" font-size="10" fill="#666">AUG</text>
-      <text x="290" y="215" text-anchor="middle" font-size="10" fill="#666">SCAR</text>
+      <rect x="120" y="70" width="100" height="130" fill="#4A6FA5" rx="4"/>
+      <text x="170" y="65" text-anchor="middle" font-size="15" font-weight="700" fill="#4A6FA5">0.49</text>
+      <rect x="240" y="100" width="100" height="100" fill="rgba(74,111,165,0.12)" rx="4" stroke="#4A6FA5" stroke-width="1"/>
+      <text x="290" y="95" text-anchor="middle" font-size="15" font-weight="700" fill="#718096">0.39</text>
+      <text x="170" y="215" text-anchor="middle" font-size="10" fill="#718096">AUG</text>
+      <text x="290" y="215" text-anchor="middle" font-size="10" fill="#718096">SCAR</text>
       
-      <text x="260" y="50" text-anchor="middle" font-size="11" fill="#999">Gap: 28%</text>
+      <text x="260" y="50" text-anchor="middle" font-size="10" fill="#A0AEC0">Gap: 28%</text>
       
       <!-- Arrow -->
-      <text x="400" y="145" text-anchor="middle" font-size="20" fill="#E8913A">→</text>
-      <text x="400" y="165" text-anchor="middle" font-size="10" fill="#999">NERF</text>
+      <text x="400" y="145" text-anchor="middle" font-size="18" fill="#A0AEC0">→</text>
+      <text x="400" y="163" text-anchor="middle" font-size="9" fill="#A0AEC0">NERF</text>
       
       <!-- After -->
-      <rect x="480" y="98" width="100" height="102" fill="#2E86AB" rx="4"/>
-      <text x="530" y="93" text-anchor="middle" font-size="16" font-weight="700" fill="#2E86AB">0.41</text>
-      <rect x="600" y="100" width="100" height="100" fill="#D4ECF7" rx="4" stroke="#2E86AB" stroke-width="1"/>
-      <text x="650" y="95" text-anchor="middle" font-size="16" font-weight="700" fill="#666">0.40</text>
-      <text x="530" y="215" text-anchor="middle" font-size="10" fill="#666">AUG</text>
-      <text x="650" y="215" text-anchor="middle" font-size="10" fill="#666">SCAR</text>
+      <rect x="480" y="98" width="100" height="102" fill="#4A6FA5" rx="4"/>
+      <text x="530" y="93" text-anchor="middle" font-size="15" font-weight="700" fill="#4A6FA5">0.41</text>
+      <rect x="600" y="100" width="100" height="100" fill="rgba(74,111,165,0.12)" rx="4" stroke="#4A6FA5" stroke-width="1"/>
+      <text x="650" y="95" text-anchor="middle" font-size="15" font-weight="700" fill="#718096">0.40</text>
+      <text x="530" y="215" text-anchor="middle" font-size="10" fill="#718096">AUG</text>
+      <text x="650" y="215" text-anchor="middle" font-size="10" fill="#718096">SCAR</text>
       
-      <text x="620" y="50" text-anchor="middle" font-size="11" font-weight="600" fill="#1B5E7B">Gap: ~1% ✓</text>
+      <text x="620" y="50" text-anchor="middle" font-size="10" font-weight="600" fill="#4A6FA5">Gap: ~1% ✓</text>
     </svg>
     <div class="chart-caption">Figure 3.1: AUG KD gap narrowed from 28% to ~1% after targeted nerf</div>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Case B: Wukong Skill Skin Monetization</h3>
     <p>After nerfing AUG for being "too strong," launching a paid skin with stat bonuses seemed contradictory. I designed a "dual verification model":</p>
     <ul class="analysis-list">
@@ -501,40 +524,40 @@
 
   <div class="chart-container fade-in">
     <svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
-      <rect width="800" height="220" fill="#FAFCFE" rx="8"/>
-      <text x="400" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#333">Wukong Skill Skin — Dual Verification Model</text>
+      <rect width="800" height="220" fill="#FAFBFC" rx="6"/>
+      <text x="400" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#2C3E50">Wukong Skill Skin — Dual Verification Model</text>
       
       <!-- Left: Vertical -->
-      <text x="200" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Vertical: KD Change</text>
-      <rect x="120" y="80" width="80" height="100" fill="#ddd" rx="4"/>
-      <text x="160" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#999">1.08</text>
-      <rect x="220" y="68" width="80" height="112" fill="#2E86AB" rx="4"/>
-      <text x="260" y="63" text-anchor="middle" font-size="14" font-weight="700" fill="#2E86AB">1.12</text>
+      <text x="200" y="55" text-anchor="middle" font-size="10" font-weight="600" fill="#2C3E50">Vertical: KD Change</text>
+      <rect x="120" y="80" width="80" height="100" fill="#E8ECF0" rx="4"/>
+      <text x="160" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#A0AEC0">1.08</text>
+      <rect x="220" y="68" width="80" height="112" fill="#4A6FA5" rx="4"/>
+      <text x="260" y="63" text-anchor="middle" font-size="13" font-weight="700" fill="#4A6FA5">1.12</text>
       
       <!-- Threshold line -->
-      <line x1="100" y1="62" x2="320" y2="62" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="5,3"/>
-      <text x="320" y="58" font-size="9" fill="#C0392B">+5% Threshold</text>
+      <line x1="100" y1="62" x2="320" y2="62" stroke="#C0392B" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+      <text x="320" y="58" font-size="8" fill="#C0392B" opacity="0.7">+5% Threshold</text>
       
-      <text x="200" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#1B5E7B">+3.7% — Within Safe Zone ✓</text>
+      <text x="200" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#4A6FA5">+3.7% — Within Safe Zone ✓</text>
       
       <!-- Right: Horizontal -->
-      <text x="600" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#333">Horizontal: vs T0 Characters</text>
+      <text x="600" y="55" text-anchor="middle" font-size="10" font-weight="600" fill="#2C3E50">Horizontal: vs T0 Characters</text>
       
-      <rect x="480" y="90" width="250" height="28" fill="#2E86AB" rx="4"/>
-      <text x="605" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Wukong (with Skin): 1.12</text>
+      <rect x="480" y="90" width="250" height="28" fill="#4A6FA5" rx="4"/>
+      <text x="605" y="109" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Wukong (with Skin): 1.12</text>
       
-      <rect x="480" y="125" width="250" height="28" fill="#eee" rx="4"/>
-      <text x="605" y="144" text-anchor="middle" font-size="11" fill="#666">T0 Char A: 1.18 &nbsp;|&nbsp; T0 B: 1.21 &nbsp;|&nbsp; T0 C: 1.16</text>
+      <rect x="480" y="125" width="250" height="28" fill="#E8ECF0" rx="4"/>
+      <text x="605" y="144" text-anchor="middle" font-size="10" fill="#718096">T0 Char A: 1.18 &nbsp;|&nbsp; T0 B: 1.21 &nbsp;|&nbsp; T0 C: 1.16</text>
       
-      <line x1="475" y1="83" x2="735" y2="83" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="5,3"/>
-      <text x="740" y="80" font-size="9" fill="#C0392B">T0 Ceiling</text>
+      <line x1="475" y1="83" x2="735" y2="83" stroke="#C0392B" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
+      <text x="740" y="80" font-size="8" fill="#C0392B" opacity="0.7">T0 Ceiling</text>
       
-      <text x="600" y="185" text-anchor="middle" font-size="12" font-weight="700" fill="#1B5E7B">Below T0 Ceiling ✓</text>
+      <text x="600" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#4A6FA5">Below T0 Ceiling ✓</text>
     </svg>
     <div class="chart-caption">Figure 3.2: Dual verification — KD gain within safe zone AND below meta ceiling</div>
   </div>
 
-  <div class="card fade-in">
+  <div class="content-block fade-in">
     <h3>Results & Impact</h3>
     <div class="metrics-grid">
       <div class="metric"><div class="label">AUG KD Gap</div><div class="value">28% → ~1%</div></div>
@@ -551,7 +574,7 @@
 </section>
 
 <!-- ===== SKILLS ===== -->
-<section class="section" id="skills" style="background: var(--white);">
+<section class="section" id="skills">
   <div class="section-header fade-in">
     <div class="num">About Me</div>
     <h2>Technical Skills & Background</h2>
@@ -601,10 +624,10 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <p>Xizi Huang | Data Analysis Portfolio | 2026</p>
+  <p>Xizi Huang · Data Analysis Portfolio · 2026</p>
   <p style="margin-top: 0.5rem;">
-    <a href="mailto:xizihuang622@gmail.com">xizihuang622@gmail.com</a> &nbsp;|&nbsp;
-    <a href="https://www.linkedin.com/in/xizi-allen-h-776195291/" target="_blank">LinkedIn</a> &nbsp;|&nbsp; Shanghai / Remote
+    <a href="mailto:xizihuang622@gmail.com">xizihuang622@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/xizi-allen-h-776195291/" target="_blank">LinkedIn</a> &nbsp;·&nbsp; Shanghai / Remote
   </p>
 </footer>
 

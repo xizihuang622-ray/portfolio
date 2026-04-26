@@ -110,9 +110,7 @@
     font-weight: 500;
   }
 
-  nav .nav-links a:hover {
-    color: var(--accent);
-  }
+  nav .nav-links a:hover { color: var(--accent); }
 
   .theme-toggle {
     border: 1px solid var(--divider);
@@ -161,9 +159,9 @@
   .hero .tagline {
     font-size: 0.97rem;
     color: var(--text-muted);
-    max-width: 680px;
+    max-width: 660px;
     margin: 0 auto 3rem;
-    line-height: 1.75;
+    line-height: 1.8;
   }
 
   .hero .stats {
@@ -176,7 +174,7 @@
 
   .hero .stat-item {
     text-align: center;
-    min-width: 130px;
+    min-width: 120px;
   }
 
   .hero .stat-num {
@@ -221,29 +219,39 @@
     border: 1px solid var(--accent-light);
   }
 
-  .hero .cta a:hover {
-    opacity: 0.92;
-  }
+  .hero .cta a:hover { opacity: 0.9; }
 
-  .section {
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 7rem 2rem;
-  }
-
+  /* ===== APPROACH SECTION ===== */
   .section-full {
     background: var(--bg);
     padding: 7rem 0;
   }
 
   .section-full .section-inner {
-    max-width: 940px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 0 2rem;
   }
 
+  .approach-prose {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.9;
+  }
+
+  .approach-prose p + p {
+    margin-top: 1.2rem;
+  }
+
+  /* ===== PROJECT SECTIONS ===== */
+  .section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 7rem 2rem;
+  }
+
   .section-header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
   }
 
   .section-header .num {
@@ -256,7 +264,7 @@
   }
 
   .section-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 800;
     color: var(--primary);
     margin-bottom: 0.5rem;
@@ -265,53 +273,59 @@
 
   .section-header p {
     color: var(--text-muted);
-    max-width: 700px;
     font-size: 0.95rem;
+    max-width: 640px;
   }
 
-  .section-subnote {
-    margin-top: 0.9rem;
-    font-size: 0.84rem;
-    color: var(--text-muted);
+  /* ===== PIVOT BLOCK — the single insight per project ===== */
+  .pivot-block {
+    margin: 2.5rem 0;
+    padding: 1.6rem 1.8rem;
+    background: var(--blue-bg);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    box-shadow: var(--shadow);
   }
 
-  .content-block {
-    margin-bottom: 2.75rem;
-    padding-bottom: 2.75rem;
-    border-bottom: 1px solid var(--divider);
-  }
-
-  .content-block:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .content-block h3 {
-    font-size: 1.15rem;
-    color: var(--primary);
-    margin-bottom: 0.75rem;
+  .pivot-block .pivot-label {
+    font-size: 0.74rem;
     font-weight: 700;
-    letter-spacing: -0.3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    margin-bottom: 0.6rem;
   }
 
-  .content-block p {
-    margin-bottom: 0.8rem;
-    color: var(--text);
+  .pivot-block p {
+    font-size: 1rem;
+    color: var(--primary);
+    line-height: 1.8;
+    font-weight: 500;
+  }
+
+  /* ===== CONTEXT + IMPACT PROSE ===== */
+  .project-prose {
     font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.85;
   }
 
+  .project-prose p + p {
+    margin-top: 1rem;
+  }
+
+  /* ===== METRICS ROW ===== */
   .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.85rem;
+    margin: 2rem 0;
   }
 
   .metric {
     background: var(--bg);
     border-radius: 10px;
-    padding: 1rem 1.2rem;
+    padding: 0.9rem 1.1rem;
     border: 1px solid var(--divider);
     box-shadow: var(--shadow);
   }
@@ -332,7 +346,7 @@
   }
 
   .metric .label {
-    font-size: 0.74rem;
+    font-size: 0.73rem;
     color: var(--text-muted);
     margin-bottom: 0.3rem;
     font-weight: 600;
@@ -341,7 +355,7 @@
   }
 
   .metric .value {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
     font-weight: 700;
     color: var(--accent);
   }
@@ -349,148 +363,44 @@
   .metric.positive .value { color: var(--green); }
   .metric.negative .value { color: var(--red); }
 
-  .analysis-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .analysis-list li {
-    padding: 0.75rem 0 0.75rem 1.25rem;
-    position: relative;
-    color: var(--text);
-    font-size: 0.95rem;
-  }
-
-  .analysis-list li + li {
+  /* ===== PROJECT DIVIDER ===== */
+  .project-divider {
+    border: none;
     border-top: 1px solid var(--divider);
+    margin: 3rem 0;
   }
 
-  .analysis-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 1.1rem;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-light);
+  /* ===== SKILLS ===== */
+  .skills-section {
+    background: var(--bg);
+    padding: 7rem 0;
   }
 
-  .problem-box {
-    background: color-mix(in srgb, #FFF8F0 88%, var(--white));
-    border-radius: 10px;
-    padding: 1.2rem 1.4rem;
-    margin: 0 0 2rem 0;
-    border-left: 4px solid #E8A045;
-    box-shadow: var(--shadow);
-  }
-
-  body[data-theme="dark"] .problem-box {
-    background: rgba(232,160,69,0.08);
-  }
-
-  .problem-box h4 {
-    color: #B07030;
-    margin-bottom: 0.45rem;
-    font-size: 0.84rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .problem-box p {
-    color: var(--text);
-    font-size: 0.93rem;
-    line-height: 1.72;
-    margin: 0;
-  }
-
-  .methodology-box {
-    background: var(--blue-bg);
-    border-radius: 10px;
-    padding: 1.4rem;
-    margin: 2rem 0 0;
-    border-left: 4px solid var(--accent);
-    box-shadow: var(--shadow);
-  }
-
-  .methodology-box h4 {
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    font-size: 0.88rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .methodology-box p {
-    color: var(--text);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .framework-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .framework-step {
-    grid-column: span 2;
-    background: var(--white);
-    border-radius: 12px;
-    padding: 1.2rem;
-    border: 1px solid var(--divider);
-    box-shadow: var(--shadow);
-    text-align: left;
-  }
-
-  .framework-step:nth-child(4) { grid-column: 2 / span 2; }
-  .framework-step:nth-child(5) { grid-column: 4 / span 2; }
-  .framework-step:nth-child(6) { grid-column: 3 / span 2; }
-
-  .framework-step .step-num {
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 0.45rem;
-  }
-
-  .framework-step .step-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.35rem;
-  }
-
-  .framework-step .step-desc {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    line-height: 1.65;
+  .skills-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.1rem;
+    margin-top: 2.5rem;
   }
 
   .skill-category {
-    background: var(--bg);
+    background: var(--white);
     border-radius: 10px;
-    padding: 1.2rem;
+    padding: 1.1rem 1.2rem;
     border: 1px solid var(--divider);
     box-shadow: var(--shadow);
   }
 
   .skill-category h4 {
     color: var(--accent);
-    font-size: 0.84rem;
-    margin-bottom: 0.75rem;
+    font-size: 0.82rem;
+    margin-bottom: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -499,15 +409,15 @@
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
+    gap: 0.4rem;
   }
 
   .skill-tag {
-    background: var(--white);
+    background: var(--bg);
     color: var(--text-light);
-    padding: 0.28rem 0.65rem;
+    padding: 0.25rem 0.6rem;
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.79rem;
     border: 1px solid var(--divider);
   }
 
@@ -517,21 +427,14 @@
     color: var(--text-muted);
     font-size: 0.82rem;
     border-top: 1px solid var(--divider);
-    margin-top: 2rem;
   }
 
-  footer a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
 
   .fade-in {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
@@ -542,51 +445,29 @@
 
   @media (max-width: 980px) {
     nav {
-      padding: 0 1rem;
+      padding: 0.6rem 1rem;
       height: auto;
       min-height: 58px;
-      padding-top: 0.6rem;
-      padding-bottom: 0.6rem;
       align-items: flex-start;
     }
-
     .nav-left {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
-
-    nav .nav-links {
-      gap: 0.9rem;
-    }
-
-    .framework-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .framework-step,
-    .framework-step:nth-child(4),
-    .framework-step:nth-child(5),
-    .framework-step:nth-child(6) {
-      grid-column: auto;
-    }
+    nav .nav-links { gap: 0.85rem; }
   }
 
   @media (max-width: 768px) {
-    .hero {
-      padding: 8.5rem 1.4rem 5rem;
-      min-height: auto;
-    }
-
+    .hero { padding: 9rem 1.4rem 5rem; min-height: auto; }
     .hero h1 { font-size: 2.1rem; }
     .hero .stats { gap: 1.6rem; }
     .hero .stat-num { font-size: 1.8rem; }
-    .section, .section-full { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .section, .section-full, .skills-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
     .section { padding-left: 1.4rem; padding-right: 1.4rem; }
-    .section-full .section-inner { padding: 0 1.4rem; }
-    .section-header h2 { font-size: 1.45rem; }
+    .section-full .section-inner, .skills-inner { padding: 0 1.4rem; }
+    .section-header h2 { font-size: 1.4rem; }
     .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .framework-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -596,7 +477,7 @@
   <div class="nav-left">
     <a href="#" class="logo">Xizi Huang</a>
     <div class="nav-links">
-      <a href="#framework">Framework</a>
+      <a href="#approach">Approach</a>
       <a href="#project1">Trust &amp; Safety</a>
       <a href="#project2">Network</a>
       <a href="#project3">Balance</a>
@@ -607,15 +488,15 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div>
     <h1>Data Analysis Portfolio</h1>
     <div class="subtitle">Xizi Huang &nbsp;·&nbsp; Senior Data Analyst</div>
     <p class="tagline">
-      4 years at Garena Free Fire (~100M DAU), working across trust &amp; safety,
+      4 years at Garena Free Fire (~100M DAU) working across trust &amp; safety,
       network experience, gameplay balance, and monetization in 15 international markets.
-      This portfolio is designed as a layer between resume bullets and interview scripts:
-      deeper than resume, but still shorter and more structured than spoken case walkthroughs.
+      Each project here shows not what I analyzed, but what I saw that changed the conclusion.
     </p>
     <div class="stats">
       <div class="stat-item">
@@ -630,404 +511,323 @@
         <div class="stat-num">15</div>
         <div class="stat-label">International Markets</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">6-Step</div>
-        <div class="stat-label">Analysis Framework</div>
-      </div>
     </div>
     <div class="cta">
-      <a href="#framework">View My Approach</a>
+      <a href="#approach">View My Approach</a>
       <a href="#project1" class="secondary">View Projects</a>
     </div>
   </div>
 </section>
 
-<div class="section-full" id="framework">
+<!-- APPROACH -->
+<div class="section-full" id="approach">
   <div class="section-inner">
     <div class="section-header fade-in">
       <div class="num">My Approach</div>
-      <h2>Signal-to-Action Framework</h2>
-      <p>
-        Across product, monetization, and user experience work, I use a consistent analysis loop:
-        detect the signal, localize it, diagnose the mechanism, propose an action, validate the change,
-        and then turn the learning into reusable operating infrastructure.
-      </p>
-      <div class="section-subnote">
-        Adapted from the revenue analytics operating system in my DA playbook, then generalized for broader product analytics work.
-      </div>
+      <h2>How I Think About Analysis</h2>
     </div>
-
-    <div class="framework-grid fade-in">
-      <div class="framework-step">
-        <div class="step-num">Step 01</div>
-        <div class="step-name">Signal</div>
-        <div class="step-desc">Detect anomalies or opportunities in KPI movement: revenue dips, retention loss, toxicity exposure, latency spikes, or balance complaints.</div>
-      </div>
-      <div class="framework-step">
-        <div class="step-num">Step 02</div>
-        <div class="step-name">Segment</div>
-        <div class="step-desc">Break the signal down by region, payer tier, user cohort, content type, rank, or device so the problem becomes localizable instead of vague.</div>
-      </div>
-      <div class="framework-step">
-        <div class="step-num">Step 03</div>
-        <div class="step-name">Diagnose</div>
-        <div class="step-desc">Use causal logic, funnel decomposition, same-user comparison, or quasi-experimental design to identify the real mechanism rather than surface correlation.</div>
-      </div>
-      <div class="framework-step">
-        <div class="step-num">Step 04</div>
-        <div class="step-name">Act</div>
-        <div class="step-desc">Translate findings into product or operations decisions with explicit trade-offs, ownership, and feasible implementation paths.</div>
-      </div>
-      <div class="framework-step">
-        <div class="step-num">Step 05</div>
-        <div class="step-name">Experiment</div>
-        <div class="step-desc">Validate recommendations through A/B testing, pre-post tracking, soft launch monitoring, or guardrail metrics before broader rollout.</div>
-      </div>
-      <div class="framework-step">
-        <div class="step-num">Step 06</div>
-        <div class="step-name">Institutionalize</div>
-        <div class="step-desc">Turn one-off insight into dashboards, SOPs, threshold rules, and recurring monitoring so the team does not need to rediscover the same answer later.</div>
-      </div>
+    <div class="approach-prose fade-in">
+      <p>
+        I approach product analytics problems with a consistent internal logic: start from anomaly detection,
+        progressively localize the signal across dimensions that actually matter for the business,
+        then invest in diagnosis before jumping to action.
+      </p>
+      <p>
+        The part I care most about is the step between "we see a signal" and "we know what it means."
+        Most incorrect product decisions I've seen came not from bad data, but from stopping analysis too early —
+        before someone asked whether the data was measuring what it claimed to measure.
+      </p>
+      <p>
+        Most importantly, I try to turn every non-trivial finding into something the team can reuse —
+        a decision rule, a monitoring threshold, or a documented approach — so the organization
+        gets smarter over time rather than rediscovering the same answer under different circumstances.
+      </p>
+      <p>
+        The four projects below each illustrate a different phase of that loop, and each centers on
+        one judgment call that wasn't obvious from the first look at the data.
+      </p>
     </div>
   </div>
 </div>
 
+<!-- PROJECT 1: TRUST & SAFETY -->
 <section class="section" id="project1">
   <div class="section-header fade-in">
     <div class="num">Project 01</div>
     <h2>Trust &amp; Safety Governance System</h2>
-    <p>Voice toxicity governance and tiered penalty strategy on a global platform with ~100M DAU</p>
+    <p>Voice toxicity enforcement strategy on a global platform with ~100M DAU</p>
   </div>
 
-  <div class="content-block fade-in">
-    <h3>Background</h3>
+  <div class="project-prose fade-in">
     <p>
-      Free Fire is a global tactical shooter with ~100M DAU. Voice toxicity was degrading new player experience,
-      but the organization had conflicting instincts on what to do. Operations wanted aggressive blanket bans,
-      while product leaders worried that many offenders were still valuable users whose removal would damage the ecosystem.
+      Free Fire's voice toxicity problem had an obvious surface reading: detect bad actors, penalize them,
+      protect victims. The operations team wanted aggressive blanket bans. Product leaders worried about
+      losing high-engagement offenders. The instinct on both sides was to start from enforcement design
+      and work backwards.
     </p>
+    <p>
+      The real question I pushed on was earlier: what damage is toxicity actually causing to the victim side,
+      and can we measure it correctly? If we could not answer that, enforcement strategy would be intuition-driven.
+    </p>
+  </div>
 
-    <div class="problem-box">
-      <h4>Problem Statement</h4>
-      <p>
-        The core analytical question was not “Can we detect toxic users?” but “What damage is toxicity actually causing to the victim side of the ecosystem?”
-        If that impact could not be quantified correctly, enforcement strategy would be driven by intuition instead of evidence.
-      </p>
+  <div class="pivot-block fade-in">
+    <div class="pivot-label">The Pivot</div>
+    <p>
+      Initial causal matching showed almost no retention difference between exposed and non-exposed victims —
+      which the team was ready to interpret as "toxicity doesn't cause churn." But that result was a measurement
+      artifact, not a true finding. Only the most resilient players stay long enough to file a report.
+      The users who quit immediately after a toxic encounter never appear in the reportable dataset at all.
+      "No effect" was a sign that the data pipeline was structurally incomplete, not that the problem was minor.
+    </p>
+  </div>
+
+  <div class="project-prose fade-in">
+    <p>
+      Reframing the problem this way made proactive intervention analytically justified.
+      We designed a graded penalty model: high-confidence detections triggered automatic action to capture
+      the invisible victim population; lower-confidence cases still required user reporting to avoid
+      false positives from dialect or in-game banter.
+    </p>
+    <p>
+      The more durable output was not the model — it was establishing that passive reporting systematically
+      undercounts harm among new users, and building that corrective logic into the governance design from the start.
+    </p>
+  </div>
+
+  <div class="metrics-grid fade-in">
+    <div class="metric highlight">
+      <div class="label">Penalty Accuracy</div>
+      <div class="value">99%+</div>
     </div>
-
-    <h3>Analysis Approach</h3>
-    <ul class="analysis-listst">
-      ><strong>PSM causal inference:</strong> Matched toxic-exposed vs non-exposed players on rank, historical KD, daily match count, and registration tenure to estimate the retention effect of exposure.</l/li>
-      ><strong>Survivorship bias diagnosis:</strong> Initial matched results showed little retention difference, but this was misleading because only resilient victims stay long enough to report; fragile new users may quit immediately and never appear in the reportable dataset.</l/li>
-      ><strong>Dual-threshold rule design:</strong> Proposed a graded enforcement model: ≥99% model confidence allowed auto-penalization, while lower-confidence cases required user reporting to reduce false positives from dialect or joking.</li>
-    </ul>
-  </div>
-
-  <div class="content-block fade-in">
-    <h3>Key Finding</h3>
-    <p>
-      The pivotal insight was that visible victim data was structurally biased. Passive reporting undercounted harm among the most fragile players,
-      so “no significant effect” was itself a sign that the existing measurement system was incomplete. Once the problem was reframed that way,
-      proactive intervention became analytically justified.
-    </p>
-
-    <div class="metrics-grid">
-      <div class="metric highlight">
-        <div class="label">Penalty Accuracy</div>
-        <div class="value">99%+</div>
-      </div>
-      <div class="metric positive">
-        <div class="label">Recidivism</div>
-        <div class="value">-0.5%</div>
-      </div>
-      <div class="metric positive">
-        <div class="label">New User D7 Retention</div>
-        <div class="value">+1–2%</div>
-      </div>
+    <div class="metric positive">
+      <div class="label">Recidivism</div>
+      <div class="value">−0.5%</div>
     </div>
-  </div>
-
-  <div class="content-block fade-in">
-    <h3>Impact &amp; Validation</h3>
-    <p>
-      The dual-threshold policy was used during soft launch and gave the team a balanced operating rule:
-      strict enough to catch silent harm, but conservative enough to avoid over-penalizing ambiguous cases.
-      More importantly, the project created a repeatable governance logic rather than a one-time moderation recommendation.
-    </p>
-
-    <div class="methodology-box">
-      <h4>Why this matters</h4>
-      <p>
-        This case is a strong example of Diagnose over pure modeling. The most valuable output was not a complicated model;
-        it was recognizing that the available data systematically excluded the users most likely to churn.
-      </p>
+    <div class="metric positive">
+      <div class="label">New User D7 Retention</div>
+      <div class="value">+1–2%</div>
     </div>
   </div>
 </section>
 
+<!-- PROJECT 2: NETWORK -->
 <section class="section" id="project2" style="background: var(--bg);">
   <div class="section-header fade-in">
     <div class="num">Project 02</div>
     <h2>Social Network Health &amp; Retention</h2>
-    <p>Quantifying how network formation affects player retention rather than merely correlates with it</p>
+    <p>Whether social features cause retention — or just correlate with it</p>
   </div>
 
-  <div class="content-block fade-in">
-    <h3>Background</h3>
+  <div class="project-prose fade-in">
     <p>
-      Social features were widely believed to improve retention, but “players with more friends stay longer” is not enough to justify product investment.
-      More social players might simply be the kinds of players who would retain anyway.
+      The growth team wanted to invest in friend-recommendation infrastructure. The underlying assumption was
+      that players with more friends stay longer. That's true observationally, but it conflates two very
+      different things: social connection causing retention, versus retained players simply being more social
+      by nature. If it's the latter, feature investment produces no incremental value.
     </p>
+    <p>
+      I looked for natural variation in how players formed their first social connections to get closer to
+      a causal estimate, and tried to understand not just whether social connections matter, but
+      whether the relationship is linear or threshold-based.
+    </p>
+  </div>
 
-    <div class="problem-box">
-      <h4>Problem Statement</h4>
-      <p>
-        The real question was whether social connection is causal. If retention causes social activity instead of the other way around,
-        then building friend-growth features would have little incremental value.
-      </p>
+  <div class="pivot-block fade-in">
+    <div class="pivot-label">The Pivot</div>
+    <p>
+      The relationship is not linear. One or two weak ties add almost nothing to retention.
+      But once a player crosses into having a stable active squad — roughly 3 or more people
+      they actually play with — the 90-day retention curve shifts meaningfully.
+      The product implication is not "maximize friend count" but "help players reach a usable
+      social cluster quickly." That distinction completely changed what the onboarding redesign
+      should optimize for.
+    </p>
+  </div>
+
+  <div class="metrics-grid fade-in">
+    <div class="metric highlight">
+      <div class="label">Critical Threshold</div>
+      <div class="value">3+ Active</div>
     </div>
-
-    <h3>Analysis Approach</h3>
-    <ul class="analysis-listst">
-      ><strong>Natural variation in network formation:</strong> Compared players who formed first connections through different product paths to create more credible variation in timing and intensity of social exposure.</l/li>
-      ><strong>Confounder control:</strong> Accounted for skill, tenure, region, and play intensity so that network effects were not just a proxy for “good users.”</l/li>
-      ><strong>Threshold analysis:</strong> Measured whether retention gains were linear or whether there was a critical mass effect in active social ties.</li>
-    </ul>
-  </div>
-
-  <div class="content-block fade-in">
-    <h3>Key Finding</h3>
-    <p>
-      Social connection matters most after players pass a threshold of active squad relationships.
-      One or two weak ties add little, but once players have a stable active group, the retention curve meaningfully improves.
-    </p>
-
-    <div class="metrics-grid">
-      <div class="metric highlight">
-        <div class="label">Critical Threshold</div>
-        <div class="value">3+ Active Friends</div>
-      </div>
-      <div class="metric positive">
-        <div class="label">90-Day Retention</div>
-        <div class="value">Higher post-threshold</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="content-block fade-in">
-    <h3>Impact &amp; Validation</h3>
-    <p>
-      The product implication was not “maximize raw friend count,” but “help players reach a usable social cluster quickly.”
-      That distinction changed onboarding and recommendation priorities from vanity metrics to retention-relevant network formation.
-    </p>
-
-    <div class="methodology-box">
-      <h4>Why this matters</h4>
-      <p>
-        This is a classic Segment → Diagnose case. Aggregate correlation was easy to observe, but the threshold structure was what made the finding actionable.
-      </p>
+    <div class="metric positive">
+      <div class="label">90-Day Retention</div>
+      <div class="value">Lifts post-threshold</div>
     </div>
   </div>
 </section>
 
+<!-- PROJECT 3: COMBAT BALANCE -->
 <section class="section" id="project3">
   <div class="section-header fade-in">
     <div class="num">Project 03</div>
     <h2>Combat Balance &amp; Monetization Guardrails</h2>
-    <p>Using same-player comparisons and pre-launch guardrails to protect gameplay fairness while supporting monetization</p>
+    <p>Separating player perception from measurable performance impact — for both a weapon controversy and a monetization launch</p>
   </div>
 
-  <div class="content-block fade-in">
-    <h3>Background</h3>
+  <div class="project-prose fade-in">
     <p>
-      In a competitive shooter, players are highly sensitive to anything that feels “pay-to-win” or balance-breaking.
-      I worked on two closely related cases: an AUG controversy where players believed the weapon was overtuned,
-      and a Wukong Skill Skin release where the team needed to monetize without breaking combat fairness.
+      Competitive FPS players are vocal about balance. When they complain that a weapon or character
+      is broken, it could mean many things: the item is genuinely overpowered, or stronger players
+      are simply gravitating toward it, making it look overpowered in aggregate data. These two
+      scenarios require completely different responses.
     </p>
+    <p>
+      I worked on two related cases. For the AUG controversy, the question was whether the weapon
+      truly created an unfair combat advantage or whether the raw KD data was just reflecting
+      player-skill selection bias. For the Wukong Skill Skin launch, the question was how to
+      set pre-launch guardrails that would let monetization grow without drifting into pay-to-win territory.
+    </p>
+  </div>
 
-    <div class="problem-box">
-      <h4>Problem Statement</h4>
-      <p>
-        The challenge was to separate perception from measurable performance impact. For AUG, the question was whether the weapon truly created an unfair combat advantage.
-        For Wukong Skill Skin, the question was how to set pre-launch guardrails so monetization could grow without pushing the character into pay-to-win territory.
-      </p>
+  <div class="pivot-block fade-in">
+    <div class="pivot-label">The Pivot</div>
+    <p>
+      For AUG: comparing the same players' performance when they used AUG versus when they used
+      comparable baseline weapons removed the skill confound. The gap that remained — about 28% in KD —
+      was large enough to justify a targeted balance change rather than dismissing the issue as sentiment noise.
+      For Wukong: the more important outcome was not the adoption uplift, but that the launch stayed
+      inside the guardrail range. Monetization success that violates fairness thresholds is not a win —
+      the framework had to make that constraint explicit before launch, not measure it after.
+    </p>
+  </div>
+
+  <div class="metrics-grid fade-in">
+    <div class="metric negative">
+      <div class="label">AUG KD Gap (same-player)</div>
+      <div class="value">28%</div>
     </div>
-
-    <h3>Analysis Approach</h3>
-    <ul class="analysis-listst">
-      ><strong>Case A — AUG controversy:</strong> Used same-player comparison to reduce player-skill noise, comparing performance when the same users used AUG versus comparable baseline AR choices. This avoided misleading conclusions from raw aggregate KD alone.</l/li>
-      ><strong>Peer benchmarking:</strong> Benchmarked AUG against comparable weapons rather than the entire weapon pool, so the team could evaluate whether the observed gap exceeded a reasonable balance tolerance.</l/li>
-      ><strong>Case B — Wukong Skill Skin:</strong> Built pre-launch guardrails around combat outcome metrics such as KD / win-rate movement, then monitored soft-launch results against both self-comparison and peer-benchmark baselines.</l/li>
-      ><strong>Monetization-safe design:</strong> Treated adoption uplift as a success metric only if combat movement stayed within an acceptable range, so monetization performance could not override fairness constraints.</li>
-    </ul>
-  </div>
-
-  <div class="content-block fade-in">
-    <h3>Key Finding</h3>
-    <p>
-      The AUG analysis showed a meaningful performance gap — about 28% in KD relative to the baseline comparison frame — strong enough to support a targeted balance adjustment rather than dismissing the issue as player sentiment noise.
-      In the Wukong Skill Skin case, the more important result was not just adoption growth, but that the launch stayed inside the guardrail range, which protected trust in combat fairness.
-    </p>
-
-    <div class="metrics-grid">
-      <div class="metric negative">
-        <div class="label">AUG KD Gap</div>
-        <div class="value">28%</div>
-      </div>
-      <div class="metric positive">
-        <div class="label">Wukong Pick Rate</div>
-        <div class="value">+4.8%</div>
-      </div>
-      <div class="metric highlight">
-        <div class="label">New-to-Wukong Buyers</div>
-        <div class="value">29%</div>
-      </div>
+    <div class="metric positive">
+      <div class="label">Wukong Pick Rate</div>
+      <div class="value">+4.8%</div>
+    </div>
+    <div class="metric highlight">
+      <div class="label">New-to-Wukong Buyers</div>
+      <div class="value">29%</div>
     </div>
   </div>
 
-  <div class="content-block fade-in">
-    <h3>Impact &amp; Validation</h3>
+  <div class="project-prose fade-in" style="margin-top: 1.5rem;">
     <p>
-      These two cases established a reusable template for balance-sensitive monetization work:
-      quantify the gameplay effect using controlled comparison, set acceptable launch ranges before release, and monitor adoption together with fairness guardrails.
-      That made the role of analytics more strategic than “post hoc validation” — it became part of pre-launch decision control.
+      These two cases established a reusable pre-launch evaluation template: quantify the gameplay
+      impact using controlled comparison, set acceptable outcome ranges before release, and treat
+      fairness guardrails as constraints rather than post-hoc checks. That shifted analytics from
+      validation work into decision architecture.
     </p>
-
-    <div class="methodology-box">
-      <h4>Why this matters</h4>
-      <p>
-        This project belongs in the portfolio because it shows a different flavor of analytics judgment from the other cases.
-        The hardest part was not finding a significant number; it was designing a comparison frame that players and product teams would both accept as fair.
-      </p>
-    </div>
   </div>
 </section>
 
+<!-- PROJECT 4: REVENUE -->
 <section class="section" id="project4" style="background: var(--bg);">
   <div class="section-header fade-in">
     <div class="num">Project 04</div>
     <h2>Revenue Decline Diagnosis — Vietnam</h2>
-    <p>Diagnosing a revenue drop in a core market despite stable activity</p>
+    <p>Finding where revenue was leaking when all the top-line activity metrics looked fine</p>
   </div>
 
-  <div class="content-block fade-in">
-    <h3>Background</h3>
+  <div class="project-prose fade-in">
     <p>
-      Vietnam showed a sustained revenue decline over multiple months even though high-level activity stayed relatively stable.
-      That immediately suggested the problem was inside the monetization system rather than at the top of the user funnel.
+      Vietnam showed a multi-month revenue decline while high-level activity stayed relatively stable.
+      That divergence immediately pointed away from a user acquisition or engagement problem and toward
+      something structural inside the monetization system. But "monetization is broken" is not
+      an actionable diagnosis.
     </p>
+    <p>
+      The first useful step was decomposing revenue into its components — not treating it as a single
+      number that went down — and then segmenting by payer tier to find where the decline was concentrated.
+    </p>
+  </div>
 
-    <div class="problem-box">
-      <h4>Problem Statement</h4>
-      <p>
-        If users are still active but revenue is falling, where exactly is the leakage? The team needed to know whether this was macro seasonality,
-        payer-mix degradation, or a content supply issue within the high-value segment.
-      </p>
+  <div class="pivot-block fade-in">
+    <div class="pivot-label">The Pivot</div>
+    <p>
+      The problem was not weak demand. It was content saturation in the segment that historically drove
+      most of the market's revenue. High-value users had already owned the majority of items being
+      re-featured in paid content runs. The addressable spending opportunity for that segment had
+      effectively shrunk — not because they stopped playing, but because the content supply stopped
+      giving them new things to buy. The fix was not a promotional push; it was a content pipeline reset.
+    </p>
+  </div>
+
+  <div class="metrics-grid fade-in">
+    <div class="metric highlight">
+      <div class="label">Activity Trend</div>
+      <div class="value">Stable</div>
     </div>
-
-    <h3>Analysis Approach</h3>
-    <ul class="analysis-listst">
-      ><strong>Signal decomposition:</strong> Split revenue movement into payer behavior components instead of treating “revenue down” as a single undifferentiated problem.</l/li>
-      ><strong>User segmentation:</strong> Compared high-pay vs lower-pay cohorts to determine whether the decline was broad-based or concentrated in the users who historically drove monetization.</l/li>
-      ><strong>Content supply diagnosis:</strong> Analyzed rerun intensity, ownership rate, and new-content availability to test whether the revenue issue came from saturation rather than weak demand.</li>
-    </ul>
-  </div>
-
-  <div class="content-block fade-in">
-    <h3>Key Finding</h3>
-    <p>
-      The revenue problem was concentrated among high-value users who had already absorbed too much of the existing content pool.
-      Repeated reruns and limited new content meant ownership saturation was high, so the addressable spending opportunity for that segment shrank even while activity held up.
-    </p>
-
-    <div class="metrics-grid">
-      <div class="metric highlight">
-        <div class="label">Activity Trend</div>
-        <div class="value">Stable</div>
-      </div>
-      <div class="metric negative">
-        <div class="label">Root Cause</div>
-        <div class="value">Content Saturation</div>
-      </div>
-      <div class="metric positive">
-        <div class="label">New Content Revenue Share</div>
-        <div class="value">50%</div>
-      </div>
+    <div class="metric negative">
+      <div class="label">Root Cause</div>
+      <div class="value">Content Saturation</div>
+    </div>
+    <div class="metric positive">
+      <div class="label">New Content Revenue Share</div>
+      <div class="value">→ 50%</div>
     </div>
   </div>
 
-  <div class="content-block fade-in">
-    <h3>Impact &amp; Validation</h3>
+  <div class="project-prose fade-in" style="margin-top: 1.5rem;">
     <p>
-      The recommendation was to reset content pacing and improve high-value SKU planning rather than blaming market weakness.
-      After execution, new-content ownership among high-value users improved and new-content contribution recovered,
-      which validated that supply quality and novelty were the real operational levers.
+      After the content pacing was reset and new SKU planning improved, new-content ownership
+      among high-value users recovered and new-content revenue contribution returned to a healthy share.
+      The ownership-rate metric — tracking how saturated the paying segment was on featured items —
+      became a reusable leading indicator built into ongoing market monitoring after this project.
     </p>
-
-    <div class="methodology-box">
-      <h4>Why this matters</h4>
-      <p>
-        This is the cleanest end-to-end framework example in the portfolio: signal detection, payer segmentation, mechanism diagnosis, action design, and then a reusable ownership-rate lens for future monitoring.
-      </p>
-    </div>
   </div>
 </section>
 
-<section class="section" id="skills">
-  <div class="section-header fade-in">
-    <div class="num">Skills</div>
-    <h2>Technical Toolkit</h2>
-    <p>Methods, tools, and cross-functional capabilities used across the projects above</p>
+<!-- SKILLS -->
+<div class="skills-section" id="skills">
+  <div class="skills-inner">
+    <div class="section-header fade-in">
+      <div class="num">Skills</div>
+      <h2>Technical Toolkit</h2>
+      <p>Methods, tools, and cross-functional capabilities used across the projects above</p>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-category">
+        <h4>Analysis Methods</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Causal Inference</span>
+          <span class="skill-tag">PSM</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Same-User Comparison</span>
+          <span class="skill-tag">Cohort Analysis</span>
+          <span class="skill-tag">Funnel Decomposition</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4>Data Stack</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Hive</span>
+          <span class="skill-tag">Spark</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4>Product Domains</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Trust &amp; Safety</span>
+          <span class="skill-tag">Player Experience</span>
+          <span class="skill-tag">Combat Balance</span>
+          <span class="skill-tag">Monetization</span>
+          <span class="skill-tag">Revenue Strategy</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h4>Cross-functional</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Product Strategy</span>
+          <span class="skill-tag">Engineering Partnership</span>
+          <span class="skill-tag">Operations Enablement</span>
+          <span class="skill-tag">15 Markets</span>
+          <span class="skill-tag">Monitoring &amp; SOPs</span>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="skills-grid fade-in">
-    <div class="skill-category">
-      <h4>Analysis Methods</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Causal Inference</span>
-        <span class="skill-tag">PSM</span>
-        <span class="skill-tag">A/B Testing</span>
-        <span class="skill-tag">Same-User Comparison</span>
-        <span class="skill-tag">Cohort Analysis</span>
-        <span class="skill-tag">Funnel Decomposition</span>
-      </div>
-    </div>
-
-    <div class="skill-category">
-      <h4>Data Stack</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Hive</span>
-        <span class="skill-tag">Spark</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Tableau</span>
-        <span class="skill-tag">Excel</span>
-      </div>
-    </div>
-
-    <div class="skill-category">
-      <h4>Product Domains</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Trust &amp; Safety</span>
-        <span class="skill-tag">Player Experience</span>
-        <span class="skill-tag">Combat Balance</span>
-        <span class="skill-tag">Monetization</span>
-        <span class="skill-tag">Revenue Strategy</span>
-      </div>
-    </div>
-
-    <div class="skill-category">
-      <h4>Cross-functional Work</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">Product Strategy</span>
-        <span class="skill-tag">Engineering Partnership</span>
-        <span class="skill-tag">Operations Enablement</span>
-        <span class="skill-tag">15 Markets</span>
-        <span class="skill-tag">SOP &amp; Dashboards</span>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <footer>
   <p>Xizi Huang &nbsp;·&nbsp; Senior Data Analyst &nbsp;·&nbsp; Singapore</p>
@@ -1041,7 +841,7 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
@@ -1054,7 +854,6 @@
       const sectionTop = section.offsetTop - 100;
       if (window.scrollY >= sectionTop) current = section.getAttribute('id');
     });
-
     navLinks.forEach(link => {
       link.style.color = '';
       if (link.getAttribute('href') === '#' + current) {
@@ -1064,9 +863,7 @@
   });
 
   const themeToggle = document.getElementById('themeToggle');
-  const savedTheme = localStorage.getItem('theme');
-
-  if (savedTheme === 'dark') {
+  if (localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
     themeToggle.textContent = '☀️ Light';
   }

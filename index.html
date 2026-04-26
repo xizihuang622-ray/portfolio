@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Analysis Portfolio | Xizi Huang</title>
-<meta name="description" content="Data Analysis Portfolio of Xizi Huang — Senior Data Analyst with 4 years of experience at Garena Free Fire (~100M DAU). Specializing in causal inference, A/B testing, and cross-functional analytics.">
+<meta name="description" content="Data Analysis Portfolio of Xizi Huang — Senior Data Analyst with 4 years of experience at Garena Free Fire (~100M DAU). Specializing in causal inference, A/B testing, monetization, and cross-functional analytics.">
 <style>
   :root {
     --primary: #2C3E50;
@@ -23,7 +23,30 @@
     --blue-light: rgba(74,111,165,0.08);
     --green: #4CAF50;
     --green-light: rgba(76,175,80,0.1);
+    --shadow: 0 8px 24px rgba(44,62,80,0.06);
+    --hero-grad: linear-gradient(180deg, #F7FAFD 0%, #EEF4FA 100%);
     --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  body[data-theme="dark"] {
+    --primary: #E5EDF6;
+    --accent: #7EA6E0;
+    --accent-light: #9BB8E8;
+    --blue-bg: #101923;
+    --border: #253140;
+    --divider: #213041;
+    --text: #C8D3E0;
+    --text-light: #9EB0C4;
+    --text-muted: #7C8EA3;
+    --white: #0E1621;
+    --bg: #121D29;
+    --red: #F27777;
+    --red-light: rgba(242,119,119,0.12);
+    --blue-light: rgba(126,166,224,0.14);
+    --green: #74D99F;
+    --green-light: rgba(116,217,159,0.12);
+    --shadow: 0 10px 28px rgba(0,0,0,0.28);
+    --hero-grad: linear-gradient(180deg, #0F1722 0%, #142231 100%);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,248 +58,564 @@
     line-height: 1.75;
     background: var(--white);
     font-size: 16px;
+    transition: background 0.25s ease, color 0.25s ease;
   }
 
-  /* ===== NAV ===== */
+  a, button, section, div {
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.92);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: color-mix(in srgb, var(--white) 88%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--divider);
     z-index: 1000;
-    padding: 0 3rem;
-    height: 52px;
-    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
   }
-  nav .logo { font-weight: 700; font-size: 1rem; color: var(--primary); text-decoration: none; letter-spacing: -0.3px; }
-  nav .nav-links { display: flex; gap: 2rem; }
-  nav .nav-links a {
-    text-decoration: none; color: var(--text-light); font-size: 0.85rem;
-    font-weight: 500; transition: color 0.2s;
-  }
-  nav .nav-links a:hover { color: var(--accent); }
 
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: var(--blue-bg);
-    color: var(--primary); text-align: center; padding: 8rem 2rem 6rem;
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    min-width: 0;
   }
-  .hero h1 {
-    font-size: 2.8rem; font-weight: 800; color: var(--primary);
-    margin-bottom: 0.75rem; letter-spacing: -1px;
+
+  nav .logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
   }
-  .hero .subtitle {
-    font-size: 1.15rem; color: var(--text-light); margin-bottom: 1.5rem;
+
+  nav .nav-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  nav .nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.83rem;
     font-weight: 500;
   }
-  .hero .tagline {
-    font-size: 0.95rem; color: var(--text-muted); max-width: 600px;
-    margin: 0 auto 3rem; line-height: 1.7;
-  }
-  .hero .stats { display: flex; gap: 4rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
-  .hero .stat-item { text-align: center; }
-  .hero .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
-  .hero .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; font-weight: 500; letter-spacing: 0.3px; text-transform: uppercase; }
-  .hero .cta { margin-top: 3rem; }
-  .hero .cta a {
-    display: inline-block; padding: 0.65rem 1.8rem;
-    background: var(--accent); color: var(--white);
-    text-decoration: none; border-radius: 4px;
-    font-weight: 600; font-size: 0.9rem;
-    transition: background 0.2s;
-  }
-  .hero .cta a:hover { background: #3d5f8f; }
 
-  /* ===== SECTIONS ===== */
-  .section {
-    max-width: 900px; margin: 0 auto; padding: 7rem 2rem;
+  nav .nav-links a:hover {
+    color: var(--accent);
   }
+
+  .theme-toggle {
+    border: 1px solid var(--divider);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    white-space: nowrap;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent-light);
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--hero-grad);
+    color: var(--primary);
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+  }
+
+  .hero h1 {
+    font-size: 2.9rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: -1px;
+  }
+
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero .tagline {
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto 3rem;
+    line-height: 1.75;
+  }
+
+  .hero .stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero .stat-item {
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .hero .stat-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+
+  .hero .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .hero .cta {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .hero .cta a {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    box-shadow: var(--shadow);
+  }
+
+  .hero .cta a.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent-light);
+  }
+
+  .hero .cta a:hover {
+    opacity: 0.92;
+  }
+
+  .section {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 7rem 2rem;
+  }
+
   .section-full {
     background: var(--bg);
     padding: 7rem 0;
   }
-  .section-full .section-inner {
-    max-width: 900px; margin: 0 auto; padding: 0 2rem;
-  }
-  .section-header { margin-bottom: 3.5rem; }
-  .section-header .num {
-    font-size: 0.75rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 0.75rem;
-  }
-  .section-header h2 {
-    font-size: 1.75rem; font-weight: 800; color: var(--primary);
-    margin-bottom: 0.5rem; letter-spacing: -0.5px;
-  }
-  .section-header p { color: var(--text-muted); max-width: 600px; font-size: 0.95rem; }
 
-  /* ===== CONTENT BLOCKS ===== */
+  .section-full .section-inner {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-header .num {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .section-header p {
+    color: var(--text-muted);
+    max-width: 700px;
+    font-size: 0.95rem;
+  }
+
+  .section-subnote {
+    margin-top: 0.9rem;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+
   .content-block {
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
+    margin-bottom: 2.75rem;
+    padding-bottom: 2.75rem;
     border-bottom: 1px solid var(--divider);
   }
-  .content-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .content-block h3 {
-    font-size: 1.15rem; color: var(--primary); margin-bottom: 0.75rem;
-    font-weight: 700; letter-spacing: -0.3px;
-  }
-  .content-block p { margin-bottom: 0.75rem; color: var(--text); font-size: 0.95rem; }
 
-  /* ===== METRICS GRID ===== */
+  .content-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .content-block h3 {
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .content-block p {
+    margin-bottom: 0.8rem;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
   .metrics-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem; margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
   }
+
   .metric {
-    background: var(--bg); border-radius: 6px; padding: 1rem 1.25rem;
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
     border: 1px solid var(--divider);
+    box-shadow: var(--shadow);
   }
-  .metric.positive { background: var(--green-light); border-color: rgba(76,175,80,0.2); }
-  .metric.negative { background: var(--red-light); border-color: rgba(192,57,43,0.15); }
-  .metric.highlight { background: var(--blue-light); border-color: rgba(74,111,165,0.2); }
-  .metric .label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
-  .metric .value { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+
+  .metric.positive {
+    background: var(--green-light);
+    border-color: color-mix(in srgb, var(--green) 30%, var(--divider));
+  }
+
+  .metric.negative {
+    background: var(--red-light);
+    border-color: color-mix(in srgb, var(--red) 25%, var(--divider));
+  }
+
+  .metric.highlight {
+    background: var(--blue-light);
+    border-color: color-mix(in srgb, var(--accent) 25%, var(--divider));
+  }
+
+  .metric .label {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .metric .value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
   .metric.positive .value { color: var(--green); }
   .metric.negative .value { color: var(--red); }
 
-  /* ===== CHART CONTAINER ===== */
-  .chart-container {
-    margin: 2rem 0; padding: 1.5rem;
-    background: var(--bg); border-radius: 6px; text-align: center;
-    border: 1px solid var(--divider);
+  .analysis-list {
+    list-style: none;
+    padding: 0;
   }
-  .chart-container svg { max-width: 100%; height: auto; }
-  .chart-caption { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem; }
 
-  /* ===== BULLET LIST ===== */
-  .analysis-list { list-style: none; padding: 0; }
   .analysis-list li {
-    padding: 0.65rem 0 0.65rem 1.25rem; position: relative;
-    color: var(--text); font-size: 0.95rem;
-  }
-  .analysis-list li + li { border-top: 1px solid var(--divider); }
-  .analysis-list li::before {
-    content: ''; position: absolute; left: 0; top: 1rem;
-    width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light);
-  }
-
-  /* ===== PROBLEM STATEMENT BOX ===== */
-  .problem-box {
-    background: #FFF8F0; border-radius: 6px; padding: 1.25rem 1.5rem;
-    margin: 0 0 2rem 0;
-    border-left: 3px solid #E8A045;
-  }
-  .problem-box h4 { color: #B07030; margin-bottom: 0.4rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .problem-box p { color: var(--text); font-size: 0.93rem; line-height: 1.7; margin: 0; }
-
-  /* ===== METHODOLOGY HIGHLIGHT ===== */
-  .methodology-box {
-    background: var(--blue-bg); border-radius: 6px; padding: 1.5rem;
-    margin: 2.5rem 0 0;
-    border-left: 3px solid var(--accent);
-  }
-  .methodology-box h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .methodology-box p { color: var(--text); font-size: 0.92rem; line-height: 1.7; }
-
-  /* ===== FRAMEWORK SECTION ===== */
-  .framework-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem; margin-top: 2rem;
-  }
-  .framework-step {
-    background: var(--white); border-radius: 6px; padding: 1.25rem;
-    border: 1px solid var(--divider); text-align: center;
+    padding: 0.75rem 0 0.75rem 1.25rem;
     position: relative;
-  }
-  .framework-step .step-num {
-    font-size: 0.7rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem;
-  }
-  .framework-step .step-name {
-    font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem;
-  }
-  .framework-step .step-desc {
-    font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;
+    color: var(--text);
+    font-size: 0.95rem;
   }
 
-  /* ===== SKILLS SECTION ===== */
-  .skills-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+  .analysis-list li + li {
+    border-top: 1px solid var(--divider);
   }
+
+  .analysis-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.1rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-light);
+  }
+
+  .problem-box {
+    background: color-mix(in srgb, #FFF8F0 88%, var(--white));
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    margin: 0 0 2rem 0;
+    border-left: 4px solid #E8A045;
+    box-shadow: var(--shadow);
+  }
+
+  body[data-theme="dark"] .problem-box {
+    background: rgba(232,160,69,0.08);
+  }
+
+  .problem-box h4 {
+    color: #B07030;
+    margin-bottom: 0.45rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .problem-box p {
+    color: var(--text);
+    font-size: 0.93rem;
+    line-height: 1.72;
+    margin: 0;
+  }
+
+  .methodology-box {
+    background: var(--blue-bg);
+    border-radius: 10px;
+    padding: 1.4rem;
+    margin: 2rem 0 0;
+    border-left: 4px solid var(--accent);
+    box-shadow: var(--shadow);
+  }
+
+  .methodology-box h4 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .methodology-box p {
+    color: var(--text);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .framework-step {
+    grid-column: span 2;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.2rem;
+    border: 1px solid var(--divider);
+    box-shadow: var(--shadow);
+    text-align: left;
+  }
+
+  .framework-step:nth-child(4) { grid-column: 2 / span 2; }
+  .framework-step:nth-child(5) { grid-column: 4 / span 2; }
+  .framework-step:nth-child(6) { grid-column: 3 / span 2; }
+
+  .framework-step .step-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.45rem;
+  }
+
+  .framework-step .step-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .framework-step .step-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.2rem;
+  }
+
   .skill-category {
-    background: var(--bg); border-radius: 6px; padding: 1.25rem;
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 1.2rem;
+    border: 1px solid var(--divider);
+    box-shadow: var(--shadow);
+  }
+
+  .skill-category h4 {
+    color: var(--accent);
+    font-size: 0.84rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .skill-tag {
+    background: var(--white);
+    color: var(--text-light);
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
     border: 1px solid var(--divider);
   }
-  .skill-category h4 { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .skill-tag {
-    background: var(--white); color: var(--text-light); padding: 0.25rem 0.65rem;
-    border-radius: 3px; font-size: 0.8rem; border: 1px solid var(--divider);
-  }
 
-  /* ===== FOOTER ===== */
   footer {
-    text-align: center; padding: 3rem 2rem; color: var(--text-muted);
-    font-size: 0.82rem; border-top: 1px solid var(--divider); margin-top: 2rem;
-  }
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-
-  /* ===== DIVIDER ===== */
-  .divider {
-    width: 40px; height: 2px; background: var(--accent); border-radius: 1px;
-    margin: 1rem 0;
+    text-align: center;
+    padding: 3rem 2rem 3.5rem;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--divider);
+    margin-top: 2rem;
   }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .hero .stats { gap: 2rem; }
-    .hero .stat-num { font-size: 1.8rem; }
-    nav .nav-links { gap: 1rem; }
-    nav .nav-links a { font-size: 0.78rem; }
-    nav { padding: 0 1.5rem; }
-    .section { padding: 4rem 1.5rem; }
-    .section-header h2 { font-size: 1.4rem; }
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .framework-grid { grid-template-columns: repeat(2, 1fr); }
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
   }
 
-  /* ===== FADE IN ===== */
+  footer a:hover {
+    text-decoration: underline;
+  }
+
   .fade-in {
-    opacity: 0; transform: translateY(24px);
+    opacity: 0;
+    transform: translateY(24px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 980px) {
+    nav {
+      padding: 0 1rem;
+      height: auto;
+      min-height: 58px;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .nav-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    nav .nav-links {
+      gap: 0.9rem;
+    }
+
+    .framework-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .framework-step,
+    .framework-step:nth-child(4),
+    .framework-step:nth-child(5),
+    .framework-step:nth-child(6) {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 8.5rem 1.4rem 5rem;
+      min-height: auto;
+    }
+
+    .hero h1 { font-size: 2.1rem; }
+    .hero .stats { gap: 1.6rem; }
+    .hero .stat-num { font-size: 1.8rem; }
+    .section, .section-full { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .section { padding-left: 1.4rem; padding-right: 1.4rem; }
+    .section-full .section-inner { padding: 0 1.4rem; }
+    .section-header h2 { font-size: 1.45rem; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .framework-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ===== NAVIGATION ===== -->
 <nav>
-  <a href="#" class="logo">Xizi Huang</a>
-  <div class="nav-links">
-    <a href="#framework">Framework</a>
-    <a href="#project1">Trust &amp; Safety</a>
-    <a href="#project2">Network</a>
-    <a href="#project3">Balance</a>
-    <a href="#project4">Revenue</a>
-    <a href="#skills">Skills</a>
+  <div class="nav-left">
+    <a href="#" class="logo">Xizi Huang</a>
+    <div class="nav-links">
+      <a href="#framework">Framework</a>
+      <a href="#project1">Trust &amp; Safety</a>
+      <a href="#project2">Network</a>
+      <a href="#project3">Balance</a>
+      <a href="#project4">Revenue</a>
+      <a href="#skills">Skills</a>
+    </div>
   </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <div>
     <h1>Data Analysis Portfolio</h1>
     <div class="subtitle">Xizi Huang &nbsp;·&nbsp; Senior Data Analyst</div>
     <p class="tagline">
-      4 years at Garena Free Fire (~100M DAU). Specializing in causal inference, 
-      A/B testing, and cross-functional analytics across 15 international markets.
-      Each project below follows a Signal → Segment → Diagnose → Act → Validate framework.
+      4 years at Garena Free Fire (~100M DAU), working across trust &amp; safety,
+      network experience, gameplay balance, and monetization in 15 international markets.
+      This portfolio is designed as a layer between resume bullets and interview scripts:
+      deeper than resume, but still shorter and more structured than spoken case walkthroughs.
     </p>
     <div class="stats">
       <div class="stat-item">
@@ -292,277 +631,355 @@
         <div class="stat-label">International Markets</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">5-Step</div>
-        <div class="stat-label">Signal-to-Action Framework</div>
+        <div class="stat-num">6-Step</div>
+        <div class="stat-label">Analysis Framework</div>
       </div>
     </div>
     <div class="cta">
       <a href="#framework">View My Approach</a>
+      <a href="#project1" class="secondary">View Projects</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FRAMEWORK SECTION ===== -->
 <div class="section-full" id="framework">
   <div class="section-inner">
     <div class="section-header fade-in">
       <div class="num">My Approach</div>
       <h2>Signal-to-Action Framework</h2>
-      <p>Every analysis I do follows a consistent five-step process — from detecting the first anomalous signal to validating the business impact of the action taken.</p>
+      <p>
+        Across product, monetization, and user experience work, I use a consistent analysis loop:
+        detect the signal, localize it, diagnose the mechanism, propose an action, validate the change,
+        and then turn the learning into reusable operating infrastructure.
+      </p>
+      <div class="section-subnote">
+        Adapted from the revenue analytics operating system in my DA playbook, then generalized for broader product analytics work.
+      </div>
     </div>
+
     <div class="framework-grid fade-in">
       <div class="framework-step">
         <div class="step-num">Step 01</div>
         <div class="step-name">Signal</div>
-        <div class="step-desc">Detect anomalies or opportunities in metrics — revenue drops, retention dips, engagement shifts</div>
+        <div class="step-desc">Detect anomalies or opportunities in KPI movement: revenue dips, retention loss, toxicity exposure, latency spikes, or balance complaints.</div>
       </div>
       <div class="framework-step">
         <div class="step-num">Step 02</div>
         <div class="step-name">Segment</div>
-        <div class="step-desc">Break the signal down by dimension (region, user tier, content type) to isolate where the problem lives</div>
+        <div class="step-desc">Break the signal down by region, payer tier, user cohort, content type, rank, or device so the problem becomes localizable instead of vague.</div>
       </div>
       <div class="framework-step">
         <div class="step-num">Step 03</div>
         <div class="step-name">Diagnose</div>
-        <div class="step-desc">Apply causal methods (PSM, diff-in-diff, funnel analysis) to find the root cause, not just correlation</div>
+        <div class="step-desc">Use causal logic, funnel decomposition, same-user comparison, or quasi-experimental design to identify the real mechanism rather than surface correlation.</div>
       </div>
       <div class="framework-step">
         <div class="step-num">Step 04</div>
         <div class="step-name">Act</div>
-        <div class="step-desc">Translate findings into concrete product or operations recommendations with quantified trade-offs</div>
+        <div class="step-desc">Translate findings into product or operations decisions with explicit trade-offs, ownership, and feasible implementation paths.</div>
       </div>
       <div class="framework-step">
         <div class="step-num">Step 05</div>
-        <div class="step-name">Validate</div>
-        <div class="step-desc">Measure outcome via A/B test or pre/post metrics to confirm impact and close the loop</div>
+        <div class="step-name">Experiment</div>
+        <div class="step-desc">Validate recommendations through A/B testing, pre-post tracking, soft launch monitoring, or guardrail metrics before broader rollout.</div>
+      </div>
+      <div class="framework-step">
+        <div class="step-num">Step 06</div>
+        <div class="step-name">Institutionalize</div>
+        <div class="step-desc">Turn one-off insight into dashboards, SOPs, threshold rules, and recurring monitoring so the team does not need to rediscover the same answer later.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== PROJECT 1: TRUST & SAFETY ===== -->
 <section class="section" id="project1">
   <div class="section-header fade-in">
     <div class="num">Project 01</div>
     <h2>Trust &amp; Safety Governance System</h2>
-    <p>Voice toxicity governance &amp; tiered penalty strategy on a global platform with ~100M DAU</p>
+    <p>Voice toxicity governance and tiered penalty strategy on a global platform with ~100M DAU</p>
   </div>
 
   <div class="content-block fade-in">
     <h3>Background</h3>
-    <p>Free Fire is a global tactical shooter with ~100M DAU. Voice toxicity was degrading new player experience. Operations advocated "blanket bans" for toxic players, but Product raised concerns — many reported offenders were high-activity, high-spending users whose removal could hurt platform revenue and community vitality.</p>
+    <p>
+      Free Fire is a global tactical shooter with ~100M DAU. Voice toxicity was degrading new player experience,
+      but the organization had conflicting instincts on what to do. Operations wanted aggressive blanket bans,
+      while product leaders worried that many offenders were still valuable users whose removal would damage the ecosystem.
+    </p>
 
     <div class="problem-box">
       <h4>Problem Statement</h4>
-      <p>The team had no data to answer: <em>Does voice toxicity actually cause victim churn?</em> Without this, there was no principled basis for choosing between aggressive enforcement and no action. My task was to quantify the causal impact of toxicity on victim retention, then design a governance strategy that could protect the ecosystem without destroying offender LTV.</p>
+      <p>
+        The core analytical question was not “Can we detect toxic users?” but “What damage is toxicity actually causing to the victim side of the ecosystem?”
+        If that impact could not be quantified correctly, enforcement strategy would be driven by intuition instead of evidence.
+      </p>
     </div>
 
     <h3>Analysis Approach</h3>
-    <ul class="analysis-list">
-      <li><strong>PSM Causal Inference:</strong> Matched toxic-exposed vs non-exposed players on rank, historical KD, daily match count, and registration tenure to isolate the causal impact of voice toxicity on victim retention.</li>
-      <li><strong>Survivorship Bias Discovery:</strong> Initial PSM showed no significant retention difference — but this was misleading. Only "hardcore loyalists" stay long enough to file a report. Fragile new players who quit immediately after one bad experience never appear in the reportable dataset.</li>
-      <li><strong>Dynamic Dual Threshold:</strong> Designed a two-tier penalty system: ≥99%+ model confidence → auto-penalize (to capture the invisible victim population); ~80% confidence → require user report (to prevent false positives from dialect or in-game banter).</li>
+    <ul class="analysis-listst">
+      ><strong>PSM causal inference:</strong> Matched toxic-exposed vs non-exposed players on rank, historical KD, daily match count, and registration tenure to estimate the retention effect of exposure.</l/li>
+      ><strong>Survivorship bias diagnosis:</strong> Initial matched results showed little retention difference, but this was misleading because only resilient victims stay long enough to report; fragile new users may quit immediately and never appear in the reportable dataset.</l/li>
+      ><strong>Dual-threshold rule design:</strong> Proposed a graded enforcement model: ≥99% model confidence allowed auto-penalization, while lower-confidence cases required user reporting to reduce false positives from dialect or joking.</li>
     </ul>
   </div>
 
   <div class="content-block fade-in">
-    <h3>Key Finding: Survivorship Bias in Victim Data</h3>
-    <p>The most important insight was recognizing that observable victim data suffers from severe survivorship bias. Players who encountered toxicity but stayed long enough to file a report are fundamentally different — more loyal, more invested — than those who quit immediately. This means passive reporting alone systematically undercounts the damage done to the most vulnerable user cohort: new players.</p>
-    <p>This insight shifted the product conversation from "we don't see a retention problem" to "we can't see the problem using current data pipelines" — and justified the proactive auto-penalization tier.</p>
+    <h3>Key Finding</h3>
+    <p>
+      The pivotal insight was that visible victim data was structurally biased. Passive reporting undercounted harm among the most fragile players,
+      so “no significant effect” was itself a sign that the existing measurement system was incomplete. Once the problem was reframed that way,
+      proactive intervention became analytically justified.
+    </p>
 
     <div class="metrics-grid">
       <div class="metric highlight">
-        <div class="label">Detection Accuracy</div>
+        <div class="label">Penalty Accuracy</div>
         <div class="value">99%+</div>
       </div>
       <div class="metric positive">
-        <div class="label">False Positive Reduction</div>
-        <div class="value">Dual-tier</div>
+        <div class="label">Recidivism</div>
+        <div class="value">-0.5%</div>
       </div>
       <div class="metric positive">
-        <div class="label">Invisible Victims Captured</div>
-        <div class="value">Auto-flag</div>
+        <div class="label">New User D7 Retention</div>
+        <div class="value">+1–2%</div>
       </div>
     </div>
   </div>
 
   <div class="content-block fade-in">
     <h3>Impact &amp; Validation</h3>
-    <p>The dual-threshold governance model was adopted by the Trust &amp; Safety operations team. The auto-penalize tier systematically captured toxic events that would previously have gone unreported, while the report-gated tier preserved fairness for dialect/banter edge cases. New player retention in voice-enabled matches improved post-rollout.</p>
+    <p>
+      The dual-threshold policy was used during soft launch and gave the team a balanced operating rule:
+      strict enough to catch silent harm, but conservative enough to avoid over-penalizing ambiguous cases.
+      More importantly, the project created a repeatable governance logic rather than a one-time moderation recommendation.
+    </p>
+
     <div class="methodology-box">
-      <h4>Methodology Note</h4>
-      <p>The survivorship bias correction is the analytical core of this project. By recognizing that the "no effect" PSM result was a data artifact — not a true finding — the analysis reframed what problem the product actually needed to solve. This is the Signal → Diagnose step: treating an absence of signal as a signal itself.</p>
+      <h4>Why this matters</h4>
+      <p>
+        This case is a strong example of Diagnose over pure modeling. The most valuable output was not a complicated model;
+        it was recognizing that the available data systematically excluded the users most likely to churn.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ===== PROJECT 2: NETWORK ===== -->
 <section class="section" id="project2" style="background: var(--bg);">
   <div class="section-header fade-in">
     <div class="num">Project 02</div>
     <h2>Social Network Health &amp; Retention</h2>
-    <p>Quantifying the causal effect of social network size on player long-term retention</p>
+    <p>Quantifying how network formation affects player retention rather than merely correlates with it</p>
   </div>
 
   <div class="content-block fade-in">
     <h3>Background</h3>
-    <p>Free Fire's social features (squad play, friend invites, guild membership) were often cited as retention drivers. The growth team wanted to invest in friend-recommendation features, but product leadership questioned whether social connections actually <em>caused</em> retention, or whether retained players simply happened to be more social.</p>
+    <p>
+      Social features were widely believed to improve retention, but “players with more friends stay longer” is not enough to justify product investment.
+      More social players might simply be the kinds of players who would retain anyway.
+    </p>
 
     <div class="problem-box">
       <h4>Problem Statement</h4>
-      <p>Observed correlation between friend count and retention was strong — but was it causal? If high-retention players are naturally more social, then investing in social features would produce no incremental uplift. My task was to separate causation from selection using a natural experiment in the data.</p>
+      <p>
+        The real question was whether social connection is causal. If retention causes social activity instead of the other way around,
+        then building friend-growth features would have little incremental value.
+      </p>
     </div>
 
     <h3>Analysis Approach</h3>
-    <ul class="analysis-list">
-      <li><strong>Natural Experiment Identification:</strong> Identified cohorts of players who gained their first friend through different pathways (organic search, system recommendation, guild invite) to create quasi-random variation in network formation timing.</li>
-      <li><strong>Causal Graph Construction:</strong> Built a DAG to map confounders — player skill, registration tenure, region, device tier — and applied propensity score matching to isolate the network effect.</li>
-      <li><strong>Threshold Analysis:</strong> Found a non-linear relationship: 1–2 friends had minimal impact, but crossing a threshold of 3+ active squad members produced a step-change in 30-day and 90-day retention.</li>
+    <ul class="analysis-listst">
+      ><strong>Natural variation in network formation:</strong> Compared players who formed first connections through different product paths to create more credible variation in timing and intensity of social exposure.</l/li>
+      ><strong>Confounder control:</strong> Accounted for skill, tenure, region, and play intensity so that network effects were not just a proxy for “good users.”</l/li>
+      ><strong>Threshold analysis:</strong> Measured whether retention gains were linear or whether there was a critical mass effect in active social ties.</li>
     </ul>
   </div>
 
   <div class="content-block fade-in">
-    <h3>Key Finding: Network Threshold Effect</h3>
-    <p>Social connection is causal for retention — but only beyond a critical mass. Players with 3+ active in-game friends showed materially higher 90-day retention compared to matched peers with fewer connections. Below that threshold, the marginal friend adds limited retention value.</p>
+    <h3>Key Finding</h3>
+    <p>
+      Social connection matters most after players pass a threshold of active squad relationships.
+      One or two weak ties add little, but once players have a stable active group, the retention curve meaningfully improves.
+    </p>
 
     <div class="metrics-grid">
-      <div class="metric positive">
-        <div class="label">Retention Uplift (3+ friends)</div>
-        <div class="value">Significant</div>
-      </div>
       <div class="metric highlight">
-        <div class="label">Critical Network Threshold</div>
-        <div class="value">3+ Friends</div>
+        <div class="label">Critical Threshold</div>
+        <div class="value">3+ Active Friends</div>
+      </div>
+      <div class="metric positive">
+        <div class="label">90-Day Retention</div>
+        <div class="value">Higher post-threshold</div>
       </div>
     </div>
   </div>
 
   <div class="content-block fade-in">
     <h3>Impact &amp; Validation</h3>
-    <p>The threshold finding directly shaped the friend-recommendation product roadmap — the team redesigned the onboarding flow to target 3 accepted friend requests within the first 7 days, rather than maximizing raw friend count. The finding also informed squad-matching algorithms to prioritize active players over passive contacts.</p>
+    <p>
+      The product implication was not “maximize raw friend count,” but “help players reach a usable social cluster quickly.”
+      That distinction changed onboarding and recommendation priorities from vanity metrics to retention-relevant network formation.
+    </p>
+
     <div class="methodology-box">
-      <h4>Methodology Note</h4>
-      <p>The key analytical decision was distinguishing selection (social players retain better by nature) from treatment (social features cause retention). The natural experiment design and causal graph construction are the core of the Diagnose step in this project.</p>
+      <h4>Why this matters</h4>
+      <p>
+        This is a classic Segment → Diagnose case. Aggregate correlation was easy to observe, but the threshold structure was what made the finding actionable.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ===== PROJECT 3: ECONOMY BALANCE ===== -->
 <section class="section" id="project3">
   <div class="section-header fade-in">
     <div class="num">Project 03</div>
-    <h2>In-Game Economy Balance Analysis</h2>
-    <p>Diagnosing currency inflation and its downstream effect on monetization conversion</p>
+    <h2>Combat Balance &amp; Monetization Guardrails</h2>
+    <p>Using same-player comparisons and pre-launch guardrails to protect gameplay fairness while supporting monetization</p>
   </div>
 
   <div class="content-block fade-in">
     <h3>Background</h3>
-    <p>Free Fire's in-game economy involves multiple currency types (earned and purchased). Over a content release cycle, the team observed that conversion rates on paid content were declining despite stable DAU. The monetization team suspected the economy had become over-generous, reducing the perceived value of paid currency.</p>
+    <p>
+      In a competitive shooter, players are highly sensitive to anything that feels “pay-to-win” or balance-breaking.
+      I worked on two closely related cases: an AUG controversy where players believed the weapon was overtuned,
+      and a Wukong Skill Skin release where the team needed to monetize without breaking combat fairness.
+    </p>
 
     <div class="problem-box">
       <h4>Problem Statement</h4>
-      <p>Is the decline in paid conversion driven by economy inflation (too much free currency), by content quality, or by seasonal patterns? Correctly attributing the root cause determines whether the fix is an economy rebalance, a content strategy change, or no action at all.</p>
+      <p>
+        The challenge was to separate perception from measurable performance impact. For AUG, the question was whether the weapon truly created an unfair combat advantage.
+        For Wukong Skill Skin, the question was how to set pre-launch guardrails so monetization could grow without pushing the character into pay-to-win territory.
+      </p>
     </div>
 
     <h3>Analysis Approach</h3>
-    <ul class="analysis-list">
-      <li><strong>Currency Flow Decomposition:</strong> Mapped all earn and spend pathways for free currency across the player lifecycle to identify where supply had expanded relative to historical baselines.</li>
-      <li><strong>Conversion Funnel Analysis:</strong> Compared paid content conversion rates across cohorts segmented by free-currency balance, to test whether balance level predicted willingness to pay.</li>
-      <li><strong>Content Attribution:</strong> Controlled for content release timing and quality scores to isolate economy effects from content effects on conversion.</li>
+    <ul class="analysis-listst">
+      ><strong>Case A — AUG controversy:</strong> Used same-player comparison to reduce player-skill noise, comparing performance when the same users used AUG versus comparable baseline AR choices. This avoided misleading conclusions from raw aggregate KD alone.</l/li>
+      ><strong>Peer benchmarking:</strong> Benchmarked AUG against comparable weapons rather than the entire weapon pool, so the team could evaluate whether the observed gap exceeded a reasonable balance tolerance.</l/li>
+      ><strong>Case B — Wukong Skill Skin:</strong> Built pre-launch guardrails around combat outcome metrics such as KD / win-rate movement, then monitored soft-launch results against both self-comparison and peer-benchmark baselines.</l/li>
+      ><strong>Monetization-safe design:</strong> Treated adoption uplift as a success metric only if combat movement stayed within an acceptable range, so monetization performance could not override fairness constraints.</li>
     </ul>
   </div>
 
   <div class="content-block fade-in">
-    <h3>Key Finding: Economy Saturation in Mid-Tier Players</h3>
-    <p>The conversion decline was concentrated in mid-tier spenders (players who historically made 1–3 paid purchases per month). These players had accumulated free currency through a combination of event rewards that exceeded historical norms — reducing their marginal incentive to purchase. High-spenders and non-spenders showed no significant change.</p>
+    <h3>Key Finding</h3>
+    <p>
+      The AUG analysis showed a meaningful performance gap — about 28% in KD relative to the baseline comparison frame — strong enough to support a targeted balance adjustment rather than dismissing the issue as player sentiment noise.
+      In the Wukong Skill Skin case, the more important result was not just adoption growth, but that the launch stayed inside the guardrail range, which protected trust in combat fairness.
+    </p>
 
     <div class="metrics-grid">
       <div class="metric negative">
-        <div class="label">Conversion Decline (Mid-tier)</div>
-        <div class="value">Localized</div>
+        <div class="label">AUG KD Gap</div>
+        <div class="value">28%</div>
+      </div>
+      <div class="metric positive">
+        <div class="label">Wukong Pick Rate</div>
+        <div class="value">+4.8%</div>
       </div>
       <div class="metric highlight">
-        <div class="label">Root Cause</div>
-        <div class="value">Economy inflation</div>
+        <div class="label">New-to-Wukong Buyers</div>
+        <div class="value">29%</div>
       </div>
     </div>
   </div>
 
   <div class="content-block fade-in">
     <h3>Impact &amp; Validation</h3>
-    <p>The analysis provided the monetization team with a targeted rebalancing recommendation: reduce free currency earn rate for specific mid-cycle events rather than broad economy adjustments that would affect new player experience. Post-adjustment conversion recovery was tracked via A/B test on the event parameters.</p>
+    <p>
+      These two cases established a reusable template for balance-sensitive monetization work:
+      quantify the gameplay effect using controlled comparison, set acceptable launch ranges before release, and monitor adoption together with fairness guardrails.
+      That made the role of analytics more strategic than “post hoc validation” — it became part of pre-launch decision control.
+    </p>
+
     <div class="methodology-box">
-      <h4>Methodology Note</h4>
-      <p>The segmentation step (breaking the signal by spender tier) was the decisive move in this analysis. The aggregate conversion decline masked a highly localized phenomenon. This illustrates the Signal → Segment → Diagnose chain: what looks like a platform-wide problem is actually a mid-tier player balance problem.</p>
+      <h4>Why this matters</h4>
+      <p>
+        This project belongs in the portfolio because it shows a different flavor of analytics judgment from the other cases.
+        The hardest part was not finding a significant number; it was designing a comparison frame that players and product teams would both accept as fair.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ===== PROJECT 4: REVENUE DIAGNOSIS ===== -->
 <section class="section" id="project4" style="background: var(--bg);">
   <div class="section-header fade-in">
     <div class="num">Project 04</div>
     <h2>Revenue Decline Diagnosis — Vietnam</h2>
-    <p>Diagnosing an 8-month revenue drop in a core market while DAU remained stable</p>
+    <p>Diagnosing a revenue drop in a core market despite stable activity</p>
   </div>
 
   <div class="content-block fade-in">
     <h3>Background</h3>
-    <p>From around August to the following year, Free Fire's Vietnam market showed a sustained revenue decline that was not accompanied by a corresponding drop in DAU or engagement metrics. The business team flagged this as a priority issue: flat user numbers but shrinking monetization implied the problem was internal to the monetization funnel, not a user acquisition or retention failure.</p>
+    <p>
+      Vietnam showed a sustained revenue decline over multiple months even though high-level activity stayed relatively stable.
+      That immediately suggested the problem was inside the monetization system rather than at the top of the user funnel.
+    </p>
 
     <div class="problem-box">
       <h4>Problem Statement</h4>
-      <p>DAU is stable — so where is the revenue leaking? The gap between user activity and revenue implied a structural change somewhere in the monetization chain: content supply, willingness to pay, or a specific product feature had broken down. My task was to identify the specific mechanism and quantify the contribution of each factor.</p>
+      <p>
+        If users are still active but revenue is falling, where exactly is the leakage? The team needed to know whether this was macro seasonality,
+        payer-mix degradation, or a content supply issue within the high-value segment.
+      </p>
     </div>
 
     <h3>Analysis Approach</h3>
-    <ul class="analysis-list">
-      <li><strong>Revenue Decomposition:</strong> Broke the revenue metric into its components — DAU × conversion rate × ARPPU — to localize which lever had moved. Conversion rate and ARPPU both declined; DAU was flat. This ruled out a user base explanation.</li>
-      <li><strong>Content Supply Analysis:</strong> Tracked the volume and novelty of paid content releases over the 8-month window. Found that new content releases had decreased in frequency and that repeat content accounted for a larger share of revenue-driving bundles.</li>
-      <li><strong>Segment Comparison (VN vs Peer Markets):</strong> Compared Vietnam's revenue trend against comparable Southeast Asian markets (same game version, similar user demographics) to control for global product changes. VN underperformed peers, pointing to market-specific content strategy rather than a platform issue.</li>
-      <li><strong>Ownership Rate Tracking:</strong> Analyzed ownership rates for featured items to identify content saturation — existing paying users already owned the key items being re-featured, reducing purchase incentive.</li>
+    <ul class="analysis-listst">
+      ><strong>Signal decomposition:</strong> Split revenue movement into payer behavior components instead of treating “revenue down” as a single undifferentiated problem.</l/li>
+      ><strong>User segmentation:</strong> Compared high-pay vs lower-pay cohorts to determine whether the decline was broad-based or concentrated in the users who historically drove monetization.</l/li>
+      ><strong>Content supply diagnosis:</strong> Analyzed rerun intensity, ownership rate, and new-content availability to test whether the revenue issue came from saturation rather than weak demand.</li>
     </ul>
   </div>
 
   <div class="content-block fade-in">
-    <h3>Key Finding: Content Saturation in the Core Paying Segment</h3>
-    <p>The revenue decline was primarily driven by content saturation among Vietnam's core paying users. The item ownership rate for re-featured paid content in the paying segment was high — when the same items were re-promoted, the addressable audience of non-owners was too small to generate historical revenue levels. New content contribution to revenue had dropped significantly, and the content pipeline had not been replenished at the pace required to sustain the paying cohort's willingness to spend.</p>
-    <p>This was not a user behavior change — it was a content supply gap that manifested as a monetization problem.</p>
+    <h3>Key Finding</h3>
+    <p>
+      The revenue problem was concentrated among high-value users who had already absorbed too much of the existing content pool.
+      Repeated reruns and limited new content meant ownership saturation was high, so the addressable spending opportunity for that segment shrank even while activity held up.
+    </p>
 
     <div class="metrics-grid">
-      <div class="metric negative">
-        <div class="label">Revenue Trend</div>
-        <div class="value">Aug–Mar decline</div>
-      </div>
       <div class="metric highlight">
-        <div class="label">DAU During Same Period</div>
+        <div class="label">Activity Trend</div>
         <div class="value">Stable</div>
       </div>
+      <div class="metric negative">
+        <div class="label">Root Cause</div>
+        <div class="value">Content Saturation</div>
+      </div>
       <div class="metric positive">
-        <div class="label">New Content Contribution Recovery</div>
-        <div class="value">50%+ uplift</div>
+        <div class="label">New Content Revenue Share</div>
+        <div class="value">50%</div>
       </div>
     </div>
   </div>
 
   <div class="content-block fade-in">
     <h3>Impact &amp; Validation</h3>
-    <p>The diagnosis redirected the Vietnam market's content strategy: the content team was asked to increase the cadence of genuinely new paid content (new skins, new bundles) and reduce re-featuring of existing items. Post-adjustment, new content contribution to revenue recovered by over 50%, and overall Vietnam revenue began a recovery trend within two content cycles.</p>
-    <p>The analysis also surfaced a reusable metric — <em>ownership rate as a leading indicator of content saturation</em> — that was subsequently built into the regional monetization dashboard for ongoing monitoring.</p>
+    <p>
+      The recommendation was to reset content pacing and improve high-value SKU planning rather than blaming market weakness.
+      After execution, new-content ownership among high-value users improved and new-content contribution recovered,
+      which validated that supply quality and novelty were the real operational levers.
+    </p>
+
     <div class="methodology-box">
-      <h4>Methodology Note</h4>
-      <p>The revenue decomposition (Signal → Segment) established early that the problem was monetization-structural, not user-behavioral. The peer market comparison (Diagnose) isolated it to Vietnam content strategy. The ownership rate analysis (Diagnose → Act) identified the specific mechanism and pointed to the actionable lever — new content supply. This is a clean end-to-end application of the Signal-to-Action framework.</p>
+      <h4>Why this matters</h4>
+      <p>
+        This is the cleanest end-to-end framework example in the portfolio: signal detection, payer segmentation, mechanism diagnosis, action design, and then a reusable ownership-rate lens for future monitoring.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
 <section class="section" id="skills">
   <div class="section-header fade-in">
     <div class="num">Skills</div>
     <h2>Technical Toolkit</h2>
-    <p>Tools and methods used across all projects above</p>
+    <p>Methods, tools, and cross-functional capabilities used across the projects above</p>
   </div>
+
   <div class="skills-grid fade-in">
     <div class="skill-category">
       <h4>Analysis Methods</h4>
@@ -570,38 +987,43 @@
         <span class="skill-tag">Causal Inference</span>
         <span class="skill-tag">PSM</span>
         <span class="skill-tag">A/B Testing</span>
-        <span class="skill-tag">Diff-in-Diff</span>
-        <span class="skill-tag">Funnel Analysis</span>
+        <span class="skill-tag">Same-User Comparison</span>
         <span class="skill-tag">Cohort Analysis</span>
+        <span class="skill-tag">Funnel Decomposition</span>
       </div>
     </div>
+
     <div class="skill-category">
-      <h4>Data &amp; Engineering</h4>
+      <h4>Data Stack</h4>
       <div class="skill-tags">
         <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Python</span>
         <span class="skill-tag">Hive</span>
         <span class="skill-tag">Spark</span>
+        <span class="skill-tag">Python</span>
         <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Excel</span>
       </div>
     </div>
+
     <div class="skill-category">
-      <h4>Domain Expertise</h4>
+      <h4>Product Domains</h4>
       <div class="skill-tags">
-        <span class="skill-tag">Game Analytics</span>
-        <span class="skill-tag">Monetization</span>
         <span class="skill-tag">Trust &amp; Safety</span>
-        <span class="skill-tag">Growth Analytics</span>
-        <span class="skill-tag">Economy Design</span>
+        <span class="skill-tag">Player Experience</span>
+        <span class="skill-tag">Combat Balance</span>
+        <span class="skill-tag">Monetization</span>
+        <span class="skill-tag">Revenue Strategy</span>
       </div>
     </div>
+
     <div class="skill-category">
-      <h4>Cross-functional</h4>
+      <h4>Cross-functional Work</h4>
       <div class="skill-tags">
         <span class="skill-tag">Product Strategy</span>
-        <span class="skill-tag">Stakeholder Comms</span>
+        <span class="skill-tag">Engineering Partnership</span>
+        <span class="skill-tag">Operations Enablement</span>
         <span class="skill-tag">15 Markets</span>
-        <span class="skill-tag">Executive Reporting</span>
+        <span class="skill-tag">SOP &amp; Dashboards</span>
       </div>
     </div>
   </div>
@@ -615,34 +1037,51 @@
 </footer>
 
 <script>
-  // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Nav active state
   const sections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
+
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute('id');
-      }
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
     });
+
     navLinks.forEach(link => {
       link.style.color = '';
       if (link.getAttribute('href') === '#' + current) {
         link.style.color = 'var(--accent)';
       }
     });
+  });
+
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    themeToggle.textContent = '☀️ Light';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.body.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      themeToggle.textContent = '🌙 Dark';
+    } else {
+      document.body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      themeToggle.textContent = '☀️ Light';
+    }
   });
 </script>
 </body>

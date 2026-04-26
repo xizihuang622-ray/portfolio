@@ -23,7 +23,8 @@
     --blue-light: rgba(74,111,165,0.08);
     --green: #4CAF50;
     --green-light: rgba(76,175,80,0.1);
-    --shadow: 0 8px 24px rgba(44,62,80,0.06);
+    --shadow: 0 4px 16px rgba(44,62,80,0.07);
+    --shadow-lg: 0 8px 28px rgba(44,62,80,0.10);
     --hero-grad: linear-gradient(180deg, #F7FAFD 0%, #EEF4FA 100%);
     --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   }
@@ -45,7 +46,8 @@
     --blue-light: rgba(126,166,224,0.14);
     --green: #74D99F;
     --green-light: rgba(116,217,159,0.12);
-    --shadow: 0 10px 28px rgba(0,0,0,0.28);
+    --shadow: 0 4px 16px rgba(0,0,0,0.22);
+    --shadow-lg: 0 10px 32px rgba(0,0,0,0.32);
     --hero-grad: linear-gradient(180deg, #0F1722 0%, #142231 100%);
   }
 
@@ -61,10 +63,7 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
 
-  a, button, section, div {
-    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-  }
-
+  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -80,394 +79,276 @@
     justify-content: space-between;
     gap: 1rem;
   }
-
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    min-width: 0;
-  }
-
+  .nav-left { display: flex; align-items: center; gap: 2rem; min-width: 0; }
   nav .logo {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--primary);
-    text-decoration: none;
-    letter-spacing: -0.3px;
-    white-space: nowrap;
+    font-weight: 700; font-size: 1rem; color: var(--primary);
+    text-decoration: none; letter-spacing: -0.3px; white-space: nowrap;
   }
-
-  nav .nav-links {
-    display: flex;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-  }
-
+  nav .nav-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
   nav .nav-links a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.83rem;
-    font-weight: 500;
+    text-decoration: none; color: var(--text-light);
+    font-size: 0.83rem; font-weight: 500;
   }
-
   nav .nav-links a:hover { color: var(--accent); }
-
   .theme-toggle {
-    border: 1px solid var(--divider);
-    background: var(--bg);
-    color: var(--text);
-    border-radius: 999px;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    white-space: nowrap;
+    border: 1px solid var(--divider); background: var(--bg);
+    color: var(--text); border-radius: 999px;
+    padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; box-shadow: var(--shadow); white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
   }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent-light); }
 
-  .theme-toggle:hover {
-    color: var(--accent);
-    border-color: var(--accent-light);
-  }
-
+  /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--hero-grad);
-    color: var(--primary);
-    text-align: center;
-    padding: 8rem 2rem 6rem;
+    min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; background: var(--hero-grad);
+    text-align: center; padding: 8rem 2rem 6rem;
   }
-
   .hero h1 {
-    font-size: 2.9rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 0.75rem;
-    letter-spacing: -1px;
+    font-size: 2.9rem; font-weight: 800; color: var(--primary);
+    margin-bottom: 0.75rem; letter-spacing: -1px;
   }
-
   .hero .subtitle {
-    font-size: 1.15rem;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
+    font-size: 1.15rem; color: var(--text-light);
+    margin-bottom: 1.5rem; font-weight: 500;
   }
-
   .hero .tagline {
-    font-size: 0.97rem;
-    color: var(--text-muted);
-    max-width: 660px;
-    margin: 0 auto 3rem;
-    line-height: 1.8;
+    font-size: 0.97rem; color: var(--text-muted);
+    max-width: 660px; margin: 0 auto 3rem; line-height: 1.8;
   }
-
   .hero .stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    margin-top: 1rem;
-    flex-wrap: wrap;
+    display: flex; gap: 3rem; justify-content: center;
+    margin-top: 1rem; flex-wrap: wrap;
   }
-
-  .hero .stat-item {
-    text-align: center;
-    min-width: 120px;
-  }
-
+  .hero .stat-item { text-align: center; min-width: 120px; }
   .hero .stat-num {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -0.5px;
+    font-size: 2.2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.5px;
   }
-
   .hero .stat-label {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-top: 0.3rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
+    font-size: 0.78rem; color: var(--text-muted);
+    margin-top: 0.3rem; font-weight: 600;
+    letter-spacing: 0.3px; text-transform: uppercase;
   }
-
   .hero .cta {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.8rem;
-    flex-wrap: wrap;
+    margin-top: 3rem; display: flex;
+    justify-content: center; gap: 0.8rem; flex-wrap: wrap;
   }
-
   .hero .cta a {
-    display: inline-block;
-    padding: 0.7rem 1.8rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.92rem;
-    box-shadow: var(--shadow);
+    display: inline-block; padding: 0.7rem 1.8rem;
+    background: var(--accent); color: #fff;
+    text-decoration: none; border-radius: 6px;
+    font-weight: 600; font-size: 0.92rem; box-shadow: var(--shadow);
   }
-
   .hero .cta a.secondary {
-    background: transparent;
-    color: var(--accent);
+    background: transparent; color: var(--accent);
     border: 1px solid var(--accent-light);
   }
-
   .hero .cta a:hover { opacity: 0.9; }
 
-  /* ===== APPROACH SECTION ===== */
-  .section-full {
-    background: var(--bg);
-    padding: 7rem 0;
-  }
-
-  .section-full .section-inner {
-    max-width: 760px;
+  /* ── SHARED SECTION WRAPPER ── */
+  .page-section {
+    max-width: 800px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 6rem 2rem;
   }
+  .section-full-bg { background: var(--bg); }
 
-  .approach-prose {
-    font-size: 1.05rem;
-    color: var(--text);
-    line-height: 1.9;
-  }
-
-  .approach-prose p + p {
-    margin-top: 1.2rem;
-  }
-
-  /* ===== PROJECT SECTIONS ===== */
-  .section {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 7rem 2rem;
-  }
-
-  .section-header {
-    margin-bottom: 3rem;
-  }
-
+  .section-header { margin-bottom: 2.5rem; }
   .section-header .num {
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    margin-bottom: 0.75rem;
+    font-size: 0.74rem; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 0.75rem;
   }
-
   .section-header h2 {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.5px;
+    font-size: 1.75rem; font-weight: 800; color: var(--primary);
+    margin-bottom: 0.5rem; letter-spacing: -0.5px;
   }
+  .section-header p { color: var(--text-muted); font-size: 0.95rem; }
 
-  .section-header p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    max-width: 640px;
-  }
+  /* ── APPROACH PROSE ── */
+  .approach-prose { font-size: 1.02rem; color: var(--text); line-height: 1.9; }
+  .approach-prose p + p { margin-top: 1.1rem; }
 
-  /* ===== PIVOT BLOCK — the single insight per project ===== */
-  .pivot-block {
-    margin: 2.5rem 0;
-    padding: 1.6rem 1.8rem;
-    background: var(--blue-bg);
-    border-radius: 12px;
-    border-left: 4px solid var(--accent);
-    box-shadow: var(--shadow);
-  }
+  /* ── PROJECT ACCORDION ── */
+  #projects { scroll-margin-top: 70px; }
 
-  .pivot-block .pivot-label {
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    margin-bottom: 0.6rem;
-  }
+  .project-list { display: flex; flex-direction: column; gap: 1rem; }
 
-  .pivot-block p {
-    font-size: 1rem;
-    color: var(--primary);
-    line-height: 1.8;
-    font-weight: 500;
-  }
-
-  /* ===== CONTEXT + IMPACT PROSE ===== */
-  .project-prose {
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.85;
-  }
-
-  .project-prose p + p {
-    margin-top: 1rem;
-  }
-
-  /* ===== METRICS ROW ===== */
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.85rem;
-    margin: 2rem 0;
-  }
-
-  .metric {
-    background: var(--bg);
-    border-radius: 10px;
-    padding: 0.9rem 1.1rem;
+  .project-card {
+    background: var(--white);
     border: 1px solid var(--divider);
+    border-radius: 14px;
+    overflow: hidden;
     box-shadow: var(--shadow);
+    transition: box-shadow 0.2s ease;
+  }
+  .project-card:hover { box-shadow: var(--shadow-lg); }
+  .project-card.open { box-shadow: var(--shadow-lg); }
+
+  /* Card header / toggle button */
+  .project-toggle {
+    width: 100%; background: none; border: none;
+    cursor: pointer; text-align: left;
+    padding: 1.4rem 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    color: var(--primary);
+  }
+  .project-toggle:hover .toggle-title { color: var(--accent); }
+
+  .toggle-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .toggle-num {
+    font-size: 0.7rem; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 2px;
+  }
+  .toggle-title {
+    font-size: 1.1rem; font-weight: 700; color: var(--primary);
+    transition: color 0.15s;
+  }
+  .toggle-sub {
+    font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;
   }
 
-  .metric.positive {
-    background: var(--green-light);
-    border-color: color-mix(in srgb, var(--green) 30%, var(--divider));
+  /* Metric pills shown in collapsed state */
+  .toggle-pills {
+    display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.5rem;
   }
-
-  .metric.negative {
-    background: var(--red-light);
-    border-color: color-mix(in srgb, var(--red) 25%, var(--divider));
+  .toggle-pill {
+    font-size: 0.76rem; font-weight: 600; padding: 0.2rem 0.55rem;
+    border-radius: 999px; border: 1px solid var(--divider);
+    background: var(--bg); color: var(--text-light);
   }
+  .toggle-pill.pos { background: var(--green-light); color: var(--green); border-color: color-mix(in srgb, var(--green) 30%, var(--divider)); }
+  .toggle-pill.neg { background: var(--red-light); color: var(--red); border-color: color-mix(in srgb, var(--red) 25%, var(--divider)); }
+  .toggle-pill.hi  { background: var(--blue-light); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 25%, var(--divider)); }
 
-  .metric.highlight {
+  /* Chevron icon */
+  .toggle-chevron {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--bg); border: 1px solid var(--divider);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, background 0.2s;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+  .project-card.open .toggle-chevron {
+    transform: rotate(180deg);
     background: var(--blue-light);
+    color: var(--accent);
     border-color: color-mix(in srgb, var(--accent) 25%, var(--divider));
   }
 
+  /* Expandable body */
+  .project-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project-card.open .project-body { max-height: 2000px; }
+
+  .project-body-inner {
+    padding: 0 1.6rem 1.8rem;
+    border-top: 1px solid var(--divider);
+  }
+
+  /* Content inside expanded card */
+  .project-prose {
+    font-size: 0.95rem; color: var(--text); line-height: 1.85;
+    padding-top: 1.4rem;
+  }
+  .project-prose p + p { margin-top: 0.9rem; }
+
+  .pivot-block {
+    margin: 1.6rem 0;
+    padding: 1.3rem 1.5rem;
+    background: var(--blue-bg);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent);
+    box-shadow: var(--shadow);
+  }
+  .pivot-label {
+    font-size: 0.72rem; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 0.55rem;
+  }
+  .pivot-block p {
+    font-size: 0.97rem; color: var(--primary);
+    line-height: 1.8; font-weight: 500;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin: 1.4rem 0 0;
+  }
+  .metric {
+    background: var(--bg); border-radius: 10px;
+    padding: 0.85rem 1rem; border: 1px solid var(--divider);
+  }
+  .metric.positive { background: var(--green-light); border-color: color-mix(in srgb, var(--green) 30%, var(--divider)); }
+  .metric.negative { background: var(--red-light); border-color: color-mix(in srgb, var(--red) 25%, var(--divider)); }
+  .metric.highlight { background: var(--blue-light); border-color: color-mix(in srgb, var(--accent) 25%, var(--divider)); }
   .metric .label {
-    font-size: 0.73rem;
-    color: var(--text-muted);
-    margin-bottom: 0.3rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
+    font-size: 0.71rem; color: var(--text-muted); margin-bottom: 0.25rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
   }
-
-  .metric .value {
-    font-size: 1.22rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
+  .metric .value { font-size: 1.15rem; font-weight: 700; color: var(--accent); }
   .metric.positive .value { color: var(--green); }
   .metric.negative .value { color: var(--red); }
 
-  /* ===== PROJECT DIVIDER ===== */
-  .project-divider {
-    border: none;
-    border-top: 1px solid var(--divider);
-    margin: 3rem 0;
-  }
-
-  /* ===== SKILLS ===== */
-  .skills-section {
-    background: var(--bg);
-    padding: 7rem 0;
-  }
-
-  .skills-inner {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
+  /* ── SKILLS ── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.1rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem; margin-top: 2rem;
   }
-
   .skill-category {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 1.1rem 1.2rem;
-    border: 1px solid var(--divider);
+    background: var(--white); border-radius: 10px;
+    padding: 1.1rem 1.2rem; border: 1px solid var(--divider);
     box-shadow: var(--shadow);
   }
-
   .skill-category h4 {
-    color: var(--accent);
-    font-size: 0.82rem;
-    margin-bottom: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: var(--accent); font-size: 0.82rem; margin-bottom: 0.7rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
   }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .skill-tag {
-    background: var(--bg);
-    color: var(--text-light);
-    padding: 0.25rem 0.6rem;
-    border-radius: 999px;
-    font-size: 0.79rem;
-    border: 1px solid var(--divider);
+    background: var(--bg); color: var(--text-light);
+    padding: 0.25rem 0.6rem; border-radius: 999px;
+    font-size: 0.79rem; border: 1px solid var(--divider);
   }
 
   footer {
-    text-align: center;
-    padding: 3rem 2rem 3.5rem;
-    color: var(--text-muted);
-    font-size: 0.82rem;
+    text-align: center; padding: 3rem 2rem 3.5rem;
+    color: var(--text-muted); font-size: 0.82rem;
     border-top: 1px solid var(--divider);
   }
-
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
 
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  /* ── RESPONSIVE ── */
   @media (max-width: 980px) {
-    nav {
-      padding: 0.6rem 1rem;
-      height: auto;
-      min-height: 58px;
-      align-items: flex-start;
-    }
-    .nav-left {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
+    nav { padding: 0.6rem 1rem; height: auto; min-height: 58px; align-items: flex-start; }
+    .nav-left { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     nav .nav-links { gap: 0.85rem; }
   }
-
   @media (max-width: 768px) {
     .hero { padding: 9rem 1.4rem 5rem; min-height: auto; }
     .hero h1 { font-size: 2.1rem; }
     .hero .stats { gap: 1.6rem; }
     .hero .stat-num { font-size: 1.8rem; }
-    .section, .section-full, .skills-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
-    .section { padding-left: 1.4rem; padding-right: 1.4rem; }
-    .section-full .section-inner, .skills-inner { padding: 0 1.4rem; }
+    .page-section { padding: 4.5rem 1.4rem; }
     .section-header h2 { font-size: 1.4rem; }
     .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .project-toggle { padding: 1.1rem 1.2rem; }
+    .project-body-inner { padding: 0 1.2rem 1.4rem; }
   }
 </style>
 </head>
@@ -478,10 +359,7 @@
     <a href="#" class="logo">Xizi Huang</a>
     <div class="nav-links">
       <a href="#approach">Approach</a>
-      <a href="#project1">Trust &amp; Safety</a>
-      <a href="#project2">Network</a>
-      <a href="#project3">Balance</a>
-      <a href="#project4">Revenue</a>
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
     </div>
   </div>
@@ -514,14 +392,14 @@
     </div>
     <div class="cta">
       <a href="#approach">View My Approach</a>
-      <a href="#project1" class="secondary">View Projects</a>
+      <a href="#projects" class="secondary">View Projects</a>
     </div>
   </div>
 </section>
 
 <!-- APPROACH -->
-<div class="section-full" id="approach">
-  <div class="section-inner">
+<div class="section-full-bg" id="approach">
+  <div class="page-section">
     <div class="section-header fade-in">
       <div class="num">My Approach</div>
       <h2>How I Think About Analysis</h2>
@@ -533,250 +411,274 @@
         then invest in diagnosis before jumping to action.
       </p>
       <p>
-        The part I care most about is the step between "we see a signal" and "we know what it means."
-        Most incorrect product decisions I've seen came not from bad data, but from stopping analysis too early —
+        The part I care most about is the step between “we see a signal” and “we know what it means.”
+        Most incorrect product decisions I’ve seen came not from bad data, but from stopping analysis too early —
         before someone asked whether the data was measuring what it claimed to measure.
       </p>
       <p>
         Most importantly, I try to turn every non-trivial finding into something the team can reuse —
-        a decision rule, a monitoring threshold, or a documented approach — so the organization
-        gets smarter over time rather than rediscovering the same answer under different circumstances.
+        a decision rule, a monitoring threshold, or a documented approach —
+        so the next time a similar signal appears, the team already knows where to look.
       </p>
       <p>
         The four projects below each illustrate a different phase of that loop, and each centers on
-        one judgment call that wasn't obvious from the first look at the data.
+        one judgment call that wasn’t obvious from the first look at the data.
       </p>
     </div>
   </div>
 </div>
 
-<!-- PROJECT 1: TRUST & SAFETY -->
-<section class="section" id="project1">
+<!-- PROJECTS -->
+<div class="page-section" id="projects" style="padding-top:5rem; padding-bottom:5rem;">
   <div class="section-header fade-in">
-    <div class="num">Project 01</div>
-    <h2>Trust &amp; Safety Governance System</h2>
-    <p>Voice toxicity enforcement strategy on a global platform with ~100M DAU</p>
+    <div class="num">Projects</div>
+    <h2>Four Case Studies</h2>
+    <p>Click any card to read the analysis and key pivot.</p>
   </div>
 
-  <div class="project-prose fade-in">
-    <p>
-      Free Fire's voice toxicity problem had an obvious surface reading: detect bad actors, penalize them,
-      protect victims. The operations team wanted aggressive blanket bans. Product leaders worried about
-      losing high-engagement offenders. The instinct on both sides was to start from enforcement design
-      and work backwards.
-    </p>
-    <p>
-      The real question I pushed on was earlier: what damage is toxicity actually causing to the victim side,
-      and can we measure it correctly? If we could not answer that, enforcement strategy would be intuition-driven.
-    </p>
-  </div>
+  <div class="project-list fade-in">
 
-  <div class="pivot-block fade-in">
-    <div class="pivot-label">The Pivot</div>
-    <p>
-      Initial causal matching showed almost no retention difference between exposed and non-exposed victims —
-      which the team was ready to interpret as "toxicity doesn't cause churn." But that result was a measurement
-      artifact, not a true finding. Only the most resilient players stay long enough to file a report.
-      The users who quit immediately after a toxic encounter never appear in the reportable dataset at all.
-      "No effect" was a sign that the data pipeline was structurally incomplete, not that the problem was minor.
-    </p>
-  </div>
+    <!-- P01 -->
+    <div class="project-card" id="project1">
+      <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
+        <div class="toggle-left">
+          <span class="toggle-num">Project 01</span>
+          <span class="toggle-title">Trust &amp; Safety Governance System</span>
+          <span class="toggle-sub">Voice toxicity enforcement strategy &nbsp;·&nbsp; ~100M DAU</span>
+          <div class="toggle-pills">
+            <span class="toggle-pill hi">99%+ Accuracy</span>
+            <span class="toggle-pill pos">D7 Retention +1–2%</span>
+            <span class="toggle-pill pos">Recidivism −0.5 pp</span>
+          </div>
+        </div>
+        <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
+      </button>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-prose">
+            <p>
+              Free Fire’s voice toxicity problem had an obvious surface reading: detect bad actors, penalize them,
+              protect victims. Both sides were already debating enforcement design before anyone had quantified the actual harm.
+            </p>
+            <p>
+              The real question I pushed on was earlier: what damage is toxicity actually causing to the victim side,
+              and can we measure it correctly? If we could not answer that, enforcement strategy would be intuition-driven.
+            </p>
+          </div>
 
-  <div class="project-prose fade-in">
-    <p>
-      Reframing the problem this way made proactive intervention analytically justified.
-      We designed a graded penalty model: high-confidence detections triggered automatic action to capture
-      the invisible victim population; lower-confidence cases still required user reporting to avoid
-      false positives from dialect or in-game banter.
-    </p>
-    <p>
-      The more durable output was not the model — it was establishing that passive reporting systematically
-      undercounts harm among new users, and building that corrective logic into the governance design from the start.
-    </p>
-  </div>
+          <div class="pivot-block">
+            <div class="pivot-label">The Pivot</div>
+            <p>
+              Initial causal matching showed almost no retention difference between exposed and non-exposed victims —
+              which the team was ready to interpret as “toxicity doesn’t cause churn.” But that result was a measurement
+              artifact, not a true finding. Only the most resilient players stay long enough to file a report.
+              The users who quit immediately after a toxic encounter never appear in the reportable dataset at all.
+              “No effect” was a sign that the data pipeline was structurally incomplete, not that the problem was minor.
+            </p>
+          </div>
 
-  <div class="metrics-grid fade-in">
-    <div class="metric highlight">
-      <div class="label">Penalty Accuracy</div>
-      <div class="value">99%+</div>
+          <div class="project-prose">
+            <p>
+              Reframing the problem this way made proactive intervention analytically justified.
+              We designed a graded penalty model: high-confidence detections triggered automatic action —
+              reaching users who would not otherwise appear in any report; lower-confidence cases still
+              required user reporting to avoid false positives from dialect or in-game banter.
+            </p>
+            <p>
+              The more durable output was not the model — it was establishing that passive reporting systematically
+              undercounts harm among new users, and building that corrective logic into the governance design from the start.
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric highlight"><div class="label">Penalty Accuracy</div><div class="value">99%+</div></div>
+            <div class="metric positive"><div class="label">Recidivism</div><div class="value">−0.5 pp</div></div>
+            <div class="metric positive"><div class="label">New User D7 Retention</div><div class="value">+1–2%</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="metric positive">
-      <div class="label">Recidivism</div>
-      <div class="value">−0.5%</div>
+
+    <!-- P02 -->
+    <div class="project-card" id="project2">
+      <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
+        <div class="toggle-left">
+          <span class="toggle-num">Project 02</span>
+          <span class="toggle-title">Social Network Health &amp; Retention</span>
+          <span class="toggle-sub">Causal effect of social features on 90-day retention</span>
+          <div class="toggle-pills">
+            <span class="toggle-pill hi">Threshold: 3+ Active</span>
+            <span class="toggle-pill pos">90-Day Retention Lifts</span>
+          </div>
+        </div>
+        <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
+      </button>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-prose">
+            <p>
+              The growth team wanted to invest in friend-recommendation infrastructure. The underlying assumption was
+              that players with more friends stay longer. That’s true observationally, but it conflates two very
+              different things: social connection causing retention, versus retained players simply being more social
+              by nature. If it’s the latter, feature investment produces no incremental value.
+            </p>
+            <p>
+              I looked for natural variation in how players formed their first social connections to get closer to
+              a causal estimate, and tried to understand not just whether social connections matter, but
+              whether the relationship is linear or threshold-based.
+            </p>
+          </div>
+
+          <div class="pivot-block">
+            <div class="pivot-label">The Pivot</div>
+            <p>
+              The relationship is not linear. One or two weak ties add almost nothing to retention.
+              But once a player crosses into having a stable active squad — roughly 3 or more people
+              they actually play with — the 90-day retention curve shifts meaningfully.
+              The product implication is not “maximize friend count” but “help players reach a usable
+              social cluster quickly.” That distinction reshaped what the onboarding redesign
+              should optimize for.
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric highlight"><div class="label">Critical Threshold</div><div class="value">3+ Active</div></div>
+            <div class="metric positive"><div class="label">90-Day Retention</div><div class="value">Lifts post-threshold</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="metric positive">
-      <div class="label">New User D7 Retention</div>
-      <div class="value">+1–2%</div>
+
+    <!-- P03 -->
+    <div class="project-card" id="project3">
+      <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
+        <div class="toggle-left">
+          <span class="toggle-num">Project 03</span>
+          <span class="toggle-title">Combat Balance &amp; Monetization Guardrails</span>
+          <span class="toggle-sub">Two separate but related cases: AUG balance controversy &amp; Wukong Skill Skin launch</span>
+          <div class="toggle-pills">
+            <span class="toggle-pill neg">AUG KD Gap 28%</span>
+            <span class="toggle-pill pos">Pick Rate +4.8%</span>
+            <span class="toggle-pill hi">29% New Buyers</span>
+          </div>
+        </div>
+        <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
+      </button>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-prose">
+            <p>
+              Competitive FPS players are vocal about balance. When they complain that a weapon or character
+              is broken, it could mean many things: the item is genuinely overpowered, or stronger players
+              are simply gravitating toward it, making it look overpowered in aggregate data. These two
+              scenarios require completely different responses.
+            </p>
+            <p>
+              I worked on two separate but related cases. For the AUG controversy, the question was whether the weapon
+              truly created an unfair combat advantage or whether the raw KD data was just reflecting
+              player-skill selection bias. For the Wukong Skill Skin launch, the question was how to
+              set pre-launch guardrails that would let monetization grow without drifting into pay-to-win territory.
+            </p>
+          </div>
+
+          <div class="pivot-block">
+            <div class="pivot-label">The Pivot</div>
+            <p>
+              For AUG: comparing the same players’ performance when they used AUG versus when they used
+              comparable baseline weapons removed the skill confound. AUG outperforming comparable AR baselines
+              by about 28% in KD was large enough to justify a targeted balance change rather than
+              dismissing the issue as sentiment noise.
+              For Wukong: the more important outcome was not the adoption uplift, but that the launch stayed
+              inside the guardrail range. Monetization success that violates fairness thresholds is not a win —
+              the constraint had to be made explicit before launch, not measured after.
+            </p>
+          </div>
+
+          <div class="project-prose">
+            <p>
+              These two cases established a reusable pre-launch evaluation template: quantify the gameplay
+              impact using controlled comparison, set acceptable outcome ranges before release, and treat
+              fairness guardrails as constraints rather than post-hoc checks. That made analytics part of
+              the launch criteria, not a post-launch debrief.
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric negative"><div class="label">AUG KD Gap (same-player)</div><div class="value">28%</div></div>
+            <div class="metric positive"><div class="label">Wukong Pick Rate</div><div class="value">+4.8%</div></div>
+            <div class="metric highlight"><div class="label">New-to-Wukong Buyers</div><div class="value">29%</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- PROJECT 2: NETWORK -->
-<section class="section" id="project2" style="background: var(--bg);">
-  <div class="section-header fade-in">
-    <div class="num">Project 02</div>
-    <h2>Social Network Health &amp; Retention</h2>
-    <p>Whether social features cause retention — or just correlate with it</p>
-  </div>
+    <!-- P04 -->
+    <div class="project-card" id="project4">
+      <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
+        <div class="toggle-left">
+          <span class="toggle-num">Project 04</span>
+          <span class="toggle-title">Revenue Decline Diagnosis — Vietnam</span>
+          <span class="toggle-sub">Revenue falling despite stable activity &nbsp;·&nbsp; Root cause: content saturation</span>
+          <div class="toggle-pills">
+            <span class="toggle-pill hi">Activity Stable</span>
+            <span class="toggle-pill neg">Content Saturation</span>
+            <span class="toggle-pill pos">New Content →50%</span>
+          </div>
+        </div>
+        <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
+      </button>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-prose">
+            <p>
+              Vietnam showed a multi-month revenue decline while high-level activity stayed relatively stable.
+              That divergence immediately pointed away from a user acquisition or engagement problem and toward
+              something structural inside the monetization system. But “monetization is broken” is not
+              an actionable diagnosis.
+            </p>
+            <p>
+              The first useful step was decomposing revenue into its components — not treating it as a single
+              number that went down — and then segmenting by payer tier to find where the decline was concentrated.
+            </p>
+          </div>
 
-  <div class="project-prose fade-in">
-    <p>
-      The growth team wanted to invest in friend-recommendation infrastructure. The underlying assumption was
-      that players with more friends stay longer. That's true observationally, but it conflates two very
-      different things: social connection causing retention, versus retained players simply being more social
-      by nature. If it's the latter, feature investment produces no incremental value.
-    </p>
-    <p>
-      I looked for natural variation in how players formed their first social connections to get closer to
-      a causal estimate, and tried to understand not just whether social connections matter, but
-      whether the relationship is linear or threshold-based.
-    </p>
-  </div>
+          <div class="pivot-block">
+            <div class="pivot-label">The Pivot</div>
+            <p>
+              The problem was not weak demand. It was content saturation in the segment that historically drove
+              most of the market’s revenue. High-value users had already owned the majority of items being
+              re-featured in paid content runs. The addressable spending opportunity for that segment had
+              effectively shrunk — not because they stopped playing, but because the content supply stopped
+              giving them new things to buy. The fix had to come from the content roadmap, not from
+              discounts or rerun promotions.
+            </p>
+          </div>
 
-  <div class="pivot-block fade-in">
-    <div class="pivot-label">The Pivot</div>
-    <p>
-      The relationship is not linear. One or two weak ties add almost nothing to retention.
-      But once a player crosses into having a stable active squad — roughly 3 or more people
-      they actually play with — the 90-day retention curve shifts meaningfully.
-      The product implication is not "maximize friend count" but "help players reach a usable
-      social cluster quickly." That distinction completely changed what the onboarding redesign
-      should optimize for.
-    </p>
-  </div>
+          <div class="project-prose">
+            <p>
+              After the content pacing was reset and new SKU planning improved, new-content ownership
+              among high-value users recovered and new-content revenue contribution recovered to account
+              for roughly half of total revenue in the market.
+              The ownership-rate metric — tracking how saturated the paying segment was on featured items —
+              became a reusable leading indicator built into ongoing market monitoring after this project.
+            </p>
+          </div>
 
-  <div class="metrics-grid fade-in">
-    <div class="metric highlight">
-      <div class="label">Critical Threshold</div>
-      <div class="value">3+ Active</div>
+          <div class="metrics-grid">
+            <div class="metric highlight"><div class="label">Activity Trend</div><div class="value">Stable</div></div>
+            <div class="metric negative"><div class="label">Root Cause</div><div class="value">Content Saturation</div></div>
+            <div class="metric positive"><div class="label">New Content Revenue</div><div class="value">→ ~50%</div></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="metric positive">
-      <div class="label">90-Day Retention</div>
-      <div class="value">Lifts post-threshold</div>
-    </div>
-  </div>
-</section>
 
-<!-- PROJECT 3: COMBAT BALANCE -->
-<section class="section" id="project3">
-  <div class="section-header fade-in">
-    <div class="num">Project 03</div>
-    <h2>Combat Balance &amp; Monetization Guardrails</h2>
-    <p>Separating player perception from measurable performance impact — for both a weapon controversy and a monetization launch</p>
-  </div>
-
-  <div class="project-prose fade-in">
-    <p>
-      Competitive FPS players are vocal about balance. When they complain that a weapon or character
-      is broken, it could mean many things: the item is genuinely overpowered, or stronger players
-      are simply gravitating toward it, making it look overpowered in aggregate data. These two
-      scenarios require completely different responses.
-    </p>
-    <p>
-      I worked on two related cases. For the AUG controversy, the question was whether the weapon
-      truly created an unfair combat advantage or whether the raw KD data was just reflecting
-      player-skill selection bias. For the Wukong Skill Skin launch, the question was how to
-      set pre-launch guardrails that would let monetization grow without drifting into pay-to-win territory.
-    </p>
-  </div>
-
-  <div class="pivot-block fade-in">
-    <div class="pivot-label">The Pivot</div>
-    <p>
-      For AUG: comparing the same players' performance when they used AUG versus when they used
-      comparable baseline weapons removed the skill confound. The gap that remained — about 28% in KD —
-      was large enough to justify a targeted balance change rather than dismissing the issue as sentiment noise.
-      For Wukong: the more important outcome was not the adoption uplift, but that the launch stayed
-      inside the guardrail range. Monetization success that violates fairness thresholds is not a win —
-      the framework had to make that constraint explicit before launch, not measure it after.
-    </p>
-  </div>
-
-  <div class="metrics-grid fade-in">
-    <div class="metric negative">
-      <div class="label">AUG KD Gap (same-player)</div>
-      <div class="value">28%</div>
-    </div>
-    <div class="metric positive">
-      <div class="label">Wukong Pick Rate</div>
-      <div class="value">+4.8%</div>
-    </div>
-    <div class="metric highlight">
-      <div class="label">New-to-Wukong Buyers</div>
-      <div class="value">29%</div>
-    </div>
-  </div>
-
-  <div class="project-prose fade-in" style="margin-top: 1.5rem;">
-    <p>
-      These two cases established a reusable pre-launch evaluation template: quantify the gameplay
-      impact using controlled comparison, set acceptable outcome ranges before release, and treat
-      fairness guardrails as constraints rather than post-hoc checks. That shifted analytics from
-      validation work into decision architecture.
-    </p>
-  </div>
-</section>
-
-<!-- PROJECT 4: REVENUE -->
-<section class="section" id="project4" style="background: var(--bg);">
-  <div class="section-header fade-in">
-    <div class="num">Project 04</div>
-    <h2>Revenue Decline Diagnosis — Vietnam</h2>
-    <p>Finding where revenue was leaking when all the top-line activity metrics looked fine</p>
-  </div>
-
-  <div class="project-prose fade-in">
-    <p>
-      Vietnam showed a multi-month revenue decline while high-level activity stayed relatively stable.
-      That divergence immediately pointed away from a user acquisition or engagement problem and toward
-      something structural inside the monetization system. But "monetization is broken" is not
-      an actionable diagnosis.
-    </p>
-    <p>
-      The first useful step was decomposing revenue into its components — not treating it as a single
-      number that went down — and then segmenting by payer tier to find where the decline was concentrated.
-    </p>
-  </div>
-
-  <div class="pivot-block fade-in">
-    <div class="pivot-label">The Pivot</div>
-    <p>
-      The problem was not weak demand. It was content saturation in the segment that historically drove
-      most of the market's revenue. High-value users had already owned the majority of items being
-      re-featured in paid content runs. The addressable spending opportunity for that segment had
-      effectively shrunk — not because they stopped playing, but because the content supply stopped
-      giving them new things to buy. The fix was not a promotional push; it was a content pipeline reset.
-    </p>
-  </div>
-
-  <div class="metrics-grid fade-in">
-    <div class="metric highlight">
-      <div class="label">Activity Trend</div>
-      <div class="value">Stable</div>
-    </div>
-    <div class="metric negative">
-      <div class="label">Root Cause</div>
-      <div class="value">Content Saturation</div>
-    </div>
-    <div class="metric positive">
-      <div class="label">New Content Revenue Share</div>
-      <div class="value">→ 50%</div>
-    </div>
-  </div>
-
-  <div class="project-prose fade-in" style="margin-top: 1.5rem;">
-    <p>
-      After the content pacing was reset and new SKU planning improved, new-content ownership
-      among high-value users recovered and new-content revenue contribution returned to a healthy share.
-      The ownership-rate metric — tracking how saturated the paying segment was on featured items —
-      became a reusable leading indicator built into ongoing market monitoring after this project.
-    </p>
-  </div>
-</section>
+  </div><!-- /project-list -->
+</div><!-- /projects -->
 
 <!-- SKILLS -->
-<div class="skills-section" id="skills">
-  <div class="skills-inner">
+<div class="section-full-bg" id="skills">
+  <div class="page-section">
     <div class="section-header fade-in">
       <div class="num">Skills</div>
       <h2>Technical Toolkit</h2>
@@ -831,54 +733,60 @@
 
 <footer>
   <p>Xizi Huang &nbsp;·&nbsp; Senior Data Analyst &nbsp;·&nbsp; Singapore</p>
-  <p style="margin-top:0.5rem;">
-    <a href="mailto:xizihuang622@gmail.com">xizihuang622@gmail.com</a>
-  </p>
+  <p style="margin-top:0.5rem;"><a href="mailto:xizihuang622@gmail.com">xizihuang622@gmail.com</a></p>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+  /* ── Accordion ── */
+  function toggleCard(btn) {
+    const card = btn.closest('.project-card');
+    const isOpen = card.classList.contains('open');
+    // close all
+    document.querySelectorAll('.project-card.open').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.project-toggle').setAttribute('aria-expanded', 'false');
     });
-  }, { threshold: 0.08 });
+    // open clicked if it was closed
+    if (!isOpen) {
+      card.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      // smooth scroll so card header stays visible
+      setTimeout(() => {
+        const top = card.getBoundingClientRect().top + window.scrollY - 76;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 50);
+    }
+  }
 
+  /* ── Fade-in observer ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  const sections = document.querySelectorAll('section[id], div[id]');
+  /* ── Nav active link ── */
+  const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-
   window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.style.color = '';
-      if (link.getAttribute('href') === '#' + current) {
-        link.style.color = 'var(--accent)';
-      }
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current) a.style.color = 'var(--accent)';
     });
   });
 
+  /* ── Dark mode ── */
   const themeToggle = document.getElementById('themeToggle');
   if (localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
     themeToggle.textContent = '☀️ Light';
   }
-
   themeToggle.addEventListener('click', () => {
     const isDark = document.body.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      document.body.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-      themeToggle.textContent = '🌙 Dark';
-    } else {
-      document.body.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      themeToggle.textContent = '☀️ Light';
-    }
+    document.body[isDark ? 'removeAttribute' : 'setAttribute']('data-theme', 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    themeToggle.textContent = isDark ? '🌙 Dark' : '☀️ Light';
   });
 </script>
 </body>

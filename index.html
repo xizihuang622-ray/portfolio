@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Analysis Portfolio | Xizi Huang</title>
-<meta name="description" content="Data Analysis Portfolio of Xizi Huang — Senior Data Analyst with 4 years of experience at Garena Free Fire (~100M DAU). Specializing in causal inference, A/B testing, monetization, and cross-functional analytics.">
+<title>Data Analysis Portfolio | Xizi (Allen) Huang</title>
+<meta name="description" content="Data Analysis Portfolio of Xizi (Allen) Huang — Senior Data Analyst with 4 years of experience at Garena Free Fire (~100M DAU). Specializing in causal inference, A/B testing, monetization, and cross-functional analytics.">
 <style>
   :root {
     --primary: #2C3E50;
@@ -139,12 +139,13 @@
     background: var(--accent); color: #fff;
     text-decoration: none; border-radius: 6px;
     font-weight: 600; font-size: 0.92rem; box-shadow: var(--shadow);
+    transition: opacity 0.2s;
   }
   .hero .cta a.secondary {
     background: transparent; color: var(--accent);
     border: 1px solid var(--accent-light);
   }
-  .hero .cta a:hover { opacity: 0.9; }
+  .hero .cta a:hover { opacity: 0.85; }
 
   /* ── SHARED SECTION WRAPPER ── */
   .page-section {
@@ -171,7 +172,6 @@
 
   /* ── PROJECT ACCORDION ── */
   #projects { scroll-margin-top: 70px; }
-
   .project-list { display: flex; flex-direction: column; gap: 1rem; }
 
   .project-card {
@@ -185,7 +185,6 @@
   .project-card:hover { box-shadow: var(--shadow-lg); }
   .project-card.open { box-shadow: var(--shadow-lg); }
 
-  /* Card header / toggle button */
   .project-toggle {
     width: 100%; background: none; border: none;
     cursor: pointer; text-align: left;
@@ -211,7 +210,6 @@
     font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;
   }
 
-  /* Metric pills shown in collapsed state */
   .toggle-pills {
     display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.5rem;
   }
@@ -219,12 +217,16 @@
     font-size: 0.76rem; font-weight: 600; padding: 0.2rem 0.55rem;
     border-radius: 999px; border: 1px solid var(--divider);
     background: var(--bg); color: var(--text-light);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .toggle-pill:hover {
+    transform: scale(1.06);
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
   }
   .toggle-pill.pos { background: var(--green-light); color: var(--green); border-color: color-mix(in srgb, var(--green) 30%, var(--divider)); }
   .toggle-pill.neg { background: var(--red-light); color: var(--red); border-color: color-mix(in srgb, var(--red) 25%, var(--divider)); }
   .toggle-pill.hi  { background: var(--blue-light); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 25%, var(--divider)); }
 
-  /* Chevron icon */
   .toggle-chevron {
     width: 28px; height: 28px; border-radius: 50%;
     background: var(--bg); border: 1px solid var(--divider);
@@ -241,26 +243,25 @@
     border-color: color-mix(in srgb, var(--accent) 25%, var(--divider));
   }
 
-  /* Expandable body */
   .project-body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .project-card.open .project-body { max-height: 2000px; }
+  .project-card.open .project-body { max-height: 2400px; }
 
   .project-body-inner {
     padding: 0 1.6rem 1.8rem;
     border-top: 1px solid var(--divider);
   }
 
-  /* Content inside expanded card */
   .project-prose {
     font-size: 0.95rem; color: var(--text); line-height: 1.85;
     padding-top: 1.4rem;
   }
   .project-prose p + p { margin-top: 0.9rem; }
 
+  /* ── E: Pivot highlight ── */
   .pivot-block {
     margin: 1.6rem 0;
     padding: 1.3rem 1.5rem;
@@ -276,6 +277,17 @@
   .pivot-block p {
     font-size: 0.97rem; color: var(--primary);
     line-height: 1.8; font-weight: 500;
+  }
+  /* key phrase highlight inside pivot */
+  .pivot-block mark {
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: inherit;
+    border-radius: 3px;
+    padding: 0 2px;
+    font-weight: 700;
+  }
+  body[data-theme="dark"] .pivot-block mark {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
   }
 
   .metrics-grid {
@@ -299,10 +311,10 @@
   .metric.positive .value { color: var(--green); }
   .metric.negative .value { color: var(--red); }
 
-  /* ── SKILLS ── */
+  /* ── B: SKILLS — force 4 cols on desktop ── */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem; margin-top: 2rem;
   }
   .skill-category {
@@ -349,6 +361,11 @@
     .metrics-grid { grid-template-columns: repeat(2, 1fr); }
     .project-toggle { padding: 1.1rem 1.2rem; }
     .project-body-inner { padding: 0 1.2rem 1.4rem; }
+    /* B: 2 cols on mobile */
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -356,7 +373,7 @@
 
 <nav>
   <div class="nav-left">
-    <a href="#" class="logo">Xizi Huang</a>
+    <a href="#" class="logo">Xizi (Allen) Huang</a>
     <div class="nav-links">
       <a href="#approach">Approach</a>
       <a href="#projects">Projects</a>
@@ -370,7 +387,7 @@
 <section class="hero">
   <div>
     <h1>Data Analysis Portfolio</h1>
-    <div class="subtitle">Xizi Huang &nbsp;·&nbsp; Senior Data Analyst</div>
+    <div class="subtitle">Xizi (Allen) Huang &nbsp;·&nbsp; Senior Data Analyst</div>
     <p class="tagline">
       4 years at Garena Free Fire (~100M DAU) working across trust &amp; safety,
       network experience, gameplay balance, and monetization in 15 international markets.
@@ -378,21 +395,22 @@
     </p>
     <div class="stats">
       <div class="stat-item">
-        <div class="stat-num">100M+</div>
+        <div class="stat-num" data-target="100" data-suffix="M+">0</div>
         <div class="stat-label">Daily Active Users</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">4</div>
+        <div class="stat-num" data-target="4" data-suffix="">0</div>
         <div class="stat-label">Years of Experience</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">15</div>
+        <div class="stat-num" data-target="15" data-suffix="">0</div>
         <div class="stat-label">International Markets</div>
       </div>
     </div>
     <div class="cta">
       <a href="#approach">View My Approach</a>
       <a href="#projects" class="secondary">View Projects</a>
+      <a href="https://www.linkedin.com/in/xizi-huang" target="_blank" rel="noopener" class="secondary">LinkedIn ↗</a>
     </div>
   </div>
 </section>
@@ -411,8 +429,8 @@
         then invest in diagnosis before jumping to action.
       </p>
       <p>
-        The part I care most about is the step between “we see a signal” and “we know what it means.”
-        Most incorrect product decisions I’ve seen came not from bad data, but from stopping analysis too early —
+        The part I care most about is the step between "we see a signal" and "we know what it means."
+        Most incorrect product decisions I've seen came not from bad data, but from stopping analysis too early —
         before someone asked whether the data was measuring what it claimed to measure.
       </p>
       <p>
@@ -422,7 +440,7 @@
       </p>
       <p>
         The four projects below each illustrate a different phase of that loop, and each centers on
-        one judgment call that wasn’t obvious from the first look at the data.
+        one judgment call that wasn't obvious from the first look at the data.
       </p>
     </div>
   </div>
@@ -457,7 +475,7 @@
         <div class="project-body-inner">
           <div class="project-prose">
             <p>
-              Free Fire’s voice toxicity problem had an obvious surface reading: detect bad actors, penalize them,
+              Free Fire's voice toxicity problem had an obvious surface reading: detect bad actors, penalize them,
               protect victims. Both sides were already debating enforcement design before anyone had quantified the actual harm.
             </p>
             <p>
@@ -470,10 +488,10 @@
             <div class="pivot-label">The Pivot</div>
             <p>
               Initial causal matching showed almost no retention difference between exposed and non-exposed victims —
-              which the team was ready to interpret as “toxicity doesn’t cause churn.” But that result was a measurement
-              artifact, not a true finding. Only the most resilient players stay long enough to file a report.
+              which the team was ready to interpret as "toxicity doesn't cause churn." But that result was
+              <mark>a measurement artifact, not a true finding</mark>. Only the most resilient players stay long enough to file a report.
               The users who quit immediately after a toxic encounter never appear in the reportable dataset at all.
-              “No effect” was a sign that the data pipeline was structurally incomplete, not that the problem was minor.
+              <mark>"No effect" was a sign that the data pipeline was structurally incomplete</mark>, not that the problem was minor.
             </p>
           </div>
 
@@ -518,9 +536,9 @@
           <div class="project-prose">
             <p>
               The growth team wanted to invest in friend-recommendation infrastructure. The underlying assumption was
-              that players with more friends stay longer. That’s true observationally, but it conflates two very
+              that players with more friends stay longer. That's true observationally, but it conflates two very
               different things: social connection causing retention, versus retained players simply being more social
-              by nature. If it’s the latter, feature investment produces no incremental value.
+              by nature. If it's the latter, feature investment produces no incremental value.
             </p>
             <p>
               I looked for natural variation in how players formed their first social connections to get closer to
@@ -534,10 +552,10 @@
             <p>
               The relationship is not linear. One or two weak ties add almost nothing to retention.
               But once a player crosses into having a stable active squad — roughly 3 or more people
-              they actually play with — the 90-day retention curve shifts meaningfully.
-              The product implication is not “maximize friend count” but “help players reach a usable
-              social cluster quickly.” That distinction reshaped what the onboarding redesign
-              should optimize for.
+              they actually play with — <mark>the 90-day retention curve shifts meaningfully</mark>.
+              The product implication is not "maximize friend count" but
+              <mark>"help players reach a usable social cluster quickly."</mark>
+              That distinction reshaped what the onboarding redesign should optimize for.
             </p>
           </div>
 
@@ -584,12 +602,12 @@
           <div class="pivot-block">
             <div class="pivot-label">The Pivot</div>
             <p>
-              For AUG: comparing the same players’ performance when they used AUG versus when they used
-              comparable baseline weapons removed the skill confound. AUG outperforming comparable AR baselines
-              by about 28% in KD was large enough to justify a targeted balance change rather than
-              dismissing the issue as sentiment noise.
+              For AUG: comparing the same players' performance when they used AUG versus when they used
+              comparable baseline weapons removed the skill confound.
+              <mark>AUG outperforming comparable AR baselines by about 28% in KD</mark> was large enough to justify
+              a targeted balance change rather than dismissing the issue as sentiment noise.
               For Wukong: the more important outcome was not the adoption uplift, but that the launch stayed
-              inside the guardrail range. Monetization success that violates fairness thresholds is not a win —
+              inside the guardrail range. <mark>Monetization success that violates fairness thresholds is not a win</mark> —
               the constraint had to be made explicit before launch, not measured after.
             </p>
           </div>
@@ -633,7 +651,7 @@
             <p>
               Vietnam showed a multi-month revenue decline while high-level activity stayed relatively stable.
               That divergence immediately pointed away from a user acquisition or engagement problem and toward
-              something structural inside the monetization system. But “monetization is broken” is not
+              something structural inside the monetization system. But "monetization is broken" is not
               an actionable diagnosis.
             </p>
             <p>
@@ -645,11 +663,11 @@
           <div class="pivot-block">
             <div class="pivot-label">The Pivot</div>
             <p>
-              The problem was not weak demand. It was content saturation in the segment that historically drove
-              most of the market’s revenue. High-value users had already owned the majority of items being
+              The problem was not weak demand. It was <mark>content saturation in the segment that historically drove
+              most of the market's revenue</mark>. High-value users had already owned the majority of items being
               re-featured in paid content runs. The addressable spending opportunity for that segment had
               effectively shrunk — not because they stopped playing, but because the content supply stopped
-              giving them new things to buy. The fix had to come from the content roadmap, not from
+              giving them new things to buy. <mark>The fix had to come from the content roadmap</mark>, not from
               discounts or rerun promotions.
             </p>
           </div>
@@ -732,25 +750,53 @@
 </div>
 
 <footer>
-  <p>Xizi Huang &nbsp;·&nbsp; Senior Data Analyst &nbsp;·&nbsp; Singapore</p>
-  <p style="margin-top:0.5rem;"><a href="mailto:xizihuang622@gmail.com">xizihuang622@gmail.com</a></p>
+  <p>Xizi (Allen) Huang &nbsp;·&nbsp; Senior Data Analyst &nbsp;·&nbsp; Singapore</p>
+  <p style="margin-top:0.5rem;">
+    <a href="mailto:xizihuang622@gmail.com">xizihuang622@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/xizi-huang" target="_blank" rel="noopener">LinkedIn</a>
+  </p>
 </footer>
 
 <script>
+  /* ── F: Count-up animation ── */
+  function countUp(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const steps = 40;
+    const increment = target / steps;
+    let current = 0;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      current = Math.min(Math.round(increment * step), target);
+      el.textContent = current + suffix;
+      if (step >= steps) clearInterval(timer);
+    }, duration / steps);
+  }
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.stat-num[data-target]').forEach(countUp);
+        heroObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  heroObserver.observe(document.querySelector('.hero'));
+
   /* ── Accordion ── */
   function toggleCard(btn) {
     const card = btn.closest('.project-card');
     const isOpen = card.classList.contains('open');
-    // close all
     document.querySelectorAll('.project-card.open').forEach(c => {
       c.classList.remove('open');
       c.querySelector('.project-toggle').setAttribute('aria-expanded', 'false');
     });
-    // open clicked if it was closed
     if (!isOpen) {
       card.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
-      // smooth scroll so card header stays visible
       setTimeout(() => {
         const top = card.getBoundingClientRect().top + window.scrollY - 76;
         window.scrollTo({ top, behavior: 'smooth' });

@@ -27,6 +27,11 @@
     --shadow-lg: 0 8px 28px rgba(44,62,80,0.10);
     --hero-grad: linear-gradient(180deg, #F7FAFD 0%, #EEF4FA 100%);
     --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    /* per-project accent colors */
+    --p01: #4A6FA5;
+    --p02: #2A9D8F;
+    --p03: #E07A30;
+    --p04: #7B5EA7;
   }
 
   body[data-theme="dark"] {
@@ -49,11 +54,14 @@
     --shadow: 0 4px 16px rgba(0,0,0,0.22);
     --shadow-lg: 0 10px 32px rgba(0,0,0,0.32);
     --hero-grad: linear-gradient(180deg, #0F1722 0%, #142231 100%);
+    --p01: #7EA6E0;
+    --p02: #4EC9BB;
+    --p03: #F0A060;
+    --p04: #A98FD0;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
   body {
     font-family: var(--font);
     color: var(--text);
@@ -63,114 +71,55 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     background: color-mix(in srgb, var(--white) 88%, transparent);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--divider);
-    z-index: 1000;
-    padding: 0 2rem;
-    height: 58px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    z-index: 1000; padding: 0 2rem; height: 58px;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   }
   .nav-left { display: flex; align-items: center; gap: 2rem; min-width: 0; }
-  nav .logo {
-    font-weight: 700; font-size: 1rem; color: var(--primary);
-    text-decoration: none; letter-spacing: -0.3px; white-space: nowrap;
-  }
+  nav .logo { font-weight: 700; font-size: 1rem; color: var(--primary); text-decoration: none; letter-spacing: -0.3px; white-space: nowrap; }
   nav .nav-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-  nav .nav-links a {
-    text-decoration: none; color: var(--text-light);
-    font-size: 0.83rem; font-weight: 500;
-  }
+  nav .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.83rem; font-weight: 500; }
   nav .nav-links a:hover { color: var(--accent); }
   .theme-toggle {
-    border: 1px solid var(--divider); background: var(--bg);
-    color: var(--text); border-radius: 999px;
-    padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 600;
+    border: 1px solid var(--divider); background: var(--bg); color: var(--text);
+    border-radius: 999px; padding: 0.45rem 0.8rem; font-size: 0.8rem; font-weight: 600;
     cursor: pointer; box-shadow: var(--shadow); white-space: nowrap;
     transition: color 0.2s, border-color 0.2s;
   }
   .theme-toggle:hover { color: var(--accent); border-color: var(--accent-light); }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    justify-content: center; background: var(--hero-grad);
-    text-align: center; padding: 8rem 2rem 6rem;
-  }
-  .hero h1 {
-    font-size: 2.9rem; font-weight: 800; color: var(--primary);
-    margin-bottom: 0.75rem; letter-spacing: -1px;
-  }
-  .hero .subtitle {
-    font-size: 1.15rem; color: var(--text-light);
-    margin-bottom: 1.5rem; font-weight: 500;
-  }
-  .hero .tagline {
-    font-size: 0.97rem; color: var(--text-muted);
-    max-width: 660px; margin: 0 auto 3rem; line-height: 1.8;
-  }
-  .hero .stats {
-    display: flex; gap: 3rem; justify-content: center;
-    margin-top: 1rem; flex-wrap: wrap;
-  }
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--hero-grad); text-align: center; padding: 8rem 2rem 6rem; }
+  .hero h1 { font-size: 2.9rem; font-weight: 800; color: var(--primary); margin-bottom: 0.75rem; letter-spacing: -1px; }
+  .hero .subtitle { font-size: 1.15rem; color: var(--text-light); margin-bottom: 1.5rem; font-weight: 500; }
+  .hero .tagline { font-size: 0.97rem; color: var(--text-muted); max-width: 660px; margin: 0 auto 3rem; line-height: 1.8; }
+  .hero .stats { display: flex; gap: 3rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
   .hero .stat-item { text-align: center; min-width: 120px; }
-  .hero .stat-num {
-    font-size: 2.2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.5px;
-  }
-  .hero .stat-label {
-    font-size: 0.78rem; color: var(--text-muted);
-    margin-top: 0.3rem; font-weight: 600;
-    letter-spacing: 0.3px; text-transform: uppercase;
-  }
-  .hero .cta {
-    margin-top: 3rem; display: flex;
-    justify-content: center; gap: 0.8rem; flex-wrap: wrap;
-  }
-  .hero .cta a {
-    display: inline-block; padding: 0.7rem 1.8rem;
-    background: var(--accent); color: #fff;
-    text-decoration: none; border-radius: 6px;
-    font-weight: 600; font-size: 0.92rem; box-shadow: var(--shadow);
-    transition: opacity 0.2s;
-  }
-  .hero .cta a.secondary {
-    background: transparent; color: var(--accent);
-    border: 1px solid var(--accent-light);
-  }
+  .hero .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
+  .hero .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
+  .hero .cta { margin-top: 3rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+  .hero .cta a { display: inline-block; padding: 0.7rem 1.8rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.92rem; box-shadow: var(--shadow); transition: opacity 0.2s; }
+  .hero .cta a.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent-light); }
   .hero .cta a:hover { opacity: 0.85; }
 
-  /* ── SHARED SECTION WRAPPER ── */
-  .page-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 6rem 2rem;
-  }
+  /* SECTIONS */
+  .page-section { max-width: 800px; margin: 0 auto; padding: 6rem 2rem; }
   .section-full-bg { background: var(--bg); }
-
   .section-header { margin-bottom: 2.5rem; }
-  .section-header .num {
-    font-size: 0.74rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 0.75rem;
-  }
-  .section-header h2 {
-    font-size: 1.75rem; font-weight: 800; color: var(--primary);
-    margin-bottom: 0.5rem; letter-spacing: -0.5px;
-  }
+  .section-header .num { font-size: 0.74rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 0.75rem; }
+  .section-header h2 { font-size: 1.75rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; letter-spacing: -0.5px; }
   .section-header p { color: var(--text-muted); font-size: 0.95rem; }
 
-  /* ── APPROACH PROSE ── */
+  /* APPROACH */
   .approach-prose { font-size: 1.02rem; color: var(--text); line-height: 1.9; }
   .approach-prose p + p { margin-top: 1.1rem; }
 
-  /* ── PROJECT ACCORDION ── */
+  /* PROJECT ACCORDION */
   #projects { scroll-margin-top: 70px; }
   .project-list { display: flex; flex-direction: column; gap: 1rem; }
 
@@ -181,38 +130,53 @@
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: box-shadow 0.2s ease;
+    /* ② colored left border per project */
+    border-left-width: 4px;
+    border-left-style: solid;
   }
+  #project1 { border-left-color: var(--p01); }
+  #project2 { border-left-color: var(--p02); }
+  #project3 { border-left-color: var(--p03); }
+  #project4 { border-left-color: var(--p04); }
+
   .project-card:hover { box-shadow: var(--shadow-lg); }
-  .project-card.open { box-shadow: var(--shadow-lg); }
+  .project-card.open  { box-shadow: var(--shadow-lg); }
+
+  /* ③ in-card progress bar */
+  .card-progress {
+    height: 3px;
+    width: 0%;
+    border-radius: 0;
+    transition: width 0.1s linear;
+    display: none;
+  }
+  #project1 .card-progress { background: var(--p01); }
+  #project2 .card-progress { background: var(--p02); }
+  #project3 .card-progress { background: var(--p03); }
+  #project4 .card-progress { background: var(--p04); }
+  .project-card.open .card-progress { display: block; }
 
   .project-toggle {
-    width: 100%; background: none; border: none;
-    cursor: pointer; text-align: left;
+    width: 100%; background: none; border: none; cursor: pointer; text-align: left;
     padding: 1.4rem 1.6rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    color: var(--primary);
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 1rem; color: var(--primary);
   }
   .project-toggle:hover .toggle-title { color: var(--accent); }
-
   .toggle-left { display: flex; flex-direction: column; gap: 0.3rem; }
-  .toggle-num {
-    font-size: 0.7rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 2px;
-  }
-  .toggle-title {
-    font-size: 1.1rem; font-weight: 700; color: var(--primary);
-    transition: color 0.15s;
-  }
-  .toggle-sub {
-    font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;
-  }
+  .toggle-num { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
+  .toggle-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); transition: color 0.15s; }
+  .toggle-sub { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
 
-  .toggle-pills {
-    display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.5rem;
+  /* ④ read-time + pills row */
+  .toggle-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .read-time {
+    font-size: 0.72rem; font-weight: 600; color: var(--text-muted);
+    padding: 0.18rem 0.5rem; border-radius: 999px;
+    border: 1px solid var(--divider); background: var(--bg);
+    letter-spacing: 0.2px;
   }
+  .toggle-pills { display: flex; gap: 0.45rem; flex-wrap: wrap; }
   .toggle-pill {
     font-size: 0.76rem; font-weight: 600; padding: 0.2rem 0.55rem;
     border-radius: 999px; border: 1px solid var(--divider);
@@ -227,47 +191,40 @@
   .toggle-chevron {
     width: 28px; height: 28px; border-radius: 50%;
     background: var(--bg); border: 1px solid var(--divider);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     transition: transform 0.25s ease, background 0.2s;
     color: var(--text-muted); font-size: 0.75rem;
   }
   .project-card.open .toggle-chevron {
-    transform: rotate(180deg);
-    background: var(--blue-light); color: var(--accent);
+    transform: rotate(180deg); background: var(--blue-light); color: var(--accent);
     border-color: color-mix(in srgb, var(--accent) 25%, var(--divider));
   }
 
   .project-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
-  .project-card.open .project-body { max-height: 2400px; }
-
+  .project-card.open .project-body { max-height: 2600px; }
   .project-body-inner { padding: 0 1.6rem 1.8rem; border-top: 1px solid var(--divider); }
 
-  .project-prose { font-size: 0.95rem; color: var(--text); line-height: 1.85; padding-top: 1.4rem; }
-  .project-prose p + p { margin-top: 0.9rem; }
+  /* PROSE — readability improvements */
+  .project-prose { font-size: 0.95rem; color: var(--text); line-height: 1.9; padding-top: 1.4rem; }
+  .project-prose p + p { margin-top: 1rem; }
+  /* lead sentence of each paragraph */
+  .project-prose .lead { font-weight: 600; color: var(--primary); }
+  /* keyword highlight in prose (subtle, not as strong as pivot mark) */
+  .project-prose .kw { font-weight: 600; color: var(--primary); }
 
+  /* PIVOT */
   .pivot-block {
     margin: 1.6rem 0; padding: 1.3rem 1.5rem;
     background: var(--blue-bg); border-radius: 10px;
     border-left: 4px solid var(--accent); box-shadow: var(--shadow);
   }
-  .pivot-label {
-    font-size: 0.72rem; font-weight: 700; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 0.55rem;
-  }
+  .pivot-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 0.55rem; }
   .pivot-block p { font-size: 0.97rem; color: var(--primary); line-height: 1.8; font-weight: 500; }
-  .pivot-block mark {
-    background: color-mix(in srgb, var(--accent) 14%, transparent);
-    color: inherit; border-radius: 3px; padding: 0 2px; font-weight: 700;
-  }
-  body[data-theme="dark"] .pivot-block mark {
-    background: color-mix(in srgb, var(--accent) 22%, transparent);
-  }
+  .pivot-block mark { background: color-mix(in srgb, var(--accent) 14%, transparent); color: inherit; border-radius: 3px; padding: 0 2px; font-weight: 700; }
+  body[data-theme="dark"] .pivot-block mark { background: color-mix(in srgb, var(--accent) 22%, transparent); }
 
-  .metrics-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.75rem; margin: 1.4rem 0 0;
-  }
+  /* METRICS */
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1.4rem 0 0; }
   .metric { background: var(--bg); border-radius: 10px; padding: 0.85rem 1rem; border: 1px solid var(--divider); }
   .metric.positive { background: var(--green-light); border-color: color-mix(in srgb, var(--green) 30%, var(--divider)); }
   .metric.negative { background: var(--red-light); border-color: color-mix(in srgb, var(--red) 25%, var(--divider)); }
@@ -277,33 +234,14 @@
   .metric.positive .value { color: var(--green); }
   .metric.negative .value { color: var(--red); }
 
-  /* ── SKILLS — 2×2 grid ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem; margin-top: 2rem;
-  }
-  .skill-category {
-    background: var(--white); border-radius: 10px;
-    padding: 1.2rem 1.4rem; border: 1px solid var(--divider);
-    box-shadow: var(--shadow);
-  }
-  .skill-category h4 {
-    color: var(--accent); font-size: 0.82rem; margin-bottom: 0.8rem;
-    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-  }
+  /* SKILLS 2x2 */
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+  .skill-category { background: var(--white); border-radius: 10px; padding: 1.2rem 1.4rem; border: 1px solid var(--divider); box-shadow: var(--shadow); }
+  .skill-category h4 { color: var(--accent); font-size: 0.82rem; margin-bottom: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .skill-tag {
-    background: var(--bg); color: var(--text-light);
-    padding: 0.28rem 0.65rem; border-radius: 999px;
-    font-size: 0.79rem; border: 1px solid var(--divider);
-  }
+  .skill-tag { background: var(--bg); color: var(--text-light); padding: 0.28rem 0.65rem; border-radius: 999px; font-size: 0.79rem; border: 1px solid var(--divider); }
 
-  footer {
-    text-align: center; padding: 3rem 2rem 3.5rem;
-    color: var(--text-muted); font-size: 0.82rem;
-    border-top: 1px solid var(--divider);
-  }
+  footer { text-align: center; padding: 3rem 2rem 3.5rem; color: var(--text-muted); font-size: 0.82rem; border-top: 1px solid var(--divider); }
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
@@ -343,7 +281,6 @@
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div>
     <h1>Data Analysis Portfolio</h1>
@@ -374,7 +311,6 @@
   </div>
 </section>
 
-<!-- APPROACH -->
 <div class="section-full-bg" id="approach">
   <div class="page-section">
     <div class="section-header fade-in">
@@ -382,31 +318,15 @@
       <h2>How I Think About Analysis</h2>
     </div>
     <div class="approach-prose fade-in">
-      <p>
-        I approach product analytics problems with a consistent internal logic: start from anomaly detection,
-        progressively localize the signal across dimensions that actually matter for the business,
-        then invest in diagnosis before jumping to action.
-      </p>
-      <p>
-        The part I care most about is the step between “we see a signal” and “we know what it means.”
-        Most incorrect product decisions I’ve seen came not from bad data, but from stopping analysis too early —
-        before someone asked whether the data was measuring what it claimed to measure.
-      </p>
-      <p>
-        Most importantly, I try to turn every non-trivial finding into something the team can reuse —
-        a decision rule, a monitoring threshold, or a documented approach —
-        so the next time a similar signal appears, the team already knows where to look.
-      </p>
-      <p>
-        The four projects below each illustrate a different phase of that loop, and each centers on
-        one judgment call that wasn’t obvious from the first look at the data.
-      </p>
+      <p>I approach product analytics problems with a consistent internal logic: start from anomaly detection, progressively localize the signal across dimensions that actually matter for the business, then invest in diagnosis before jumping to action.</p>
+      <p>The part I care most about is the step between “we see a signal” and “we know what it means.” Most incorrect product decisions I’ve seen came not from bad data, but from stopping analysis too early — before someone asked whether the data was measuring what it claimed to measure.</p>
+      <p>Most importantly, I try to turn every non-trivial finding into something the team can reuse — a decision rule, a monitoring threshold, or a documented approach — so the next time a similar signal appears, the team already knows where to look.</p>
+      <p>The four projects below each illustrate a different phase of that loop, and each centers on one judgment call that wasn’t obvious from the first look at the data.</p>
     </div>
   </div>
 </div>
 
-<!-- PROJECTS -->
-<div class="page-section" id="projects" style="padding-top:5rem; padding-bottom:5rem;">
+<div class="page-section" id="projects" style="padding-top:5rem;padding-bottom:5rem;">
   <div class="section-header fade-in">
     <div class="num">Projects</div>
     <h2>Four Case Studies</h2>
@@ -417,15 +337,19 @@
 
     <!-- P01 -->
     <div class="project-card" id="project1">
+      <div class="card-progress" id="prog1"></div>
       <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
         <div class="toggle-left">
           <span class="toggle-num">Project 01</span>
           <span class="toggle-title">Trust &amp; Safety Governance System</span>
           <span class="toggle-sub">Voice toxicity enforcement strategy &nbsp;·&nbsp; ~100M DAU</span>
-          <div class="toggle-pills">
-            <span class="toggle-pill hi">99%+ Accuracy</span>
-            <span class="toggle-pill pos">D7 Retention +1–2%</span>
-            <span class="toggle-pill pos">Recidivism −0.5 pp</span>
+          <div class="toggle-meta">
+            <span class="read-time">⏱ 2 min read</span>
+            <div class="toggle-pills">
+              <span class="toggle-pill hi">99%+ Accuracy</span>
+              <span class="toggle-pill pos">D7 Retention +1–2%</span>
+              <span class="toggle-pill pos">Recidivism −0.5 pp</span>
+            </div>
           </div>
         </div>
         <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
@@ -433,36 +357,16 @@
       <div class="project-body">
         <div class="project-body-inner">
           <div class="project-prose">
-            <p>
-              Free Fire’s voice toxicity problem had an obvious surface reading: detect bad actors, penalize them,
-              protect victims. Both sides were already debating enforcement design before anyone had quantified the actual harm.
-            </p>
-            <p>
-              The real question I pushed on was earlier: what damage is toxicity actually causing to the victim side,
-              and can we measure it correctly? If we could not answer that, enforcement strategy would be intuition-driven.
-            </p>
+            <p><span class="lead">Free Fire’s voice toxicity problem had an obvious surface reading:</span> detect bad actors, penalize them, protect victims. Both sides were already debating enforcement design before anyone had quantified the actual harm.</p>
+            <p><span class="lead">The real question I pushed on was earlier:</span> what damage is toxicity actually causing to the victim side, and can we <span class="kw">measure it correctly</span>? If we could not answer that, enforcement strategy would be intuition-driven.</p>
           </div>
           <div class="pivot-block">
             <div class="pivot-label">The Pivot</div>
-            <p>
-              Initial causal matching showed almost no retention difference between exposed and non-exposed victims —
-              which the team was ready to interpret as “toxicity doesn’t cause churn.” But that result was
-              <mark>a measurement artifact, not a true finding</mark>. Only the most resilient players stay long enough to file a report.
-              The users who quit immediately after a toxic encounter never appear in the reportable dataset at all.
-              <mark>“No effect” was a sign that the data pipeline was structurally incomplete</mark>, not that the problem was minor.
-            </p>
+            <p>Initial causal matching showed almost no retention difference between exposed and non-exposed victims — which the team was ready to interpret as “toxicity doesn’t cause churn.” But that result was <mark>a measurement artifact, not a true finding</mark>. Only the most resilient players stay long enough to file a report. The users who quit immediately after a toxic encounter never appear in the reportable dataset at all. <mark>“No effect” was a sign that the data pipeline was structurally incomplete</mark>, not that the problem was minor.</p>
           </div>
           <div class="project-prose">
-            <p>
-              Reframing the problem this way made proactive intervention analytically justified.
-              We designed a graded penalty model: high-confidence detections triggered automatic action —
-              reaching users who would not otherwise appear in any report; lower-confidence cases still
-              required user reporting to avoid false positives from dialect or in-game banter.
-            </p>
-            <p>
-              The more durable output was not the model — it was establishing that passive reporting systematically
-              undercounts harm among new users, and building that corrective logic into the governance design from the start.
-            </p>
+            <p><span class="lead">Reframing the problem made proactive intervention analytically justified.</span> We designed a <span class="kw">graded penalty model</span>: high-confidence detections triggered automatic action — reaching users who would not otherwise appear in any report; lower-confidence cases still required user reporting to avoid false positives from dialect or in-game banter.</p>
+            <p><span class="lead">The more durable output was not the model.</span> It was establishing that <span class="kw">passive reporting systematically undercounts harm</span> among new users, and building that corrective logic into the governance design from the start.</p>
           </div>
           <div class="metrics-grid">
             <div class="metric highlight"><div class="label">Penalty Accuracy</div><div class="value">99%+</div></div>
@@ -473,17 +377,21 @@
       </div>
     </div>
 
-    <!-- P02 — Network Performance & A/B Testing -->
+    <!-- P02 -->
     <div class="project-card" id="project2">
+      <div class="card-progress" id="prog2"></div>
       <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
         <div class="toggle-left">
           <span class="toggle-num">Project 02</span>
           <span class="toggle-title">Network Performance Optimization</span>
           <span class="toggle-sub">Contradictory signals after server consolidation &nbsp;·&nbsp; Routing diagnosis &amp; A/B testing</span>
-          <div class="toggle-pills">
-            <span class="toggle-pill neg">80%+ Users Mis-routed</span>
-            <span class="toggle-pill pos">Cross-region Matches 90%→5%</span>
-            <span class="toggle-pill pos">Packet Loss −30%+</span>
+          <div class="toggle-meta">
+            <span class="read-time">⏱ 2 min read</span>
+            <div class="toggle-pills">
+              <span class="toggle-pill neg">80%+ Users Mis-routed</span>
+              <span class="toggle-pill pos">Cross-region 90%→5%</span>
+              <span class="toggle-pill pos">Packet Loss −30%+</span>
+            </div>
           </div>
         </div>
         <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
@@ -491,42 +399,17 @@
       <div class="project-body">
         <div class="project-body-inner">
           <div class="project-prose">
-            <p>
-              After a server consolidation, back-end monitoring showed matchmaking speed had improved —
-              on the surface, a successful optimization. But at the same time, community reports of
-              lag and in-game latency increased noticeably. Two signals pointing in opposite directions.
-            </p>
-            <p>
-              My read was that we had only optimized the entry speed, not the actual match experience.
-              The dashboard looked good because it was measuring the wrong thing.
-            </p>
+            <p><span class="lead">After a server consolidation, back-end monitoring showed matchmaking speed had improved</span> — on the surface, a successful optimization. But at the same time, community reports of lag and in-game latency increased noticeably. <span class="kw">Two signals pointing in opposite directions.</span></p>
+            <p><span class="lead">My read was that we had only optimized the entry speed, not the actual match experience.</span> The dashboard looked good because it was <span class="kw">measuring the wrong thing</span>.</p>
           </div>
           <div class="pivot-block">
             <div class="pivot-label">The Pivot</div>
-            <p>
-              I ran an end-to-end diagnostic starting from the routing logs.
-              <mark>Over 80% of affected users were being routed to distant data centers before the fallback threshold was reached</mark> —
-              the root cause was an IDC threshold set too conservatively, triggering the fallback logic too early.
-              After working with engineering to correct the routing logic,
-              <mark>abnormal cross-region matches dropped from 90% to under 5%</mark> and overall latency recovered.
-            </p>
+            <p>I ran an end-to-end diagnostic starting from the routing logs. <mark>Over 80% of affected users were being routed to distant data centers before the fallback threshold was reached</mark> — the root cause was an <span style="font-weight:700">IDC threshold set too conservatively</span>, triggering the fallback logic too early. After working with engineering to correct the routing logic, <mark>abnormal cross-region matches dropped from 90% to under 5%</mark> and overall latency recovered.</p>
           </div>
           <div class="project-prose">
-            <p>
-              But after fixing the routing issue, I kept looking. A long-tail segment of users still had
-              poor experience even when connected to local servers. Further analysis identified the new
-              bottleneck: severe packet loss under weak network conditions.
-            </p>
-            <p>
-              For this segment, we designed a dual-channel network solution and validated it through A/B testing
-              to measure both the benefit and the side effects. The experiment showed serious packet loss
-              dropping 30%+, while user rejection and dismissal of the feature prompt stayed within
-              acceptable bounds — confirming the rollout was safe to scale.
-            </p>
-            <p>
-              The key takeaway from this project: analysts cannot rely on top-level dashboard metrics alone.
-              When two metrics move in opposite directions, that contradiction is itself a signal worth investigating.
-            </p>
+            <p><span class="lead">But after fixing the routing issue, I kept looking.</span> A long-tail segment of users still had poor experience even when connected to local servers. Further analysis identified the new bottleneck: <span class="kw">severe packet loss under weak network conditions</span>.</p>
+            <p><span class="lead">For this segment, we designed a dual-channel network solution</span> and validated it through <span class="kw">A/B testing</span> to measure both the benefit and the side effects. The experiment showed serious packet loss dropping 30%+, while user rejection and dismissal of the feature prompt stayed within acceptable bounds — confirming the rollout was safe to scale.</p>
+            <p><span class="lead">Key takeaway:</span> analysts cannot rely on top-level dashboard metrics alone. When two metrics move in opposite directions, <span class="kw">that contradiction is itself a signal</span> worth investigating.</p>
           </div>
           <div class="metrics-grid">
             <div class="metric negative"><div class="label">Users Mis-routed (pre-fix)</div><div class="value">80%+</div></div>
@@ -539,15 +422,19 @@
 
     <!-- P03 -->
     <div class="project-card" id="project3">
+      <div class="card-progress" id="prog3"></div>
       <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
         <div class="toggle-left">
           <span class="toggle-num">Project 03</span>
           <span class="toggle-title">Combat Balance &amp; Monetization Guardrails</span>
-          <span class="toggle-sub">Two separate but related cases: AUG balance controversy &amp; Wukong Skill Skin launch</span>
-          <div class="toggle-pills">
-            <span class="toggle-pill neg">AUG KD Gap 28%</span>
-            <span class="toggle-pill pos">Pick Rate +4.8%</span>
-            <span class="toggle-pill hi">29% New Buyers</span>
+          <span class="toggle-sub">AUG balance controversy &amp; Wukong Skill Skin launch</span>
+          <div class="toggle-meta">
+            <span class="read-time">⏱ 2 min read</span>
+            <div class="toggle-pills">
+              <span class="toggle-pill neg">AUG KD Gap 28%</span>
+              <span class="toggle-pill pos">Pick Rate +4.8%</span>
+              <span class="toggle-pill hi">29% New Buyers</span>
+            </div>
           </div>
         </div>
         <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
@@ -555,38 +442,15 @@
       <div class="project-body">
         <div class="project-body-inner">
           <div class="project-prose">
-            <p>
-              Competitive FPS players are vocal about balance. When they complain that a weapon or character
-              is broken, it could mean many things: the item is genuinely overpowered, or stronger players
-              are simply gravitating toward it, making it look overpowered in aggregate data. These two
-              scenarios require completely different responses.
-            </p>
-            <p>
-              I worked on two separate but related cases. For the AUG controversy, the question was whether the weapon
-              truly created an unfair combat advantage or whether the raw KD data was just reflecting
-              player-skill selection bias. For the Wukong Skill Skin launch, the question was how to
-              set pre-launch guardrails that would let monetization grow without drifting into pay-to-win territory.
-            </p>
+            <p><span class="lead">Competitive FPS players are vocal about balance.</span> When they complain that a weapon is broken, it could mean two very different things: the item is genuinely overpowered, or stronger players are simply gravitating toward it, making it <span class="kw">look overpowered in aggregate data</span>. These two scenarios require completely different responses.</p>
+            <p><span class="lead">I worked on two separate but related cases.</span> For the <span class="kw">AUG controversy</span>, the question was whether the weapon truly created an unfair combat advantage or whether the raw KD data was just reflecting player-skill selection bias. For the <span class="kw">Wukong Skill Skin launch</span>, the question was how to set pre-launch guardrails that would let monetization grow without drifting into pay-to-win territory.</p>
           </div>
           <div class="pivot-block">
             <div class="pivot-label">The Pivot</div>
-            <p>
-              For AUG: comparing the same players’ performance when they used AUG versus when they used
-              comparable baseline weapons removed the skill confound.
-              <mark>AUG outperforming comparable AR baselines by about 28% in KD</mark> was large enough to justify
-              a targeted balance change rather than dismissing the issue as sentiment noise.
-              For Wukong: the more important outcome was not the adoption uplift, but that the launch stayed
-              inside the guardrail range. <mark>Monetization success that violates fairness thresholds is not a win</mark> —
-              the constraint had to be made explicit before launch, not measured after.
-            </p>
+            <p>For AUG: comparing the same players’ performance when they used AUG versus comparable baseline weapons removed the skill confound. <mark>AUG outperforming comparable AR baselines by about 28% in KD</mark> was large enough to justify a targeted balance change rather than dismissing the issue as sentiment noise. For Wukong: the more important outcome was not the adoption uplift, but that the launch stayed inside the guardrail range. <mark>Monetization success that violates fairness thresholds is not a win</mark> — the constraint had to be made explicit before launch, not measured after.</p>
           </div>
           <div class="project-prose">
-            <p>
-              These two cases established a reusable pre-launch evaluation template: quantify the gameplay
-              impact using controlled comparison, set acceptable outcome ranges before release, and treat
-              fairness guardrails as constraints rather than post-hoc checks. That made analytics part of
-              the launch criteria, not a post-launch debrief.
-            </p>
+            <p><span class="lead">These two cases established a reusable pre-launch evaluation template:</span> quantify the gameplay impact using <span class="kw">controlled comparison</span>, set acceptable outcome ranges before release, and treat <span class="kw">fairness guardrails as constraints</span> rather than post-hoc checks. That made analytics part of the launch criteria, not a post-launch debrief.</p>
           </div>
           <div class="metrics-grid">
             <div class="metric negative"><div class="label">AUG KD Gap (same-player)</div><div class="value">28%</div></div>
@@ -599,15 +463,19 @@
 
     <!-- P04 -->
     <div class="project-card" id="project4">
+      <div class="card-progress" id="prog4"></div>
       <button class="project-toggle" onclick="toggleCard(this)" aria-expanded="false">
         <div class="toggle-left">
           <span class="toggle-num">Project 04</span>
           <span class="toggle-title">Revenue Decline Diagnosis — Vietnam</span>
           <span class="toggle-sub">Revenue falling despite stable activity &nbsp;·&nbsp; Root cause: content saturation</span>
-          <div class="toggle-pills">
-            <span class="toggle-pill hi">Activity Stable</span>
-            <span class="toggle-pill neg">Content Saturation</span>
-            <span class="toggle-pill pos">New Content →50%</span>
+          <div class="toggle-meta">
+            <span class="read-time">⏱ 2 min read</span>
+            <div class="toggle-pills">
+              <span class="toggle-pill hi">Activity Stable</span>
+              <span class="toggle-pill neg">Content Saturation</span>
+              <span class="toggle-pill pos">New Content →50%</span>
+            </div>
           </div>
         </div>
         <span class="toggle-chevron" aria-hidden="true">&#8964;</span>
@@ -615,36 +483,15 @@
       <div class="project-body">
         <div class="project-body-inner">
           <div class="project-prose">
-            <p>
-              Vietnam showed a multi-month revenue decline while high-level activity stayed relatively stable.
-              That divergence immediately pointed away from a user acquisition or engagement problem and toward
-              something structural inside the monetization system. But “monetization is broken” is not
-              an actionable diagnosis.
-            </p>
-            <p>
-              The first useful step was decomposing revenue into its components — not treating it as a single
-              number that went down — and then segmenting by payer tier to find where the decline was concentrated.
-            </p>
+            <p><span class="lead">Vietnam showed a multi-month revenue decline while high-level activity stayed relatively stable.</span> That divergence immediately pointed away from a user acquisition or engagement problem and toward something structural inside the <span class="kw">monetization system</span>. But “monetization is broken” is not an actionable diagnosis.</p>
+            <p><span class="lead">The first useful step was decomposing revenue into its components</span> — not treating it as a single number that went down — and then <span class="kw">segmenting by payer tier</span> to find where the decline was concentrated.</p>
           </div>
           <div class="pivot-block">
             <div class="pivot-label">The Pivot</div>
-            <p>
-              The problem was not weak demand. It was <mark>content saturation in the segment that historically drove
-              most of the market’s revenue</mark>. High-value users had already owned the majority of items being
-              re-featured in paid content runs. The addressable spending opportunity for that segment had
-              effectively shrunk — not because they stopped playing, but because the content supply stopped
-              giving them new things to buy. <mark>The fix had to come from the content roadmap</mark>, not from
-              discounts or rerun promotions.
-            </p>
+            <p>The problem was not weak demand. It was <mark>content saturation in the segment that historically drove most of the market’s revenue</mark>. High-value users had already owned the majority of items being re-featured in paid content runs. The addressable spending opportunity had effectively shrunk — not because they stopped playing, but because the content supply stopped giving them new things to buy. <mark>The fix had to come from the content roadmap</mark>, not from discounts or rerun promotions.</p>
           </div>
           <div class="project-prose">
-            <p>
-              After the content pacing was reset and new SKU planning improved, new-content ownership
-              among high-value users recovered and new-content revenue contribution recovered to account
-              for roughly half of total revenue in the market.
-              The ownership-rate metric — tracking how saturated the paying segment was on featured items —
-              became a reusable leading indicator built into ongoing market monitoring after this project.
-            </p>
+            <p><span class="lead">After the content pacing was reset and new SKU planning improved,</span> new-content revenue contribution recovered to account for roughly half of total revenue in the market. The <span class="kw">ownership-rate metric</span> — tracking how saturated the paying segment was on featured items — became a reusable <span class="kw">leading indicator</span> built into ongoing market monitoring after this project.</p>
           </div>
           <div class="metrics-grid">
             <div class="metric highlight"><div class="label">Activity Trend</div><div class="value">Stable</div></div>
@@ -658,7 +505,6 @@
   </div>
 </div>
 
-<!-- SKILLS -->
 <div class="section-full-bg" id="skills">
   <div class="page-section">
     <div class="section-header fade-in">
@@ -670,43 +516,32 @@
       <div class="skill-category">
         <h4>Analysis Methods</h4>
         <div class="skill-tags">
-          <span class="skill-tag">Causal Inference</span>
-          <span class="skill-tag">PSM</span>
-          <span class="skill-tag">A/B Testing</span>
-          <span class="skill-tag">Same-User Comparison</span>
-          <span class="skill-tag">Cohort Analysis</span>
-          <span class="skill-tag">Funnel Decomposition</span>
+          <span class="skill-tag">Causal Inference</span><span class="skill-tag">PSM</span>
+          <span class="skill-tag">A/B Testing</span><span class="skill-tag">Same-User Comparison</span>
+          <span class="skill-tag">Cohort Analysis</span><span class="skill-tag">Funnel Decomposition</span>
         </div>
       </div>
       <div class="skill-category">
         <h4>Data Stack</h4>
         <div class="skill-tags">
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Hive</span>
-          <span class="skill-tag">Spark</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Tableau</span>
-          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">SQL</span><span class="skill-tag">Hive</span>
+          <span class="skill-tag">Spark</span><span class="skill-tag">Python</span>
+          <span class="skill-tag">Tableau</span><span class="skill-tag">Excel</span>
         </div>
       </div>
       <div class="skill-category">
         <h4>Product Domains</h4>
         <div class="skill-tags">
-          <span class="skill-tag">Trust &amp; Safety</span>
-          <span class="skill-tag">Player Experience</span>
-          <span class="skill-tag">Network Performance</span>
-          <span class="skill-tag">Combat Balance</span>
-          <span class="skill-tag">Monetization</span>
-          <span class="skill-tag">Revenue Strategy</span>
+          <span class="skill-tag">Trust &amp; Safety</span><span class="skill-tag">Player Experience</span>
+          <span class="skill-tag">Network Performance</span><span class="skill-tag">Combat Balance</span>
+          <span class="skill-tag">Monetization</span><span class="skill-tag">Revenue Strategy</span>
         </div>
       </div>
       <div class="skill-category">
         <h4>Cross-functional</h4>
         <div class="skill-tags">
-          <span class="skill-tag">Product Strategy</span>
-          <span class="skill-tag">Engineering Partnership</span>
-          <span class="skill-tag">Operations Enablement</span>
-          <span class="skill-tag">15 Markets</span>
+          <span class="skill-tag">Product Strategy</span><span class="skill-tag">Engineering Partnership</span>
+          <span class="skill-tag">Operations Enablement</span><span class="skill-tag">15 Markets</span>
           <span class="skill-tag">Monitoring &amp; SOPs</span>
         </div>
       </div>
@@ -724,29 +559,22 @@
 </footer>
 
 <script>
-  /* ── Count-up ── */
+  /* Count-up */
   function countUp(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const suffix = el.dataset.suffix || '';
-    const steps = 40; const duration = 900;
+    const target = parseInt(el.dataset.target, 10), suffix = el.dataset.suffix || '', steps = 40, dur = 900;
     let step = 0;
-    const timer = setInterval(() => {
+    const t = setInterval(() => {
       step++;
       el.textContent = Math.min(Math.round(target / steps * step), target) + suffix;
-      if (step >= steps) clearInterval(timer);
-    }, duration / steps);
+      if (step >= steps) clearInterval(t);
+    }, dur / steps);
   }
-  const heroObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        document.querySelectorAll('.stat-num[data-target]').forEach(countUp);
-        heroObs.disconnect();
-      }
-    });
+  const heroObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { document.querySelectorAll('.stat-num[data-target]').forEach(countUp); heroObs.disconnect(); } });
   }, { threshold: 0.3 });
   heroObs.observe(document.querySelector('.hero'));
 
-  /* ── Accordion ── */
+  /* Accordion */
   function toggleCard(btn) {
     const card = btn.closest('.project-card');
     const isOpen = card.classList.contains('open');
@@ -762,32 +590,44 @@
         window.scrollTo({ top, behavior: 'smooth' });
       }, 50);
     }
+    updateProgress();
   }
 
-  /* ── Fade-in ── */
-  const observer = new IntersectionObserver((entries) => {
+  /* ③ Progress bar */
+  function updateProgress() {
+    const openCard = document.querySelector('.project-card.open');
+    if (!openCard) return;
+    const bar = openCard.querySelector('.card-progress');
+    const body = openCard.querySelector('.project-body-inner');
+    if (!bar || !body) return;
+    const rect = body.getBoundingClientRect();
+    const bodyTop = rect.top + window.scrollY;
+    const bodyH = body.scrollHeight;
+    const viewH = window.innerHeight;
+    const scrolled = window.scrollY + viewH - bodyTop;
+    const pct = Math.min(Math.max(scrolled / (bodyH + viewH) * 100, 0), 100);
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  /* Fade-in */
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-  /* ── Nav highlight ── */
+  /* Nav highlight */
   const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
-    navLinks.forEach(a => {
-      a.style.color = '';
-      if (a.getAttribute('href') === '#' + current) a.style.color = 'var(--accent)';
-    });
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => { a.style.color = ''; if (a.getAttribute('href') === '#' + cur) a.style.color = 'var(--accent)'; });
   });
 
-  /* ── Dark mode ── */
+  /* Dark mode */
   const themeToggle = document.getElementById('themeToggle');
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.setAttribute('data-theme', 'dark');
-    themeToggle.textContent = '☀️ Light';
-  }
+  if (localStorage.getItem('theme') === 'dark') { document.body.setAttribute('data-theme', 'dark'); themeToggle.textContent = '☀️ Light'; }
   themeToggle.addEventListener('click', () => {
     const isDark = document.body.getAttribute('data-theme') === 'dark';
     document.body[isDark ? 'removeAttribute' : 'setAttribute']('data-theme', 'dark');

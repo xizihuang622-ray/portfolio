@@ -479,7 +479,8 @@
             <span class="prose-label">What Changed</span>
             <div class="prose-body">
               <p>After the routing fix, a <span class="kw">long-tail segment</span> still experienced poor performance even on local servers. Further breakdown identified the new bottleneck: <span class="kw">severe packet loss under weak-network conditions</span>.</p>
-              <p>We designed a <span class="kw">dual-channel network solution</span> and ran an <span class="kw">A/B test</span> to measure benefit and side effects. Serious packet loss dropped 30%+; user rejection of the feature prompt stayed within acceptable bounds — confirming safe rollout. The routing diagnostic didn't stay a one-off: cross-region match rate was added as a standing signal in monitoring, so the same degradation would surface earlier in any future consolidation.</p>
+              <p>We designed a <span class="kw">dual-channel network solution</span> and ran an <span class="kw">A/B test</span> to measure benefit and side effects. Serious packet loss dropped 30%+; user rejection of the feature prompt stayed within acceptable bounds — confirming safe rollout.</p>
+              <p>The routing diagnostic didn't stay a one-off: cross-region match rate was added as a standing signal in monitoring, so the same degradation would surface earlier in any future consolidation.<p>
             </div>
           </div>
 

@@ -360,7 +360,7 @@
       <h2>How I Think About Analysis</h2>
     </div>
     <div class="fade-in">
-      <p class="approach-lead">Each project follows the same internal logic: locate the real signal, question whether the measurement is trustworthy, then turn the finding into something the team can reuse.</p>
+      <p class="approach-lead">Each project follows the same internal logic: locate the real signal, question whether the measurement is trustworthy, then turn the finding into something the team can act on and reuse.</p>
       <div class="principles">
         <div class="principle-card">
           <span class="principle-num">01</span>
@@ -375,7 +375,7 @@
         <div class="principle-card">
           <span class="principle-num">03</span>
           <div class="principle-title">Build Something Reusable</div>
-          <p class="principle-desc">Every non-trivial finding becomes a decision rule, a monitoring threshold, or a documented framework — so the team knows where to look next time. That sometimes means stepping back to reframe the question before any analysis starts.</p>
+          <p class="principle-desc">Every non-trivial finding becomes a decision rule, a monitoring threshold, or a documented framework — so the team knows where to look next time.</p>
         </div>
       </div>
     </div>
@@ -413,23 +413,24 @@
           <div class="prose-section">
             <span class="prose-label">Context</span>
             <div class="prose-body">
-              <p>Free Fire’s voice toxicity problem had an obvious surface reading: detect bad actors, penalize them, protect victims. Both sides were already debating enforcement design before anyone had quantified the actual harm.</p>
-              <p>The real question was earlier: what damage is toxicity actually causing, and can we measure it correctly? If the <span class="kw">victim-side pipeline</span> was structurally incomplete, any causal estimate would be biased before analysis even started.</p>
+              <p>Operations wanted aggressive bans to clean up voice toxicity. Product pushed back — many flagged players were high-activity, high-value users. The two teams were stuck debating enforcement intensity before anyone had quantified the actual harm.</p>
+              <p>I stepped in to reframe the question: before deciding how hard to penalize, we needed to know whether our <span class="kw">victim-side measurement</span> was even capturing the right population. If the data pipeline was structurally incomplete, any causal estimate would be wrong from the start.</p>
             </div>
           </div>
 
           <div class="prose-section is-pivot">
             <span class="prose-label">The Pivot</span>
             <div class="prose-body">
-              <p>Initial <span class="kw">causal matching</span> showed almost no retention difference between exposed and non-exposed victims — which the team was ready to interpret as “toxicity doesn’t cause churn.” But that result was <mark>a measurement artifact, not a true finding</mark>. Only the most resilient players stay long enough to file a report — users who quit immediately after a toxic encounter never appear in the reportable dataset. <mark>“No effect” was a sign the data pipeline was structurally incomplete</mark>, not that the problem was minor.</p>
+              <p>Initial <span class="kw">causal matching</span> showed almost no retention difference between exposed and non-exposed victims. The team was ready to interpret this as "toxicity doesn't cause churn." I flagged that this was <mark>a measurement artifact, not a true finding</mark>. Only the most resilient players stay long enough to file a report — users who quit immediately after a toxic encounter never appear in the reportable dataset. <mark>"No effect" was evidence the data pipeline was broken</mark>, not that the problem was minor.</p>
+              <p>This reframing shifted the entire enforcement debate: the question was no longer "how many bans?" but "how do we reach users who never report?"</p>
             </div>
           </div>
 
           <div class="prose-section">
             <span class="prose-label">What Changed</span>
             <div class="prose-body">
-              <p>Reframing the problem made proactive intervention analytically justified. We designed a <span class="kw">graded penalty model</span>: high-confidence detections triggered automatic action — reaching users who would not appear in any report; lower-confidence cases still required user reporting to avoid <span class="kw">false positives</span> from dialect or in-game banter.</p>
-              <p>The more durable output was establishing that <span class="kw">passive reporting systematically undercounts harm</span> among new users, and building that corrective logic into the governance design from the start.</p>
+              <p>I worked with product and engineering to design a <span class="kw">graded penalty model</span> based on the corrected measurement logic. High-confidence AI detections triggered automatic action — reaching users who would never appear in any report. Lower-confidence cases still required user reporting as a safeguard against <span class="kw">false positives</span> from dialect or in-game banter.</p>
+              <p>The durable output was institutional: we established that <span class="kw">passive reporting systematically undercounts harm</span> among new users, and built that corrective logic into the governance design. The same principle now applies to any future trust-and-safety review on the platform.</p>
             </div>
           </div>
 
@@ -463,24 +464,24 @@
           <div class="prose-section">
             <span class="prose-label">Context</span>
             <div class="prose-body">
-              <p>After server consolidation, back-end monitoring showed matchmaking speed improved — a surface success. But community reports of lag increased simultaneously. Two <span class="kw">contradictory macro signals</span> in the same release window pointed to a measurement mismatch, not an optimization win.</p>
-              <p>The dashboard looked good because it measured <span class="kw">entry speed</span>, not actual match experience. Optimizing the wrong metric produced a misleading positive result.</p>
+              <p>After server consolidation, back-end monitoring showed faster matchmaking — a surface success. The engineering team was ready to call it a win. But community complaints about lag were rising at the same time. Two <span class="kw">contradictory signals in the same release window</span> meant at least one measurement was wrong.</p>
+              <p>I challenged the dashboard read: matchmaking speed measures entry, not experience. Optimizing the wrong metric had produced a misleading positive result that was masking real player harm.</p>
             </div>
           </div>
 
           <div class="prose-section is-pivot">
             <span class="prose-label">The Pivot</span>
             <div class="prose-body">
-              <p>End-to-end diagnostic from the <span class="kw">routing logs</span> revealed that <mark>80%+ of affected users were routed to distant data centers before the fallback threshold was reached</mark>. Root cause: an <span class="kw">IDC threshold set too conservatively</span>, triggering fallback logic prematurely. After correcting the routing logic with engineering, <mark>abnormal cross-region matches dropped from 90% to under 5%</mark> and overall latency recovered.</p>
+              <p>End-to-end diagnostic from the <span class="kw">routing logs</span> revealed that <mark>80%+ of affected users were being sent to distant data centers before the fallback threshold was reached</mark>. Root cause: an <span class="kw">IDC capacity threshold set too conservatively</span>, triggering fallback logic prematurely even when local servers had capacity. I presented this to LiveOps and engineering, and a configuration fix was deployed the same day. <mark>Abnormal cross-region matches dropped from 90% to under 5%</mark> and overall latency recovered.</p>
             </div>
           </div>
 
           <div class="prose-section">
             <span class="prose-label">What Changed</span>
             <div class="prose-body">
-              <p>After the routing fix, a <span class="kw">long-tail segment</span> still experienced poor performance even on local servers. Further breakdown identified the new bottleneck: <span class="kw">severe packet loss under weak-network conditions</span>.</p>
-              <p>We designed a <span class="kw">dual-channel network solution</span> and ran an <span class="kw">A/B test</span> to measure benefit and side effects. Serious packet loss dropped 30%+; user rejection of the feature prompt stayed within acceptable bounds — confirming safe rollout.</p>
-              <p>The routing diagnostic didn't stay a one-off: cross-region match rate was added as a standing signal in monitoring, so the same degradation would surface earlier in any future consolidation.<p>
+              <p>After the routing fix, a <span class="kw">long-tail segment</span> still had poor performance even on local servers. Further breakdown identified the new bottleneck: <span class="kw">severe packet loss under weak-network conditions</span>.</p>
+              <p>I partnered with product to design a <span class="kw">dual-channel network feature</span> and structured an <span class="kw">A/B test</span> to evaluate both benefit and user tolerance. Serious packet loss dropped 30%+; feature rejection rate stayed well within acceptable bounds. The test gave us the evidence needed to move from a stalled pilot to a confident global rollout.</p>
+              <p>Cross-region match rate was added as a standing signal in monitoring — so the same degradation surfaces earlier in any future consolidation.</p>
             </div>
           </div>
 
@@ -514,22 +515,23 @@
           <div class="prose-section">
             <span class="prose-label">Context</span>
             <div class="prose-body">
-              <p>Two cases with the same underlying problem: raw aggregate data was confounded by <span class="kw">player-skill selection bias</span>. The AUG looked overpowered in aggregate KD stats, but stronger players gravitate toward stronger weapons — making it impossible to separate weapon effect from player effect without a controlled design.</p>
-              <p>For the Wukong Skill Skin launch, the question was how to define <span class="kw">pre-launch fairness guardrails</span> — so monetization uplift could be validated against pay-to-win thresholds before release, not measured after the fact.</p>
+              <p>The design team believed AUG was balanced based on aggregate KD stats. Community pressure said otherwise. These two positions were both right in their own frame — aggregate metrics are confounded by <span class="kw">player-skill selection bias</span>, so they can't settle a balance dispute.</p>
+              <p>For the Wukong Skill Skin launch, the risk was different: monetization and fairness were in direct tension. The question was how to set <span class="kw">pre-launch guardrails</span> that let us capture revenue without crossing into pay-to-win territory — defined in advance, not evaluated after the fact.</p>
             </div>
           </div>
 
           <div class="prose-section is-pivot">
             <span class="prose-label">The Pivot</span>
             <div class="prose-body">
-              <p>For AUG: <span class="kw">same-player controlled comparison</span> (AUG vs. comparable AR baseline, same individuals) removed the skill confound. <mark>AUG outperformed baselines by ~28% in KD</mark> — large enough to justify a targeted balance change, not dismiss as sentiment noise. For Wukong: <mark>monetization success that violates fairness thresholds is not a win</mark> — the constraint had to be set before launch as a hard criterion, not evaluated after.</p>
+              <p>For AUG: I proposed a <span class="kw">same-player controlled comparison</span> — comparing each individual's KD with AUG versus a neutral AR baseline — to remove the skill confound entirely. <mark>AUG outperformed the baseline by ~28%</mark>, well above the threshold where competitive integrity breaks down. That number moved the design team from "community perception" to an evidence-backed balance fix.</p>
+              <p>For Wukong: I set the fairness constraint before launch — a hard ceiling on per-player KD uplift relative to the current meta top tier. <mark>Monetization success that violates that ceiling is not a win.</mark> The constraint was agreed with product upfront, not negotiated after results came in.</p>
             </div>
           </div>
 
           <div class="prose-section">
             <span class="prose-label">What Changed</span>
             <div class="prose-body">
-              <p>These two cases established a reusable <span class="kw">pre-launch evaluation template</span>: quantify gameplay impact via controlled comparison, set <span class="kw">acceptable outcome ranges</span> before release, and treat fairness guardrails as launch criteria rather than post-hoc audit.</p>
+              <p>These two cases produced a reusable <span class="kw">pre-launch evaluation template</span>: quantify gameplay impact via controlled comparison, define <span class="kw">acceptable outcome ranges</span> before release, and treat fairness guardrails as a launch gate rather than a post-hoc audit. Design and revenue teams now use this template as a standard checkpoint before any new weapon or monetized skill goes to QA.</p>
             </div>
           </div>
 
@@ -563,22 +565,24 @@
           <div class="prose-section">
             <span class="prose-label">Context</span>
             <div class="prose-body">
-              <p>Vietnam showed a multi-month revenue decline while high-level activity stayed stable. The <span class="kw">DAU–revenue divergence</span> ruled out an engagement problem and pointed to something structural inside the monetization system.</p>
-              <p><span class="kw">Revenue decomposition</span> by component and <span class="kw">payer-tier segmentation</span> localized where the decline was concentrated — not a broad-based drop, but a collapse in one specific segment.</p>
+              <p>Vietnam showed a multi-month revenue decline while DAU and session time stayed stable. The revenue team's initial read was weak player sentiment or market softness. I pushed back: a <span class="kw">DAU–revenue divergence</span> of this magnitude rules out an engagement problem. The cause had to be structural, inside the monetization system itself.</p>
+              <p><span class="kw">Revenue decomposition</span> by payer tier confirmed it: the decline was concentrated in the high-value segment, not broad-based. That narrowed the diagnosis considerably.</p>
             </div>
           </div>
 
           <div class="prose-section is-pivot">
             <span class="prose-label">The Pivot</span>
             <div class="prose-body">
-              <p>The problem was not weak demand. It was <mark>content saturation in the high-value segment that historically drove most revenue</mark>. These users had already owned the majority of items being re-featured. The <span class="kw">addressable spending opportunity</span> had shrunk — not because they stopped playing, but because the content supply stopped offering them new things to buy. <mark>The fix had to come from the content roadmap</mark>, not from discounts or reruns.</p>
+              <p>I introduced an <span class="kw">item ownership-rate metric</span> — measuring what share of featured items were already owned by active high-value payers. The data showed that <mark>80%+ of re-featured content was already in their inventories</mark>. These users had the budget to spend. They had no new items to spend it on. <mark>The problem was a content supply gap, not a demand problem</mark> — and the fix had to come from the content roadmap, not from discounts or promotions.</p>
+              <p>I presented this diagnosis to the revenue and content planning teams, reframing the conversation from "how do we re-engage payers" to "how do we ensure high-value payers always have something new to buy."</p>
             </div>
           </div>
 
           <div class="prose-section">
             <span class="prose-label">What Changed</span>
             <div class="prose-body">
-              <p>After content pacing was reset, new-content revenue recovered to ~50% of total market revenue. The <span class="kw">ownership-rate metric</span> — tracking saturation of featured items in the paying segment — became a reusable <span class="kw">leading indicator</span> built into ongoing market monitoring.</p>
+              <p>The content team adopted a revised pacing policy: enforced cooldown periods on re-featured items and a guaranteed monthly new SKU for the high-value segment. After the change, new-content revenue recovered to ~50% of total Vietnam revenue.</p>
+              <p>The <span class="kw">ownership-rate metric</span> is now a standing <span class="kw">leading indicator</span> in market monitoring — it flags content saturation risk before revenue drops, giving the content team enough lead time to adjust the roadmap proactively.</p>
             </div>
           </div>
 
